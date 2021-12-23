@@ -10,21 +10,28 @@ using System.Windows.Forms;
 
 namespace PCUMS
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-
+            float fcpu = pCPU.NextValue();
+            float fram = pRAM.NextValue();
+            metroProgressBarCPU.Value = (int)fcpu;
+            metroProgressBarRAM.Value = (int)fram;
+            lblCPU.Text = String.Format("{0:0.00%}", fcpu);
+            lblRAM.Text = String.Format("{0:0.00%}", fram);
+            chart1.Series["CPU"].Points.AddY(fcpu);
+            chart1.Series["RAM"].Points.AddY(fram);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            timer.Start();
         }
     }
 }
