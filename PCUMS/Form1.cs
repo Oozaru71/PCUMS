@@ -23,8 +23,8 @@ namespace PCUMS
             float fram = pRAM.NextValue();
             metroProgressBarCPU.Value = (int)fcpu;
             metroProgressBarRAM.Value = (int)fram;
-            lblCPU.Text = String.Format("{0:0.00%}", fcpu);
-            lblRAM.Text = String.Format("{0:0.00%}", fram);
+            lblCPU.Text = String.Format("{0:0.00}%", fcpu);
+            lblRAM.Text = String.Format("{0:0.00}%", fram);
             chart1.Series["CPU"].Points.AddY(fcpu);
             chart1.Series["RAM"].Points.AddY(fram);
         }
