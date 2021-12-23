@@ -1,6 +1,7 @@
-﻿namespace PCUMS
+﻿
+namespace PCUMS
 {
-    partial class Login
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +29,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // panel2
+            // Form2
             // 
-            this.panel2.Location = new System.Drawing.Point(313, 313);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // Login
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 736);
-            this.Controls.Add(this.panel2);
-            this.Name = "Login";
-            this.Text = "Login";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form2";
+            this.Text = "Login1";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel2;
     }
 }
