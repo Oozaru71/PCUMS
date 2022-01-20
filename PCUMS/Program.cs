@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Windows;
+using System.IO;
+using System.IO.Compression;
 
 namespace PCUMS
 {
@@ -30,6 +39,10 @@ namespace PCUMS
 
         static void Main()
         {
+            rootPath = Directory.GetCurrentDirectory();
+            dataPath = Path.Combine(Program.rootPath, "TextFile");
+            credentialsPath = Path.Combine(Program.dataPath, "credentials.txt");
+            usercountPath = Path.Combine(Program.dataPath, "userCount.txt");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -39,7 +52,7 @@ namespace PCUMS
             Application.Run(firstLog);
             while (Requester==false)
             {
-                if (firstLog.UserCredentialsCreated)
+                if (firstLog.UserCredentialsCreated || File.Exists(credentialsPath))
                 {
 
                     Application.Run(new Login2());

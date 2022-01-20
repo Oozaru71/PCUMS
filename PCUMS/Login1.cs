@@ -35,15 +35,17 @@ namespace PCUMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.rootPath = Directory.GetCurrentDirectory();
-            Program.dataPath = Path.Combine(Program.rootPath, "TextFile");
-            Program.credentialsPath = Path.Combine(Program.dataPath, "credentials.txt");
-            Program.usercountPath = Path.Combine(Program.dataPath, "userCount.txt");
 
             if (File.Exists(Program.credentialsPath))
             {
                 string store = System.IO.File.ReadAllText(Program.credentialsPath);
                 string admin = store.Split(',')[0];
+                string password = store.Split(',')[1];
+                userName.Enabled = false;
+                passWord.Enabled = false;
+                save1.Enabled = false;
+                Program.Admin = admin;
+                Program.AdminPass = password;
                 label2.Text = "Hello " + admin + ", let us get started";
             }
             else
@@ -51,9 +53,10 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                 && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
+                    Program.AdminID = "1";
                     Program.Admin = userName.Text;
                     Program.AdminPass = passWord.Text;
-                    Program.csv = Program.Admin + ", " + Program.AdminPass;
+                    Program.csv = Program.AdminID + ", " + Program.Admin + ", " + Program.AdminPass;
                     System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                     userName.Enabled = false;
                     passWord.Enabled = false;
