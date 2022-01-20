@@ -19,10 +19,16 @@ namespace PCUMS
     
     internal static class Program
     {
+        public static string AdminID = "";
         public static string Admin="";
         public static string AdminPass="";
         public static decimal Temp=0 ;
         public static decimal CPU=0 ;
+        public static string rootPath;
+        public static string dataPath;
+        public static string credentialsPath;
+        public static string usercountPath;
+        public static string csv;
         public static decimal SessionT=0;
         public static int SessionID;
         
@@ -37,9 +43,9 @@ namespace PCUMS
         static void Main()
         {
             rootPath = Directory.GetCurrentDirectory();
-            dataPath = Path.Combine(Program.rootPath, "TextFile");
-            credentialsPath = Path.Combine(Program.dataPath, "credentials.txt");
-            usercountPath = Path.Combine(Program.dataPath, "userCount.txt");
+            dataPath = Path.Combine(rootPath, "TextFile");
+            credentialsPath = Path.Combine(dataPath, "credentials.txt");
+            usercountPath = Path.Combine(dataPath, "userCount.txt");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

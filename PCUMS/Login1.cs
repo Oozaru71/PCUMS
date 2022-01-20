@@ -53,7 +53,7 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                 && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
-                    Program.AdminID = "1";
+                    //Program.AdminID = "1";
                     Program.Admin = userName.Text;
                     Program.AdminPass = passWord.Text;
                     Program.csv = Program.AdminID + ", " + Program.Admin + ", " + Program.AdminPass;
