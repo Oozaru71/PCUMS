@@ -10,8 +10,17 @@ namespace PCUMS
     
     internal static class Program
     {
+        public static string rootPath;
+        public static string dataPath;
+        public static string credentialsPath;
+        public static string usercountPath;
         public static string Admin="";
         public static string AdminPass="";
+        public static string AdminID = "";
+        public static string csv;
+        public static string CPU = "";
+        public static string TEMP = "";
+        public static string TIME = "";
         public static bool Requester = false;
 
         /// <summary>
