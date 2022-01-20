@@ -19,17 +19,14 @@ namespace PCUMS
     
     internal static class Program
     {
-        public static string rootPath;
-        public static string dataPath;
-        public static string credentialsPath;
-        public static string usercountPath;
         public static string Admin="";
         public static string AdminPass="";
-        public static string AdminID = "";
-        public static string csv;
-        public static string CPU = "";
-        public static string TEMP = "";
-        public static string TIME = "";
+        public static decimal Temp=0 ;
+        public static decimal CPU=0 ;
+        public static decimal SessionT=0;
+        public static int SessionID;
+        
+
         public static bool Requester = false;
 
         /// <summary>
@@ -48,7 +45,7 @@ namespace PCUMS
             Application.SetCompatibleTextRenderingDefault(false);
 
             Login1 firstLog = new Login1(false);
-            //Login2 secondLog = new Login2();
+
             Application.Run(firstLog);
             while (Requester==false)
             {

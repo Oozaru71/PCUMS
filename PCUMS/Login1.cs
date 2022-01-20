@@ -69,12 +69,26 @@ namespace PCUMS
             }
         }
 
+        private void createS_Click(object sender, EventArgs e)
+        {
+            Program.CPU=numCPU.Value;
+
+            Program.SessionT=numSess.Value;
+            
+            Program.Temp=numTemp.Value;
+
+        }
+
+
         private void Continue_Click(object sender, EventArgs e)
         {
-            
-            if (Program.Admin != ""||Program.AdminPass!="")
+
+            if (Program.Admin != "" || Program.AdminPass != "")
             {
-               
+                var rand = new Random();
+                var id= rand.Next(101);
+                Program.SessionID = id;
+                System.Windows.Forms.MessageBox.Show("The Session ID created is:\n"+id+"");
                 UserCredentialsCreated = true;
                 Close();
             }
