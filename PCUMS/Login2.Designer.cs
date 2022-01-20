@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.sessionStart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -133,13 +134,13 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(85, 17);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Administrator";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.sessionStart);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.radioButton2);
@@ -151,7 +152,6 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Enabled = false;
             this.label4.Location = new System.Drawing.Point(8, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 13);
@@ -173,9 +173,18 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(53, 17);
             this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Guest";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // sessionStart
+            // 
+            this.sessionStart.Location = new System.Drawing.Point(124, 148);
+            this.sessionStart.Name = "sessionStart";
+            this.sessionStart.Size = new System.Drawing.Size(92, 22);
+            this.sessionStart.TabIndex = 4;
+            this.sessionStart.Text = "Begin Session";
+            this.sessionStart.UseVisualStyleBackColor = true;
             // 
             // Login2
             // 
@@ -189,6 +198,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login2";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.button1_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -213,5 +223,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sessionStart;
     }
 }

@@ -40,11 +40,18 @@ namespace PCUMS
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.save1 = new System.Windows.Forms.Button();
             this.Continue = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.createS = new System.Windows.Forms.Button();
+            this.numTemp = new System.Windows.Forms.NumericUpDown();
+            this.numCPU = new System.Windows.Forms.NumericUpDown();
+            this.numSess = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numTemp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSess)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -146,27 +153,6 @@ namespace PCUMS
             this.label9.TabIndex = 11;
             this.label9.Text = "Session Time:";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(525, 234);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(525, 275);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 13;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(525, 314);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 25);
-            this.panel1.TabIndex = 14;
-            // 
             // save1
             // 
             this.save1.Location = new System.Drawing.Point(67, 337);
@@ -187,16 +173,123 @@ namespace PCUMS
             this.Continue.UseVisualStyleBackColor = true;
             this.Continue.Click += new System.EventHandler(this.Continue_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(631, 237);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(134, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "degrees F (higher than 50).";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(631, 277);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 13);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "% (higher than 60).";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(631, 314);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "hrs (higher than 0).";
+            // 
+            // createS
+            // 
+            this.createS.Location = new System.Drawing.Point(535, 337);
+            this.createS.Name = "createS";
+            this.createS.Size = new System.Drawing.Size(75, 23);
+            this.createS.TabIndex = 21;
+            this.createS.Text = "Set Rules";
+            this.createS.UseVisualStyleBackColor = true;
+            this.createS.Click += new System.EventHandler(this.createS_Click);
+            // 
+            // numTemp
+            // 
+            this.numTemp.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numTemp.Location = new System.Drawing.Point(525, 235);
+            this.numTemp.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numTemp.Name = "numTemp";
+            this.numTemp.Size = new System.Drawing.Size(100, 20);
+            this.numTemp.TabIndex = 22;
+            this.numTemp.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // numCPU
+            // 
+            this.numCPU.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numCPU.Location = new System.Drawing.Point(525, 272);
+            this.numCPU.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numCPU.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numCPU.Name = "numCPU";
+            this.numCPU.Size = new System.Drawing.Size(100, 20);
+            this.numCPU.TabIndex = 23;
+            this.numCPU.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // numSess
+            // 
+            this.numSess.Location = new System.Drawing.Point(525, 307);
+            this.numSess.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSess.Name = "numSess";
+            this.numSess.Size = new System.Drawing.Size(100, 20);
+            this.numSess.TabIndex = 24;
+            this.numSess.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Login1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numSess);
+            this.Controls.Add(this.numCPU);
+            this.Controls.Add(this.numTemp);
+            this.Controls.Add(this.createS);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.Continue);
             this.Controls.Add(this.save1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -210,6 +303,9 @@ namespace PCUMS
             this.Controls.Add(this.label1);
             this.Name = "Login1";
             this.Text = "Login1";
+            ((System.ComponentModel.ISupportInitialize)(this.numTemp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSess)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,10 +324,14 @@ namespace PCUMS
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button save1;
         private System.Windows.Forms.Button Continue;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button createS;
+        private System.Windows.Forms.NumericUpDown numTemp;
+        private System.Windows.Forms.NumericUpDown numCPU;
+        private System.Windows.Forms.NumericUpDown numSess;
     }
 }

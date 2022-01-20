@@ -23,7 +23,15 @@ namespace PCUMS
         {
             textBox2.Enabled = true;
             textBox3.Enabled = true;
-            button1.Enabled = true;
+            textBox1.Enabled = false;
+            radioButton2.Checked = false;
+        }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Enabled = true;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+            radioButton1.Checked = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
