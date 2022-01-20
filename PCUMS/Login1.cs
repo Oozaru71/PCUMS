@@ -105,5 +105,21 @@ namespace PCUMS
         {
 
         }
+
+        private void Login1_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(Program.credentialsPath))
+            {
+                string store = System.IO.File.ReadAllText(Program.credentialsPath);
+                string admin = store.Split(',')[0];
+                string password = store.Split(',')[1];
+                userName.Enabled = false;
+                passWord.Enabled = false;
+                save1.Enabled = false;
+                Program.Admin = admin;
+                Program.AdminPass = password;
+                label2.Text = "Hello " + admin + ", let us get started";
+            }
+        }
     }
 }

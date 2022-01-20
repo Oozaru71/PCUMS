@@ -55,7 +55,7 @@ namespace PCUMS
             Application.Run(firstLog);
             while (Requester==false)
             {
-                if (firstLog.UserCredentialsCreated || File.Exists(credentialsPath))
+                if (firstLog.UserCredentialsCreated) //File.Exists(credentialsPath)
                 {
 
                     Application.Run(new Login2());
