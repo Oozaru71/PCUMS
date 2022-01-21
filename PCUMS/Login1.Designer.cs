@@ -161,7 +161,7 @@ namespace PCUMS
             this.save1.TabIndex = 15;
             this.save1.Text = "Save";
             this.save1.UseVisualStyleBackColor = true;
-            this.save1.Click += new System.EventHandler(this.button1_Click);
+            this.save1.Click += new System.EventHandler(this.save1_Click);
             // 
             // Continue
             // 
@@ -208,7 +208,6 @@ namespace PCUMS
             this.createS.TabIndex = 21;
             this.createS.Text = "Set Rules";
             this.createS.UseVisualStyleBackColor = true;
-            this.createS.Click += new System.EventHandler(this.createS_Click);
             // 
             // numTemp
             // 

@@ -20,8 +20,7 @@ namespace PCUMS
     internal static class Program
     {
         public static string AdminID = "";
-        public static string Admin="";
-        public static string AdminPass="";
+      
         public static decimal Temp=0 ;
         public static decimal CPU=0 ;
         public static string rootPath;
@@ -31,6 +30,8 @@ namespace PCUMS
         public static string csv;
         public static decimal SessionT=0;
         public static int SessionID;
+
+        public static bool checker = false;
         
 
         public static bool Requester = false;
@@ -43,29 +44,24 @@ namespace PCUMS
         static void Main()
         {
             rootPath = Directory.GetCurrentDirectory();
-            dataPath = Path.Combine(rootPath, "TextFile");
-            credentialsPath = Path.Combine(dataPath, "credentials.txt");
-            usercountPath = Path.Combine(dataPath, "userCount.txt");
+            //dataPath = Path.Combine(rootPath, "TextFile");
+            credentialsPath = Path.Combine(rootPath, "credentials.txt");
+            usercountPath = Path.Combine(rootPath, "userCount.txt");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Login1 firstLog = new Login1(false);
-
-            Application.Run(firstLog);
-            while (Requester==false)
-            {
-                if (firstLog.UserCredentialsCreated || File.Exists(credentialsPath))
+                if (!File.Exists(credentialsPath))
                 {
-
-                    Application.Run(new Login2());
-                }
-                if (Requester)
-                {
-                    Application.Run(new Login1(true));
+                    Application.Run(new Login1(false));
+                    
                 }
                 else
-                    Environment.Exit(0);
+                {
+                    Application.Run(new Login2());
+                }                 
+            while(Requester==false)
+            {
+
             }
         }
     }

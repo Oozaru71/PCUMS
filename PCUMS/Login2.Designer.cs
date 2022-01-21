@@ -38,10 +38,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.sessionStart = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.sessionStart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,7 @@
             this.label1.Size = new System.Drawing.Size(214, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to PC-UMS";
-            this.label1.Click += new System.EventHandler(this.button1_Click);
+            
             // 
             // label2
             // 
@@ -149,6 +149,16 @@
             this.panel2.Size = new System.Drawing.Size(316, 262);
             this.panel2.TabIndex = 3;
             // 
+            // sessionStart
+            // 
+            this.sessionStart.Enabled = false;
+            this.sessionStart.Location = new System.Drawing.Point(124, 148);
+            this.sessionStart.Name = "sessionStart";
+            this.sessionStart.Size = new System.Drawing.Size(92, 22);
+            this.sessionStart.TabIndex = 4;
+            this.sessionStart.Text = "Begin Session";
+            this.sessionStart.UseVisualStyleBackColor = true;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -177,15 +187,6 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // sessionStart
-            // 
-            this.sessionStart.Location = new System.Drawing.Point(124, 148);
-            this.sessionStart.Name = "sessionStart";
-            this.sessionStart.Size = new System.Drawing.Size(92, 22);
-            this.sessionStart.TabIndex = 4;
-            this.sessionStart.Text = "Begin Session";
-            this.sessionStart.UseVisualStyleBackColor = true;
-            // 
             // Login2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,7 +199,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login2";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.button1_Click);
+       
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

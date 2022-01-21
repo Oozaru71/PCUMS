@@ -20,7 +20,7 @@ namespace PCUMS
     public partial class Login1 : Form
     {
 
-       public bool UserCredentialsCreated { get; private set;}
+        public bool UserCredentialsCreated { get; private set; }
         public Login1(bool Value)
         {
             Program.Requester = false;
@@ -31,42 +31,29 @@ namespace PCUMS
                 passWord.Enabled = false;
                 save1.Enabled = false;
             }
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void save1_Click(object sender, EventArgs e)
         {
 
-            if (File.Exists(Program.credentialsPath))
-            {
-                string store = System.IO.File.ReadAllText(Program.credentialsPath);
-                string admin = store.Split(',')[0];
-                string password = store.Split(',')[1];
-                userName.Enabled = false;
-                passWord.Enabled = false;
-                save1.Enabled = false;
-                Program.Admin = admin;
-                Program.AdminPass = password;
-                label2.Text = "Hello " + admin + ", let us get started";
-            }
-            else
-            {
+    
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                 && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
-                    //Program.AdminID = "1";
-                    Program.Admin = userName.Text;
-                    Program.AdminPass = passWord.Text;
-                    Program.csv = Program.AdminID + ", " + Program.Admin + ", " + Program.AdminPass;
+                    
+                    Program.csv = Program.AdminID + ", " + userName.Text + ", " + passWord.Text;
                     System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                     userName.Enabled = false;
                     passWord.Enabled = false;
                     save1.Enabled = false;
+                    Program.checker = true;
                 }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show("Create admin credentials and make sure there are no whitespaces!");
                 }
-            }
+            
         }
 
         private void createS_Click(object sender, EventArgs e)
@@ -90,20 +77,16 @@ namespace PCUMS
                 Program.SessionID = id;
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n"+id+"");
                 UserCredentialsCreated = true;
+               
                 Close();
             }
             else
                 System.Windows.Forms.MessageBox.Show("Create admin credentials!");
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+    
 
-        }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }
