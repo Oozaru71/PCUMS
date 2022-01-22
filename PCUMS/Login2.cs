@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,11 +44,22 @@ namespace PCUMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string store = System.IO.File.ReadAllText(Program.credentialsPath);
-            string admin = store.Split(',')[1];
-            string password = store.Split(',')[2];
+            string result = "";
+            string store = "";
+            StreamReader reader = new StreamReader(Program.credentialsPath);
+            while ((result = reader.ReadLine()) != null)
+            {
+                if (result.Contains(textBox2.Text))
+                {
+                    store = result;
+                }
+            }
+            
+            //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
+            Program.Admin = store.Split(',')[1];
+            Program.AdminPass = store.Split(',')[2];
 
-            if (admin.Equals(textBox2.Text) && password.Equals(textBox3.Text))
+            if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
             {
                 Program.Requester = 1;
                 this.Close();
@@ -54,7 +67,7 @@ namespace PCUMS
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!"+admin+","+password);
+                System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!"+Program.Admin+","+Program.AdminPass);
             }    
         }
     }

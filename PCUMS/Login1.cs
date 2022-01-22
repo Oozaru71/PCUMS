@@ -45,18 +45,36 @@ namespace PCUMS
                }
                else
                {
-                    String temp = File.ReadLines(Program.credentialsPath).Last();
-                    int tempInt = 0;
-                    temp = temp.Split(',')[0];
-                    tempInt = Int32.Parse(temp);
-                    tempInt = tempInt + 1;
-                    temp = tempInt.ToString();
-                    Program.AdminID = temp;
-                    Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text;
-                    File.AppendAllText(Program.credentialsPath, Environment.NewLine + Program.csv);
-                    userName.Enabled = false;
-                    passWord.Enabled = false;
-                    save1.Enabled = false;
+                    string result = "";
+                    bool exists = false;
+                    StreamReader reader = new StreamReader(Program.credentialsPath);
+                    while ((result = reader.ReadLine()) != null)
+                    {
+                        if (result.Contains(userName.Text))
+                        {
+                            exists = true;
+                        }
+                    }
+
+                    if (exists)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Admin already exists: " + userName.Text);
+                    }
+                    else
+                    {
+                        String temp = File.ReadLines(Program.credentialsPath).Last();
+                        int tempInt = 0;
+                        temp = temp.Split(',')[0];
+                        tempInt = Int32.Parse(temp);
+                        tempInt = tempInt + 1;
+                        temp = tempInt.ToString();
+                        Program.AdminID = temp;
+                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text;
+                        File.AppendAllText(Program.credentialsPath, Environment.NewLine + Program.csv);
+                        userName.Enabled = false;
+                        passWord.Enabled = false;
+                        save1.Enabled = false;
+                    }
                }
 
                 
@@ -64,7 +82,7 @@ namespace PCUMS
            }
            else
            {
-           System.Windows.Forms.MessageBox.Show("Create admin credentials and make sure there are no whitespaces!");
+                System.Windows.Forms.MessageBox.Show("Create admin credentials and make sure there are no whitespaces!");
            }
             
         }
@@ -101,8 +119,7 @@ namespace PCUMS
         {
             if (File.Exists(Program.credentialsPath))
             {
-                string store = System.IO.File.ReadAllText(Program.credentialsPath);
-                string admin = store.Split(',')[1];
+                string admin = Program.Admin;
             
                // userName.Enabled = false;
               //  passWord.Enabled = false;
