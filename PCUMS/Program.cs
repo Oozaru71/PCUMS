@@ -50,16 +50,18 @@ namespace PCUMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Login1 firstLog = new Login1(false);
+            if (File.Exists(Program.credentialsPath))
+            {
 
-            Application.Run(firstLog);
+                Application.Run(new Login2());
+            }
+            else
+            {
+                Application.Run(new Login1(false));
+            }
+
             while (Requester==false)
             {
-                if (firstLog.UserCredentialsCreated) //File.Exists(credentialsPath)
-                {
-
-                    Application.Run(new Login2());
-                }
                 if (Requester)
                 {
                     Application.Run(new Login1(true));

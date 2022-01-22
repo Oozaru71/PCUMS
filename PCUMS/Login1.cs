@@ -36,8 +36,6 @@ namespace PCUMS
 
         private void save1_Click(object sender, EventArgs e)
         {
-
-    
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                 && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
@@ -70,7 +68,7 @@ namespace PCUMS
         private void Continue_Click(object sender, EventArgs e)
         {
 
-            if (Program.Admin != "" || Program.AdminPass != "")
+            if (File.Exists(Program.credentialsPath))
             {
                 var rand = new Random();
                 var id= rand.Next(101);
@@ -89,13 +87,12 @@ namespace PCUMS
             if (File.Exists(Program.credentialsPath))
             {
                 string store = System.IO.File.ReadAllText(Program.credentialsPath);
-                string admin = store.Split(',')[0];
-                string password = store.Split(',')[1];
+                string admin = store.Split(',')[1];
+            
                 userName.Enabled = false;
                 passWord.Enabled = false;
                 save1.Enabled = false;
-                Program.Admin = admin;
-                Program.AdminPass = password;
+                
                 label2.Text = "Hello " + admin + ", let us get started";
             }
         }
