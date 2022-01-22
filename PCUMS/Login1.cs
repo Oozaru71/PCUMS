@@ -23,7 +23,7 @@ namespace PCUMS
         public bool UserCredentialsCreated { get; private set; }
         public Login1(bool Value)
         {
-            Program.Requester = false;
+            Program.Requester = 0;
             InitializeComponent();
             if (Value == true)
             {
@@ -40,7 +40,7 @@ namespace PCUMS
                 && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
                     
-                    Program.csv = Program.AdminID + ", " + userName.Text + ", " + passWord.Text;
+                    Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text;
                     System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                     userName.Enabled = false;
                     passWord.Enabled = false;
@@ -75,7 +75,7 @@ namespace PCUMS
                 Program.SessionID = id;
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n"+id+"");
                 UserCredentialsCreated = true;
-               
+                Program.Requester = 2;
                 Close();
             }
             else

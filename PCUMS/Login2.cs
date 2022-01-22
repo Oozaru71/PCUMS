@@ -14,7 +14,7 @@ namespace PCUMS
     {
         public Login2()
         {
-            Program.Requester = false;
+            Program.Requester = 0;
             InitializeComponent();
         }    
 
@@ -46,9 +46,9 @@ namespace PCUMS
             string admin = store.Split(',')[1];
             string password = store.Split(',')[2];
 
-            if (admin.Contains(textBox2.Text) && password.Contains(textBox3.Text))
+            if (admin.Equals(textBox2.Text) && password.Equals(textBox3.Text))
             {
-
+                Program.Requester = 1;
                 this.Close();
               
             }

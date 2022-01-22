@@ -33,7 +33,7 @@ namespace PCUMS
         public static int SessionID;
         
 
-        public static bool Requester = false;
+        public static int Requester = 0;
 
         /// <summary>
         /// The main entry point for the application.
@@ -60,11 +60,15 @@ namespace PCUMS
                 Application.Run(new Login1(false));
             }
 
-            while (Requester==false)
+            while (true)
             {
-                if (Requester)
+                if (Requester == 1)
                 {
                     Application.Run(new Login1(true));
+                }
+                else if(Requester==2)
+                {
+                    Application.Run(new Login2());
                 }
                 else
                     Environment.Exit(0);
