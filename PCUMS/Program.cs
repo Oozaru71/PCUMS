@@ -57,14 +57,14 @@ namespace PCUMS
             }
             else
             {
-                Application.Run(new Login1(false));
+                Application.Run(new Login1());
             }
-
+            
             while (true)
             {
                 if (Requester == 1)
                 {
-                    Application.Run(new Login1(true));
+                    Application.Run(new Login1());
                 }
                 else if(Requester==2)
                 {
