@@ -56,6 +56,8 @@ namespace PCUMS
                         }
                     }
 
+                    reader.Close();
+
                     if (exists)
                     {
                         System.Windows.Forms.MessageBox.Show("Admin already exists: " + userName.Text);

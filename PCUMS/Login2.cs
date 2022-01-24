@@ -59,6 +59,7 @@ namespace PCUMS
             Program.Admin = store.Split(',')[1];
             Program.AdminPass = store.Split(',')[2];
 
+            reader.Close();
             if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
             {
                 Program.Requester = 1;
