@@ -49,6 +49,7 @@ namespace PCUMS
             this.numTemp = new System.Windows.Forms.NumericUpDown();
             this.numCPU = new System.Windows.Forms.NumericUpDown();
             this.numSess = new System.Windows.Forms.NumericUpDown();
+            this.newAd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSess)).BeginInit();
@@ -276,11 +277,23 @@ namespace PCUMS
             0,
             0});
             // 
+            // newAd
+            // 
+            this.newAd.Enabled = false;
+            this.newAd.Location = new System.Drawing.Point(224, 265);
+            this.newAd.Name = "newAd";
+            this.newAd.Size = new System.Drawing.Size(104, 23);
+            this.newAd.TabIndex = 25;
+            this.newAd.Text = "Make New Admin";
+            this.newAd.UseVisualStyleBackColor = true;
+            this.newAd.Click += new System.EventHandler(this.newAd_Click);
+            // 
             // Login1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.newAd);
             this.Controls.Add(this.numSess);
             this.Controls.Add(this.numCPU);
             this.Controls.Add(this.numTemp);
@@ -334,5 +347,6 @@ namespace PCUMS
         private System.Windows.Forms.NumericUpDown numTemp;
         private System.Windows.Forms.NumericUpDown numCPU;
         private System.Windows.Forms.NumericUpDown numSess;
+        private System.Windows.Forms.Button newAd;
     }
 }

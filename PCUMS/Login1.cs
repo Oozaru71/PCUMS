@@ -76,6 +76,7 @@ namespace PCUMS
                         userName.Enabled = false;
                         passWord.Enabled = false;
                         save1.Enabled = false;
+                        newAd.Enabled = false;
                     }
                }
 
@@ -123,16 +124,21 @@ namespace PCUMS
             {
                 string admin = Program.Admin;
             
-               // userName.Enabled = false;
-              //  passWord.Enabled = false;
-              //  save1.Enabled = false;
+                userName.Enabled = false;
+                passWord.Enabled = false;
+                save1.Enabled = false;
+                newAd.Enabled = true;
 
                 
                 label2.Text = "Hello " + admin + ", let us get started";
             }
         }
 
-
-
+        private void newAd_Click(object sender, EventArgs e)
+        {
+            userName.Enabled = true;
+            passWord.Enabled = true;
+            save1.Enabled = true;
+        }
     }
 }
