@@ -34,6 +34,7 @@ namespace PCUMS
         
 
         public static int Requester = 0;
+        public static int Authority = 0;
 
         /// <summary>
         /// The main entry point for the application.

@@ -31,6 +31,7 @@ namespace PCUMS
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Program.Requester = 0;
             timer.Start();
         }
 
@@ -38,6 +39,17 @@ namespace PCUMS
         {
             Program.Requester = 2;
             this.Close();
+        }
+
+        private void Rules_Click(object sender, EventArgs e)
+        {
+            if (Program.Authority == 2)
+            {
+                Program.Requester = 1;
+                this.Close();
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("Your session rules are:");
         }
     }
 }

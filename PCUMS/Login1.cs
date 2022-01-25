@@ -111,7 +111,8 @@ namespace PCUMS
                 Program.SessionID = id;
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n"+id+"");
                 UserCredentialsCreated = true;
-                Program.Requester = 2;
+                Program.Requester = 3;
+                Program.Authority = 2;
                 Close();
             }
             else

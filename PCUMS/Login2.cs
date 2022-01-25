@@ -65,6 +65,7 @@ namespace PCUMS
             if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
             {
                 Program.Requester = 3;
+                Program.Authority = 2;
                 this.Close();
               
             }

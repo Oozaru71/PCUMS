@@ -55,7 +55,6 @@
             this.label1.Size = new System.Drawing.Size(214, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to PC-UMS";
-            
             // 
             // label2
             // 
@@ -199,7 +198,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login2";
             this.Text = "Login";
-       
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
