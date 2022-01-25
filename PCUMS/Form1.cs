@@ -33,5 +33,11 @@ namespace PCUMS
         {
             timer.Start();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.Requester = 2;
+            this.Close();
+        }
     }
 }

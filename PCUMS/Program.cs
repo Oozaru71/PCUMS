@@ -66,9 +66,13 @@ namespace PCUMS
                 {
                     Application.Run(new Login1());
                 }
-                else if(Requester==2)
+                else if (Requester == 2)
                 {
                     Application.Run(new Login2());
+                }
+                else if (Requester == 3)
+                {
+                    Application.Run(new Form1());
                 }
                 else
                     Environment.Exit(0);

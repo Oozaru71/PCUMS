@@ -56,19 +56,21 @@ namespace PCUMS
             }
             
             //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
+            if (store!="") 
+            { 
             Program.Admin = store.Split(',')[1];
             Program.AdminPass = store.Split(',')[2];
-
+            }
             reader.Close();
             if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
             {
-                Program.Requester = 1;
+                Program.Requester = 3;
                 this.Close();
               
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!"+Program.Admin+","+Program.AdminPass);
+                System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!");
             }    
         }
     }
