@@ -141,8 +141,19 @@ namespace PCUMS
 
                 store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + Program.SessionID;
 
+                string result = "";
+                int counter = 0;
+                StreamReader reader = new StreamReader(Program.credentialsPath);
+                while ((result = reader.ReadLine()) != null)
+                {
+                    counter++;
+                    if (result.Contains(Program.Admin))
+                    {
+                        break;
+                    }
+                }
 
-                lineChanger(store, Program.credentialsPath, Int32.Parse(Program.AdminID));
+                lineChanger(store, Program.credentialsPath, counter);
                 Program.Requester = 3;
                 Program.Authority = 2;
                 Close();
