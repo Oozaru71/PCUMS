@@ -31,7 +31,6 @@ namespace PCUMS
         public static string csv;
         public static decimal SessionT=0;
         public static int SessionID;
-        public static bool noUsers = false;
         
 
         public static int Requester = 0;
@@ -52,21 +51,8 @@ namespace PCUMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Checking if no users
-            if (File.Exists(Program.credentialsPath) && File.Exists(Program.usercountPath))
-            {
-                Program.noUsers = true;
-            }
-            else if (!File.Exists(Program.credentialsPath) && !File.Exists(Program.usercountPath))
-            {
-                Program.noUsers = true;
-            }
-            else
-            {
-                Program.noUsers = false;
-            }
 
-            if (File.Exists(Program.credentialsPath) && !Program.noUsers)
+            if (File.Exists(Program.credentialsPath))
             {
 
                 Application.Run(new UserLogin());

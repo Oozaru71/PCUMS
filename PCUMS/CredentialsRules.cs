@@ -36,7 +36,7 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                      && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
-                    if ((!File.Exists(Program.credentialsPath) && (Program.noUsers)) || (File.Exists(Program.credentialsPath) && (Program.noUsers)))
+                    if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
                         Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
@@ -48,11 +48,6 @@ namespace PCUMS
                         Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                         Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
-                        if (File.Exists(Program.usercountPath))
-                        {
-                            System.IO.File.Delete(Program.usercountPath);
-                        }
-                        Program.noUsers = false;
                         userName.Enabled = false;
                         passWord.Enabled = false;
                         save1.Enabled = false;
@@ -87,18 +82,7 @@ namespace PCUMS
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
                             Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
-                            if ((Program.csv.Contains("\n")) || (Program.csv.Equals("\n")))
-                            {
-                                Program.csv.Replace("\n", "");
-                            }
-                            else if ((File.ReadLines(Program.credentialsPath).Last()).EndsWith("\n"))
-                            {
-                                File.AppendAllText(Program.credentialsPath, Program.csv);
-                            }
-                            else
-                            {
-                                File.AppendAllText(Program.credentialsPath, "\n" + Program.csv);
-                            }
+                            File.AppendAllText(Program.credentialsPath, Program.csv);
                             Program.AdminID = Program.csv.Split(',')[0];
                             Program.Admin = Program.csv.Split(',')[1];
                             Program.AdminPass = Program.csv.Split(',')[2];
@@ -106,10 +90,6 @@ namespace PCUMS
                             Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                             Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
                             Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
-                            if (File.Exists(Program.usercountPath))
-                            {
-                                System.IO.File.Delete(Program.usercountPath);
-                            }
                             userName.Enabled = false;
                             passWord.Enabled = false;
                             save1.Enabled = false;
@@ -150,7 +130,7 @@ namespace PCUMS
         private void Continue_Click(object sender, EventArgs e)
         {
 
-            if (File.Exists(Program.credentialsPath) && !Program.noUsers)
+            if (File.Exists(Program.credentialsPath))
             {
                 var rand = new Random();
                 var id = rand.Next(101);
@@ -173,21 +153,7 @@ namespace PCUMS
 
         private void Login1_Load(object sender, EventArgs e)
         {
-
-            if (File.Exists(Program.credentialsPath) && File.Exists(Program.usercountPath))
-            {
-                Program.noUsers = true;
-            }
-            else if (!File.Exists(Program.credentialsPath) && !File.Exists(Program.usercountPath))
-            {
-                Program.noUsers = true;
-            }
-            else
-            {
-                Program.noUsers = false;
-            }
-
-            if (File.Exists(Program.credentialsPath) && (!Program.noUsers))
+            if (File.Exists(Program.credentialsPath))
             {
                 string admin = Program.Admin;
 

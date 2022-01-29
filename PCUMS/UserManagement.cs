@@ -141,8 +141,8 @@ namespace PCUMS
             }
             else if (count == 0)
             {
-                Program.noUsers = true;
-                File.WriteAllText(Program.usercountPath, "true");
+                //Program.noUsers = true;
+                System.IO.File.Delete(Program.credentialsPath);
                 System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
                 Program.Requester = 1;
                 this.Close();
