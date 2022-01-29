@@ -39,8 +39,15 @@ namespace PCUMS
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
-                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value;
+                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value+","+0;
                         System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
+                        Program.AdminID = Program.csv.Split(',')[0];
+                        Program.Admin = Program.csv.Split(',')[1];
+                        Program.AdminPass = Program.csv.Split(',')[2];
+                        Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
+                        Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
+                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
+                        Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
                         userName.Enabled = false;
                         passWord.Enabled = false;
                         save1.Enabled = false;
@@ -73,8 +80,15 @@ namespace PCUMS
                             tempInt = tempInt + 1;
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
-                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value;
+                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value+","+0;
                             File.AppendAllText(Program.credentialsPath, Environment.NewLine + Program.csv);
+                            Program.AdminID = Program.csv.Split(',')[0];
+                            Program.Admin = Program.csv.Split(',')[1];
+                            Program.AdminPass = Program.csv.Split(',')[2];
+                            Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
+                            Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
+                            Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
+                            Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
                             userName.Enabled = false;
                             passWord.Enabled = false;
                             save1.Enabled = false;
@@ -94,8 +108,13 @@ namespace PCUMS
                 }
             }
             else
-            { 
-                
+            {
+                Program.Temp = numTemp.Value;
+                Program.CPU = numCPU.Value;
+                Program.SessionT = numSess.Value;
+                string newLine= Program.AdminID + "," + Program.Admin+ "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + 0;
+                lineChanger(newLine,Program.credentialsPath, Int32.Parse(Program.AdminID));
+                save1.Enabled = false;
             }
         }
 
@@ -113,7 +132,14 @@ namespace PCUMS
                 var rand = new Random();
                 var id = rand.Next(101);
                 Program.SessionID = id;
+
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n" + id + "");
+                String store = "";
+
+                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + Program.SessionID;
+
+
+                lineChanger(store, Program.credentialsPath, Int32.Parse(Program.AdminID));
                 Program.Requester = 3;
                 Program.Authority = 2;
                 Close();
@@ -130,7 +156,7 @@ namespace PCUMS
 
                 userName.Enabled = false;
                 passWord.Enabled = false;
-                save1.Enabled = false;
+                
                 newAd.Enabled = true;
 
 
