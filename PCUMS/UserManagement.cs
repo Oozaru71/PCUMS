@@ -26,14 +26,14 @@ namespace PCUMS
         {
             int i = 0;
             String[] Users = new String[count];
-            label4.Text = "ID" + "       " + "User" + "       " + "Password" + "       " + "Temp" + "       " + "CPU" + "       " + "S.Time" + "       " + "S.ID";
+            label4.Text = "ID" + "       " + "User" + "       " + "Password" + "       " + "Temp" + "       " + "CPU" + "       " + "RAM" + "       " + "S.Time" + "       " + "S.ID";
             label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
             label4.Width = 400;
             label4.Height = 20;
             label2.Text = count.ToString() + " Users Found:";
             foreach (string s in File.ReadAllLines(Program.credentialsPath))
             {
-                Users[i] = s.Split(',')[0] + "       " + s.Split(',')[1] + "         " + s.Split(',')[2] + "                  " + s.Split(',')[3] + "            " + s.Split(',')[4] + "          " + s.Split(',')[5] + "                " + s.Split(',')[6];
+                Users[i] = string.Format("{0,0}", s.Split(',')[0]) + "" + string.Format("{0,10}", s.Split(',')[1]) + "" + string.Format("{0,10}", s.Split(',')[2]) + "" + string.Format("{0,10}", s.Split(',')[3]) + "" + string.Format("{0,10}", s.Split(',')[4]) + "" + string.Format("{0,10}", s.Split(',')[5]) + "" + string.Format("{0,10}", s.Split(',')[6])+""+ string.Format("{0,10}", s.Split(',')[7]);              
                 if (i < count)
                 {
                     i++;
@@ -53,7 +53,7 @@ namespace PCUMS
                 labels[i].Text = Users[i].ToString();
                 labels[i].Left = 10;
                 labels[i].Top = (i + 1) * 40;
-                labels[i].Width = 550;
+                labels[i].Width = 600;
                 labels[i].Height = 20;
                 labels[i].TextAlign = ContentAlignment.MiddleLeft;
                 labels[i].Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
@@ -66,7 +66,7 @@ namespace PCUMS
                 buttons[i].Visible = true;
                 buttons[i].Name = "ButtonDel" + i.ToString();
                 buttons[i].Text = "Delete";
-                buttons[i].Left = 600;
+                buttons[i].Left = 620;
                 buttons[i].Top = (i + 1) * 40;
                 buttons[i].Width = 50;
                 buttons[i].Height = 20;

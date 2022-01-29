@@ -39,18 +39,24 @@ namespace PCUMS
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
-                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
+                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," +numRAM.Value+","+ numSess.Value + "," + "0";
                         System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                         Program.AdminID = Program.csv.Split(',')[0];
                         Program.Admin = Program.csv.Split(',')[1];
                         Program.AdminPass = Program.csv.Split(',')[2];
                         Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
                         Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
-                        Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
+                        Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
+                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
+                        Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
                         userName.Enabled = false;
                         passWord.Enabled = false;
                         save1.Enabled = false;
+                        newAd.Enabled = false;
+                        numCPU.Enabled = false;
+                        numRAM.Enabled = false;
+                        numSess.Enabled = false;
+                        numTemp.Enabled = false;
                         button1.Enabled = false;
                     }
                     else
@@ -81,21 +87,23 @@ namespace PCUMS
                             tempInt = tempInt + 1;
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
-                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
+                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numRAM.Value + "," + numSess.Value + "," + "0";
                             File.AppendAllText(Program.credentialsPath, Program.csv);
                             Program.AdminID = Program.csv.Split(',')[0];
                             Program.Admin = Program.csv.Split(',')[1];
                             Program.AdminPass = Program.csv.Split(',')[2];
                             Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
                             Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                            Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
-                            Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
+                            Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
+                            Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
+                            Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
                             userName.Enabled = false;
                             passWord.Enabled = false;
                             save1.Enabled = false;
                             newAd.Enabled = false;
                             numCPU.Enabled = false;
                             numSess.Enabled = false;
+                            numRAM.Enabled = false;
                             numTemp.Enabled = false;
                             button1.Enabled = false;
                         }
@@ -114,9 +122,24 @@ namespace PCUMS
                 Program.Temp = numTemp.Value;
                 Program.CPU = numCPU.Value;
                 Program.SessionT = numSess.Value;
+                Program.RAM = numRAM.Value;
                 String store = "";
-                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + Program.SessionID;
-                lineChanger(store, Program.credentialsPath, Int32.Parse(Program.AdminID));
+                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + ","+Program.RAM+"," + Program.SessionT + "," + Program.SessionID;
+
+                string result = "";
+                int counter = 0;
+                StreamReader reader = new StreamReader(Program.credentialsPath);
+                while ((result = reader.ReadLine()) != null)
+                {
+                    counter++;
+                    if (result.Contains(Program.Admin))
+                    {
+                        break;
+                    }
+                }
+                reader.Close();
+
+                lineChanger(store, Program.credentialsPath, counter);
                 save1.Enabled = false;
             }
         }
@@ -139,7 +162,7 @@ namespace PCUMS
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n" + id + "");
                 String store = "";
 
-                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + Program.SessionID;
+                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + ","+Program.RAM+"," + Program.SessionT + "," + Program.SessionID;
 
                 string result = "";
                 int counter = 0;

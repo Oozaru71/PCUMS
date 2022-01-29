@@ -19,20 +19,24 @@ namespace PCUMS
     
     internal static class Program
     {
-        public static string AdminID = "";
-        public static string Admin="";
-        public static string AdminPass="";
-        public static decimal Temp=0 ;
-        public static decimal CPU=0 ;
+        //text locations
         public static string rootPath;
         public static string dataPath;
         public static string credentialsPath;
         public static string usercountPath;
         public static string csv;
+        
+        //local varibales
+        public static string AdminID = "";
+        public static string Admin="";
+        public static string AdminPass="";
+        public static decimal Temp=0 ;
+        public static decimal CPU=0 ;
         public static decimal SessionT=0;
         public static int SessionID;
-        
+        public static decimal RAM = 0;
 
+        //logic variables
         public static int Requester = 0;
         public static int Authority = 0;
 
