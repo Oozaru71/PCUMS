@@ -104,5 +104,10 @@ namespace PCUMS
         {
             System.Windows.Forms.MessageBox.Show("Your session rules are:\n" + "----------------------------\n" + "Temperature: " + Program.Temp + " C" + "\n" + "CPU: " + Program.CPU + " %" + "\n" + "Session Time: " + Program.SessionT + " Hours");
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

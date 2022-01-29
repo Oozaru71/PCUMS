@@ -30,7 +30,14 @@ namespace PCUMS
             label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
             label4.Width = 400;
             label4.Height = 20;
-            label2.Text = count.ToString() + " Users Found:";
+            if (count == 1)
+            {
+                label2.Text = count.ToString() + " User Found:";
+            }
+            else
+            {
+                label2.Text = count.ToString() + " Users Found:";
+            }
             foreach (string s in File.ReadAllLines(Program.credentialsPath))
             {
                 Users[i] = string.Format("{0,0}", s.Split(',')[0]) + "" + string.Format("{0,11}", s.Split(',')[1]) + "" + string.Format("{0,13}", s.Split(',')[2]) + "" + string.Format("{0,19}", s.Split(',')[3]) + "" + string.Format("{0,14}", s.Split(',')[4]) + "" + string.Format("{0,13}", s.Split(',')[5]) + "" + string.Format("{0,12}", s.Split(',')[6])+""+ string.Format("{0,18}", s.Split(',')[7]);              
@@ -57,6 +64,7 @@ namespace PCUMS
                 labels[i].Height = 20;
                 labels[i].TextAlign = ContentAlignment.MiddleLeft;
                 labels[i].Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
+                labels[i].ForeColor = Color.Black;  
             }
 
             //Make Buttons
@@ -72,6 +80,7 @@ namespace PCUMS
                 buttons[i].Height = 20;
                 buttons[i].TextAlign = ContentAlignment.MiddleLeft;
                 buttons[i].Click += new EventHandler(btn_Click);
+                buttons[i].ForeColor = Color.Black;
             }
 
             // This adds the controls to the form (you will need to specify thier co-ordinates etc. first)
