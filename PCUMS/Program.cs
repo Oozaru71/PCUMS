@@ -52,6 +52,20 @@ namespace PCUMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            //Checking if no users
+            if (File.Exists(Program.credentialsPath) && File.Exists(Program.usercountPath))
+            {
+                Program.noUsers = true;
+            }
+            else if (!File.Exists(Program.credentialsPath) && !File.Exists(Program.usercountPath))
+            {
+                Program.noUsers = true;
+            }
+            else
+            {
+                Program.noUsers = false;
+            }
+
             if (File.Exists(Program.credentialsPath) && !Program.noUsers)
             {
 

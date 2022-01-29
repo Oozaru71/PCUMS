@@ -36,7 +36,7 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                      && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
-                    if (!File.Exists(Program.credentialsPath) && (Program.noUsers))
+                    if ((!File.Exists(Program.credentialsPath) && (Program.noUsers)) || (File.Exists(Program.credentialsPath) && (Program.noUsers)))
                     {
                         Program.AdminID = "1";
                         Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
@@ -48,7 +48,10 @@ namespace PCUMS
                         Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                         Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
-                        System.IO.File.Delete(Program.usercountPath);
+                        if (File.Exists(Program.usercountPath))
+                        {
+                            System.IO.File.Delete(Program.usercountPath);
+                        }
                         Program.noUsers = false;
                         userName.Enabled = false;
                         passWord.Enabled = false;
@@ -92,7 +95,10 @@ namespace PCUMS
                             Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                             Program.SessionT = Int32.Parse(Program.csv.Split(',')[5]);
                             Program.SessionID = Int32.Parse(Program.csv.Split(',')[6]);
-                            System.IO.File.Delete(Program.usercountPath);
+                            if (File.Exists(Program.usercountPath))
+                            {
+                                System.IO.File.Delete(Program.usercountPath);
+                            }
                             userName.Enabled = false;
                             passWord.Enabled = false;
                             save1.Enabled = false;
