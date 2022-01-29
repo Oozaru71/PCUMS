@@ -64,6 +64,7 @@ namespace PCUMS
                 Program.Temp = Int32.Parse(store.Split(',')[3]);
                 Program.CPU = Int32.Parse(store.Split(',')[4]);
                 Program.SessionT = Int32.Parse(store.Split(',')[5]);
+                Program.SessionID = Int32.Parse(store.Split(',')[6]);
 
             }
             reader.Close();
@@ -82,7 +83,37 @@ namespace PCUMS
 
         private void sessionStart_Click(object sender, EventArgs e)
         {
-            
+            bool exists = false;
+            int i = 0;
+            int count = File.ReadAllLines(Program.credentialsPath).Length;
+            String[] SessionIDlist = new String[count];
+
+            foreach (string s in File.ReadAllLines(Program.credentialsPath))
+            {
+                SessionIDlist[i] = s.Split(',')[6];
+                if (i < count)
+                {
+                    i++;
+                }
+            }
+
+            foreach (string s in SessionIDlist)
+            {
+                if (s.Equals(textBox1.Text))
+                {
+
+                    Program.Authority = 1;
+                    sessionStart.Enabled = false;
+                    exists = true;
+                    System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " initiated");
+                }
+            }
+
+            if (!exists)
+            {
+                System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " does not exist");
+            }
+
         }
     }
 }
