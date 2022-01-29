@@ -32,7 +32,7 @@ namespace PCUMS
 
             float CPU = (float)Program.CPU;
             int messageGiv = 0;
-            if (Program.Authority==2) {
+            if (Program.Authority==1) {
                 if (fcpu > CPU - 20 && CPU-10>fcpu && messageGiv==0)
                 {
                     messageGiv++;
@@ -96,8 +96,13 @@ namespace PCUMS
                 Program.Requester = 1;
                 this.Close();
             }
-            else
-                System.Windows.Forms.MessageBox.Show("Your session rules are:");
+
+                
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Your session rules are:\n" + "----------------------------\n" + "Temperature: " + Program.Temp + " C" + "\n" + "CPU: " + Program.CPU + " %" + "\n" + "Session Time: " + Program.SessionT + " Hours");
         }
     }
 }

@@ -31,6 +31,7 @@ namespace PCUMS
         public static string csv;
         public static decimal SessionT=0;
         public static int SessionID;
+        public static bool noUsers = false;
         
 
         public static int Requester = 0;
@@ -51,7 +52,7 @@ namespace PCUMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (File.Exists(Program.credentialsPath))
+            if (File.Exists(Program.credentialsPath) && !Program.noUsers)
             {
 
                 Application.Run(new UserLogin());
@@ -74,6 +75,10 @@ namespace PCUMS
                 else if (Requester == 3)
                 {
                     Application.Run(new Form1());
+                }
+                else if (Requester == 4)
+                {
+                    Application.Run(new UserManagement());
                 }
                 else
                     Environment.Exit(0);

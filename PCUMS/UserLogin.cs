@@ -86,6 +86,8 @@ namespace PCUMS
         {
             int i = 0;
             int count = File.ReadAllLines(Program.credentialsPath).Length;
+            bool exists = false;
+
             String[] SessionIDlist = new String[count];
 
             foreach (string s in File.ReadAllLines(Program.credentialsPath))
@@ -101,7 +103,7 @@ namespace PCUMS
             {
                 if (s.Equals(textBox1.Text))
                 {
-
+                    exists = true;
                     Program.Authority = 1;
                     sessionStart.Enabled = false;
                     System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " initiated");
@@ -111,7 +113,7 @@ namespace PCUMS
                 }
             }
 
-            if (Program.Authority == 1)
+            if (!exists)
             {
                 System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " does not exist");
             }
