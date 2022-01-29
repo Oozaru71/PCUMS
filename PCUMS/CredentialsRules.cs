@@ -152,6 +152,7 @@ namespace PCUMS
                         break;
                     }
                 }
+                reader.Close();
 
                 lineChanger(store, Program.credentialsPath, counter);
                 Program.Requester = 3;
