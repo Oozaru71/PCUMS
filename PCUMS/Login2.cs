@@ -58,8 +58,9 @@ namespace PCUMS
             //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
             if (store!="") 
             { 
-            Program.Admin = store.Split(',')[1];
-            Program.AdminPass = store.Split(',')[2];
+                Program.AdminID = store.Split(',')[0];
+                Program.Admin = store.Split(',')[1];
+                Program.AdminPass = store.Split(',')[2];
             }
             reader.Close();
             if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
