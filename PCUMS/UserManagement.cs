@@ -26,14 +26,14 @@ namespace PCUMS
         {
             int i = 0;
             String[] Users = new String[count];
-            label4.Text = "ID" + "       " + "User" + "       " + "Password" + "       " + "Temp" + "       " + "CPU" + "       " + "RAM" + "       " + "S.Time" + "       " + "S.ID";
+            label4.Text = "ID" + "      " + "User" + "       " + "Password" + "       " + "Temp" + "       " + "CPU" + "       " + "RAM" + "       " + "S.Time" + "       " + "S.ID";
             label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
             label4.Width = 400;
             label4.Height = 20;
             label2.Text = count.ToString() + " Users Found:";
             foreach (string s in File.ReadAllLines(Program.credentialsPath))
             {
-                Users[i] = string.Format("{0,0}", s.Split(',')[0]) + "" + string.Format("{0,10}", s.Split(',')[1]) + "" + string.Format("{0,10}", s.Split(',')[2]) + "" + string.Format("{0,10}", s.Split(',')[3]) + "" + string.Format("{0,10}", s.Split(',')[4]) + "" + string.Format("{0,10}", s.Split(',')[5]) + "" + string.Format("{0,10}", s.Split(',')[6])+""+ string.Format("{0,10}", s.Split(',')[7]);              
+                Users[i] = string.Format("{0,0}", s.Split(',')[0]) + "" + string.Format("{0,11}", s.Split(',')[1]) + "" + string.Format("{0,13}", s.Split(',')[2]) + "" + string.Format("{0,19}", s.Split(',')[3]) + "" + string.Format("{0,14}", s.Split(',')[4]) + "" + string.Format("{0,13}", s.Split(',')[5]) + "" + string.Format("{0,12}", s.Split(',')[6])+""+ string.Format("{0,18}", s.Split(',')[7]);              
                 if (i < count)
                 {
                     i++;
@@ -192,10 +192,21 @@ namespace PCUMS
 
         private void delall_Click(object sender, EventArgs e)
         {
-            System.IO.File.Delete(Program.credentialsPath);
-            System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
-            Program.Requester = 1;
-            this.Close();
+            string message = "Do you want to delete all users?";
+            string title = "Delete All";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                System.IO.File.Delete(Program.credentialsPath);
+                System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
+                Program.Requester = 1;
+                this.Close();
+            }
+            else
+            {
+                // Do something  
+            }
         }
     }
 }

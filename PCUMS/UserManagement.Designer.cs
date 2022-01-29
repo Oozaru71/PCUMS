@@ -51,7 +51,7 @@
             // goBack
             // 
             this.goBack.Enabled = false;
-            this.goBack.Location = new System.Drawing.Point(933, 38);
+            this.goBack.Location = new System.Drawing.Point(35, 32);
             this.goBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.goBack.Name = "goBack";
             this.goBack.Size = new System.Drawing.Size(138, 34);
@@ -64,7 +64,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(30, 165);
+            this.label4.Location = new System.Drawing.Point(45, 165);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(269, 29);
@@ -76,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 102);
+            this.label2.Location = new System.Drawing.Point(43, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 37);
@@ -95,7 +95,7 @@
             // 
             // delall
             // 
-            this.delall.Location = new System.Drawing.Point(933, 160);
+            this.delall.Location = new System.Drawing.Point(933, 32);
             this.delall.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.delall.Name = "delall";
             this.delall.Size = new System.Drawing.Size(138, 34);
