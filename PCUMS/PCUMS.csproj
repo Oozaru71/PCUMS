@@ -68,28 +68,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login1.cs">
+    <Compile Include="CredentialsRules.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login1.Designer.cs">
-      <DependentUpon>Login1.cs</DependentUpon>
+    <Compile Include="CredentialsRules.Designer.cs">
+      <DependentUpon>CredentialsRules.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login2.cs">
+    <Compile Include="UserLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login2.Designer.cs">
-      <DependentUpon>Login2.cs</DependentUpon>
+    <Compile Include="UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login1.resx">
-      <DependentUpon>Login1.cs</DependentUpon>
+    <EmbeddedResource Include="CredentialsRules.resx">
+      <DependentUpon>CredentialsRules.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login2.resx">
-      <DependentUpon>Login2.cs</DependentUpon>
+    <EmbeddedResource Include="UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

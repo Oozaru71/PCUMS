@@ -54,22 +54,22 @@ namespace PCUMS
             if (File.Exists(Program.credentialsPath))
             {
 
-                Application.Run(new Login2());
+                Application.Run(new UserLogin());
             }
             else
             {
-                Application.Run(new Login1());
+                Application.Run(new CredentialsRules());
             }
             
             while (true)
             {
                 if (Requester == 1)
                 {
-                    Application.Run(new Login1());
+                    Application.Run(new CredentialsRules());
                 }
                 else if (Requester == 2)
                 {
-                    Application.Run(new Login2());
+                    Application.Run(new UserLogin());
                 }
                 else if (Requester == 3)
                 {

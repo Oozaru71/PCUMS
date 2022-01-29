@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace PCUMS
 {
-    public partial class Login2 : Form
+    public partial class UserLogin : Form
     {
-        public Login2()
+        public UserLogin()
         {
             Program.Requester = 0;
             InitializeComponent();
@@ -61,6 +61,10 @@ namespace PCUMS
                 Program.AdminID = store.Split(',')[0];
                 Program.Admin = store.Split(',')[1];
                 Program.AdminPass = store.Split(',')[2];
+                Program.Temp = Int32.Parse(store.Split(',')[3]);
+                Program.CPU = Int32.Parse(store.Split(',')[4]);
+                Program.SessionT = Int32.Parse(store.Split(',')[5]);
+
             }
             reader.Close();
             if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))

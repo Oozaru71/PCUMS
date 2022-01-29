@@ -1,6 +1,6 @@
 ﻿namespace PCUMS
 {
-    partial class Login2
+    partial class UserLogin
     {
         /// <summary>
         /// Required designer variable.
