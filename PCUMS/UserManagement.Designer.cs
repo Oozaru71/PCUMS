@@ -33,6 +33,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.delall = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -90,12 +91,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1036, 430);
             this.panel1.TabIndex = 7;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // delall
+            // 
+            this.delall.Location = new System.Drawing.Point(933, 160);
+            this.delall.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.delall.Name = "delall";
+            this.delall.Size = new System.Drawing.Size(138, 34);
+            this.delall.TabIndex = 8;
+            this.delall.Text = "Delete All";
+            this.delall.UseVisualStyleBackColor = true;
+            this.delall.Click += new System.EventHandler(this.delall_Click);
             // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1121, 653);
+            this.Controls.Add(this.delall);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -116,5 +130,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button delall;
     }
 }

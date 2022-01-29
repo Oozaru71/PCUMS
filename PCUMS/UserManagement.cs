@@ -141,7 +141,6 @@ namespace PCUMS
             }
             else if (count == 0)
             {
-                //Program.noUsers = true;
                 System.IO.File.Delete(Program.credentialsPath);
                 System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
                 Program.Requester = 1;
@@ -167,7 +166,7 @@ namespace PCUMS
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            panel1.AutoScroll = true;
         }
 
         private void goBack_Click(object sender, EventArgs e)
@@ -184,6 +183,19 @@ namespace PCUMS
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void delall_Click(object sender, EventArgs e)
+        {
+            System.IO.File.Delete(Program.credentialsPath);
+            System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
+            Program.Requester = 1;
+            this.Close();
         }
     }
 }
