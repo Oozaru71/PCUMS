@@ -39,7 +39,7 @@ namespace PCUMS
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
-                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value+","+0;
+                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
                         System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                         Program.AdminID = Program.csv.Split(',')[0];
                         Program.Admin = Program.csv.Split(',')[1];
@@ -80,7 +80,7 @@ namespace PCUMS
                             tempInt = tempInt + 1;
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
-                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value+","+0;
+                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value+ "," + "0";
                             File.AppendAllText(Program.credentialsPath, Environment.NewLine + Program.csv);
                             Program.AdminID = Program.csv.Split(',')[0];
                             Program.Admin = Program.csv.Split(',')[1];
@@ -112,8 +112,9 @@ namespace PCUMS
                 Program.Temp = numTemp.Value;
                 Program.CPU = numCPU.Value;
                 Program.SessionT = numSess.Value;
-                string newLine= Program.AdminID + "," + Program.Admin+ "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + 0;
-                lineChanger(newLine,Program.credentialsPath, Int32.Parse(Program.AdminID));
+                String store = "";
+                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.SessionT + "," + Program.SessionID;
+                lineChanger(store, Program.credentialsPath, Int32.Parse(Program.AdminID));
                 save1.Enabled = false;
             }
         }

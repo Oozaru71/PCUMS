@@ -79,5 +79,10 @@ namespace PCUMS
                 System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!");
             }    
         }
+
+        private void sessionStart_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
