@@ -78,12 +78,12 @@ namespace PCUMS
             else
             {
                 System.Windows.Forms.MessageBox.Show("Incorrect admin password or username!");
+
             }    
         }
 
         private void sessionStart_Click(object sender, EventArgs e)
         {
-            bool exists = false;
             int i = 0;
             int count = File.ReadAllLines(Program.credentialsPath).Length;
             String[] SessionIDlist = new String[count];
@@ -104,12 +104,14 @@ namespace PCUMS
 
                     Program.Authority = 1;
                     sessionStart.Enabled = false;
-                    exists = true;
                     System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " initiated");
+                    Program.Requester = 3;
+                    Program.SessionID = Int32.Parse(textBox1.Text);
+                    this.Close();
                 }
             }
 
-            if (!exists)
+            if (Program.Authority == 1)
             {
                 System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " does not exist");
             }
