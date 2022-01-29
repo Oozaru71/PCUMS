@@ -58,15 +58,15 @@ namespace PCUMS
             //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
             if (store!="") 
             { 
-               
-                Program.AdminID = Program.csv.Split(',')[0];
-                Program.Admin = Program.csv.Split(',')[1];
-                Program.AdminPass = Program.csv.Split(',')[2];
-                Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
-                Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
-                Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
+                Program.AdminID = store.Split(',')[0];
+                Program.Admin = store.Split(',')[1];
+                Program.AdminPass = store.Split(',')[2];
+                Program.Temp = Int32.Parse(store.Split(',')[3]);
+                Program.CPU = Int32.Parse(store.Split(',')[4]);
+                Program.RAM= Int32.Parse(store.Split(',')[5]);
+                Program.SessionT = Int32.Parse(store.Split(',')[6]);
+                Program.SessionID = Int32.Parse(store.Split(',')[7]);
+                
 
             }
             reader.Close();
