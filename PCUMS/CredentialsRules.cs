@@ -87,7 +87,18 @@ namespace PCUMS
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
                             Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numSess.Value + "," + "0";
-                            File.AppendAllText(Program.credentialsPath, Environment.NewLine + Program.csv);
+                            if ((Program.csv.Contains("\n")) || (Program.csv.Equals("\n")))
+                            {
+                                Program.csv.Replace("\n", "");
+                            }
+                            else if ((File.ReadLines(Program.credentialsPath).Last()).EndsWith("\n"))
+                            {
+                                File.AppendAllText(Program.credentialsPath, Program.csv);
+                            }
+                            else
+                            {
+                                File.AppendAllText(Program.credentialsPath, "\n" + Program.csv);
+                            }
                             Program.AdminID = Program.csv.Split(',')[0];
                             Program.Admin = Program.csv.Split(',')[1];
                             Program.AdminPass = Program.csv.Split(',')[2];
