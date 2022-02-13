@@ -158,7 +158,7 @@ namespace PCUMS
         }
         private void Continue_Click(object sender, EventArgs e)
         {
-
+            //this is a test
             if (File.Exists(Program.credentialsPath))
             {
                 var rand = new Random();
