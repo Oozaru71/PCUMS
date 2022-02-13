@@ -36,6 +36,12 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                      && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
+                    //Checks if the directory exists
+                    if (!Directory.Exists(Program.dataPath))
+                    {
+                        Directory.CreateDirectory(Program.dataPath);
+                    }
+                    //Checks if the file exists
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
