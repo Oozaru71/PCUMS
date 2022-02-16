@@ -6,13 +6,16 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace PCUMS
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+        bool AlerGiven=false;
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +23,7 @@ namespace PCUMS
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            
             float fcpu = pCPU.NextValue();
             float fram = pRAM.NextValue();
             metroProgressBarCPU.Value = (int)fcpu;
@@ -31,21 +35,24 @@ namespace PCUMS
 
 
             float CPU = (float)Program.CPU;
-            int messageGiv = 0;
+          //  int messageGiv = 0;
             if (Program.Authority==1) {
-                if (fcpu > CPU - 20 && CPU-10>fcpu && messageGiv==0)
+                //the cpu is higher than reule cpu- 20 and less than rule cpu -10 
+                if (fcpu >= (CPU - 10)&&!AlerGiven )
                 {
-                    messageGiv++;
-                    System.Windows.Forms.MessageBox.Show("Warning! You are approaching the cap of set CPU usage. ");
+                   
+                    //if this usage i mantained for more than 5 secs
+                   
+                    
+                        Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
+                        AlerGiven = true;
+                    
                 }
-                else if (fcpu > CPU - 10 && CPU>fcpu && messageGiv==1)
+                //the cpu is higher than the rule cpu
+                if ((fcpu >= CPU)&&AlerGiven)
                 {
-                    messageGiv++;
-                    System.Windows.Forms.MessageBox.Show("Warning! You are rapidly approaching the cap of set CPU usage. ");
-                }
-                else if (fcpu >= CPU&&messageGiv==2)
-                {
-                    System.Windows.Forms.MessageBox.Show("Warning! You have reached the CPU cap. You will be logged out for breaking the rules! ");
+                   
+                    Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
                     System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                     Environment.Exit(0);
                 }
@@ -100,9 +107,51 @@ namespace PCUMS
                 
         }
 
+
         private void metroButton1_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.MessageBox.Show("Your session rules are:\n" + "----------------------------\n" + "Temperature: " + Program.Temp + " C" + "\n" + "CPU: " + Program.CPU + " %" + "\n" + "Session Time: " + Program.SessionT + " Hours");
         }
+
+        private void processKiller()
+        {
+    
+                var counterList = new List<PerformanceCounter>();
+
+                while (true)
+                {
+                    var procDict = new Dictionary<string, float>();
+
+                    Process.GetProcesses().ToList().ForEach(p =>
+                    {
+                        using (p)
+                            if (counterList
+                                .FirstOrDefault(c => c.InstanceName == p.ProcessName) == null)
+                                counterList.Add(
+                                    new PerformanceCounter("Process", "% Processor Time",
+                                        p.ProcessName, true));
+                    });
+
+                    counterList.ForEach(c =>
+                    {
+                        try
+                        {
+                            var percent = c.NextValue() / Environment.ProcessorCount;
+                            if (percent < 50)
+                                return;
+                            //if (c.InstanceName.Trim().ToLower() == "idle")
+                            //    return;
+                            procDict[c.InstanceName] = percent;
+                        }
+                        catch (InvalidOperationException) { /* some will fail */ }
+                    });
+
+
+                procDict.OrderByDescending(d => d.Value).ToList();
+                        
+
+                    
+                }
+         }
     }
 }
