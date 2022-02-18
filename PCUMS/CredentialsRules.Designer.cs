@@ -160,7 +160,7 @@ namespace PCUMS
             // 
             // save1
             // 
-            this.save1.Location = new System.Drawing.Point(245, 265);
+            this.save1.Location = new System.Drawing.Point(337, 395);
             this.save1.Name = "save1";
             this.save1.Size = new System.Drawing.Size(75, 23);
             this.save1.TabIndex = 15;
@@ -170,7 +170,7 @@ namespace PCUMS
             // 
             // Continue
             // 
-            this.Continue.Location = new System.Drawing.Point(309, 380);
+            this.Continue.Location = new System.Drawing.Point(309, 445);
             this.Continue.Name = "Continue";
             this.Continue.Size = new System.Drawing.Size(143, 58);
             this.Continue.TabIndex = 16;
@@ -274,7 +274,7 @@ namespace PCUMS
             // newAd
             // 
             this.newAd.Enabled = false;
-            this.newAd.Location = new System.Drawing.Point(143, 406);
+            this.newAd.Location = new System.Drawing.Point(143, 471);
             this.newAd.Name = "newAd";
             this.newAd.Size = new System.Drawing.Size(104, 23);
             this.newAd.TabIndex = 25;
@@ -285,7 +285,7 @@ namespace PCUMS
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(16, 406);
+            this.button1.Location = new System.Drawing.Point(16, 471);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 23);
             this.button1.TabIndex = 26;
@@ -337,7 +337,7 @@ namespace PCUMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(817, 523);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.numRAM);
             this.Controls.Add(this.label13);
