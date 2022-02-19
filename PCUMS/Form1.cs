@@ -126,7 +126,7 @@ namespace PCUMS
                                                + "Temperature: " + Program.Temp + " C" + "\n" 
                                                + "CPU: " + Program.CPU + " %" + "\n"
                                                + "RAM: " + Program.RAM + " GB" + "\n"
-                                               + "Session Time: " + Program.SessionT + " Hours");
+                                               + "Session Time: " + Program.SessionT + " Minutes");
         }
 
         private void processKiller()
