@@ -53,7 +53,7 @@ namespace PCUMS
                         Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
                         Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                         Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
+                        Program.SessionT = decimal.Parse(Program.csv.Split(',')[6]);
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
                         userName.Enabled = false;
                         passWord.Enabled = false;
