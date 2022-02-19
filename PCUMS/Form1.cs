@@ -63,11 +63,6 @@ namespace PCUMS
             }
         }
 
-        private void sessionTime()
-        {
-            
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Program.Authority == 1)
