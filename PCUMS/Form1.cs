@@ -90,8 +90,6 @@ namespace PCUMS
 
                 //Timer for Session Time
                 int SessionTime = (int)Program.SessionT;
-                metroLabel4.Visible = true;
-                metroLabel3.Visible = true;
 
                 System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
                 MyTimer.Interval = (SessionTime * 60 * 1000); ; // Timer counts in miliseconds and the user input is given in minutes
