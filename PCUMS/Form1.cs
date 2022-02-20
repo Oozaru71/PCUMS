@@ -23,7 +23,6 @@ namespace PCUMS
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            
             float fcpu = pCPU.NextValue();
             float fram = pRAM.NextValue();
             metroProgressBarCPU.Value = (int)fcpu;
@@ -35,29 +34,33 @@ namespace PCUMS
 
 
             float CPU = (float)Program.CPU;
-          //  int messageGiv = 0;
-            if (Program.Authority==1) {
-                //the cpu is higher than reule cpu- 20 and less than rule cpu -10 
-                if (fcpu >= (CPU - 10)&&!AlerGiven )
-                {
-                   
-                    //if this usage i mantained for more than 5 secs
-                   
-                    
-                        Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
-                        AlerGiven = true;
-                    
-                }
-                //the cpu is higher than the rule cpu
-                if ((fcpu >= CPU)&&AlerGiven)
-                {
-                   
-                    Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
-                    System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                    Environment.Exit(0);
-                }
+            //int messageGiv = 0;
+            if (Program.Authority==1) 
+            {
+                //CPU Rules
+                limitCPU(CPU, fcpu);
             }
 
+        }
+
+        private void limitCPU(float CPU, float fcpu)
+        {
+            //The cpu is higher than rule cpu- 20 and less than rule cpu -10 
+            if (fcpu >= (CPU - 10) && !AlerGiven)
+            {
+                //If this usage is mantained for more than 5 secs
+                Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
+                AlerGiven = true;
+
+            }
+            //The cpu is higher than the rule cpu
+            if ((fcpu >= CPU) && AlerGiven)
+            {
+
+                Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
+                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                Environment.Exit(0);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -80,10 +83,18 @@ namespace PCUMS
                 Program.AdminPass = "";
                 Program.Temp = Int32.Parse(store.Split(',')[3]);
                 Program.CPU = Int32.Parse(store.Split(',')[4]);
-                Program.SessionT = Int32.Parse(store.Split(',')[5]);
-                Program.SessionID = Int32.Parse(store.Split(',')[6]);
+                Program.RAM = Int32.Parse(store.Split(',')[5]);
+                Program.SessionT = Int32.Parse(store.Split(',')[6]);
+                Program.SessionID = Int32.Parse(store.Split(',')[7]);
                 Rules.Enabled = false;
 
+                //Timer for Session Time
+                int SessionTime = (int)Program.SessionT;
+
+                System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+                MyTimer.Interval = (SessionTime * 60 * 1000); ; // Timer counts in miliseconds and the user input is given in minutes
+                MyTimer.Tick += new EventHandler(timer1_Tick);
+                MyTimer.Start();
             }
 
             Program.Requester = 0;
@@ -110,7 +121,12 @@ namespace PCUMS
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Your session rules are:\n" + "----------------------------\n" + "Temperature: " + Program.Temp + " C" + "\n" + "CPU: " + Program.CPU + " %" + "\n" + "Session Time: " + Program.SessionT + " Hours");
+            System.Windows.Forms.MessageBox.Show("Your session rules are:\n" 
+                                               + "----------------------------\n" 
+                                               + "Temperature: " + Program.Temp + " C" + "\n" 
+                                               + "CPU: " + Program.CPU + " %" + "\n"
+                                               + "RAM: " + Program.RAM + " GB" + "\n"
+                                               + "Session Time: " + Program.SessionT + " Minutes");
         }
 
         private void processKiller()
@@ -153,5 +169,19 @@ namespace PCUMS
                     
                 }
          }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Program.Authority == 1)
+            {
+                Interaction.MsgBox("Your session time has ended, exiting...");
+                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                Environment.Exit(0);
+            }
+        }
+
+        private void metroLabel4_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
