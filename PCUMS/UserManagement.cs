@@ -176,6 +176,28 @@ namespace PCUMS
         private void Form2_Load(object sender, EventArgs e)
         {
             panel1.AutoScroll = true;
+            if (Program.blackTheme == true)
+            {
+                this.BackColor = Color.Black;
+                this.label1.ForeColor = Color.White;
+                this.label2.ForeColor = Color.White;
+                this.label4.ForeColor = Color.White;
+                this.goBack.BackColor = Color.Black;
+                this.goBack.ForeColor = Color.White;
+                this.delall.BackColor = Color.Black;
+                this.delall.ForeColor = Color.White;
+            }
+            else if (Program.blackTheme == false)
+            {
+                this.BackColor = Color.White;
+                this.label1.ForeColor = Color.Black;
+                this.label2.ForeColor = Color.Black;
+                this.label4.ForeColor = Color.Black;
+                this.goBack.BackColor = Color.White;
+                this.goBack.ForeColor = Color.Black;
+                this.delall.BackColor = Color.White;
+                this.delall.ForeColor = Color.Black;
+            }
         }
 
         private void goBack_Click(object sender, EventArgs e)

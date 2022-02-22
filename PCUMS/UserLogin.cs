@@ -66,7 +66,7 @@ namespace PCUMS
                 Program.RAM= Int32.Parse(store.Split(',')[5]);
                 Program.SessionT = decimal.Parse(store.Split(',')[6]);
                 Program.SessionID = Int32.Parse(store.Split(',')[7]);
-                
+                Program.blackTheme = bool.Parse(store.Split(',')[8]);
 
             }
             reader.Close();
@@ -120,6 +120,38 @@ namespace PCUMS
                 System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " does not exist");
             }
 
+        }
+
+        private void UserLogin_Load(object sender, EventArgs e)
+        {
+            if (Program.blackTheme)
+            {
+                this.BackColor = Color.Black;
+                this.button1.BackColor = Color.Black;
+                this.button1.ForeColor = Color.White;
+                this.sessionStart.ForeColor = Color.White;
+                this.sessionStart.BackColor = Color.Black;
+                this.label1.ForeColor = Color.White;
+                this.label2.ForeColor = Color.White;
+                this.label3.ForeColor = Color.White;
+                this.label4.ForeColor = Color.White;
+                this.radioButton1.ForeColor = Color.White;
+                this.radioButton2.ForeColor = Color.White;
+            }
+            else if (!Program.blackTheme)
+            {
+                this.BackColor = Color.White;
+                this.button1.BackColor = Color.White;
+                this.button1.ForeColor = Color.Black;
+                this.sessionStart.ForeColor = Color.Black;
+                this.sessionStart.BackColor = Color.White;
+                this.label1.ForeColor = Color.Black;
+                this.label2.ForeColor = Color.Black;
+                this.label3.ForeColor = Color.Black;
+                this.label4.ForeColor = Color.Black;
+                this.radioButton1.ForeColor = Color.Black;
+                this.radioButton2.ForeColor = Color.Black; 
+            }
         }
     }
 }

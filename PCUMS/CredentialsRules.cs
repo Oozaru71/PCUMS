@@ -12,6 +12,7 @@ using System.Net;
 using System.Windows;
 using System.IO;
 using System.IO.Compression;
+using PCUMS.Properties;
 
 
 
@@ -45,7 +46,7 @@ namespace PCUMS
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
-                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," +numRAM.Value+","+ numSess.Value + "," + "0";
+                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," +numRAM.Value+","+ numSess.Value + "," + "0" + "," + Program.blackTheme.ToString();
                         System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
                         Program.AdminID = Program.csv.Split(',')[0];
                         Program.Admin = Program.csv.Split(',')[1];
@@ -55,6 +56,7 @@ namespace PCUMS
                         Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
                         Program.SessionT = decimal.Parse(Program.csv.Split(',')[6]);
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
+                        Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
                         userName.Enabled = false;
                         passWord.Enabled = false;
                         save1.Enabled = false;
@@ -93,7 +95,7 @@ namespace PCUMS
                             tempInt = tempInt + 1;
                             temp = tempInt.ToString();
                             Program.AdminID = temp;
-                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numRAM.Value + "," + numSess.Value + "," + "0";
+                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numRAM.Value + "," + numSess.Value + "," + "0" + "," + Program.blackTheme.ToString();
                             File.AppendAllText(Program.credentialsPath, Program.csv);
                             Program.AdminID = Program.csv.Split(',')[0];
                             Program.Admin = Program.csv.Split(',')[1];
@@ -103,6 +105,7 @@ namespace PCUMS
                             Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
                             Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
                             Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
+                            Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
                             userName.Enabled = false;
                             passWord.Enabled = false;
                             save1.Enabled = false;
@@ -129,23 +132,7 @@ namespace PCUMS
                 Program.CPU = numCPU.Value;
                 Program.SessionT = numSess.Value;
                 Program.RAM = numRAM.Value;
-                String store = "";
-                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + ","+Program.RAM+"," + Program.SessionT + "," + Program.SessionID;
-
-                string result = "";
-                int counter = 0;
-                StreamReader reader = new StreamReader(Program.credentialsPath);
-                while ((result = reader.ReadLine()) != null)
-                {
-                    counter++;
-                    if (result.Contains(Program.Admin))
-                    {
-                        break;
-                    }
-                }
-                reader.Close();
-
-                lineChanger(store, Program.credentialsPath, counter);
+                UpdateAdmin();
                 save1.Enabled = false;
             }
         }
@@ -166,24 +153,7 @@ namespace PCUMS
                 Program.SessionID = id;
 
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n" + id + "");
-                String store = "";
-
-                store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + ","+Program.RAM+"," + Program.SessionT + "," + Program.SessionID;
-
-                string result = "";
-                int counter = 0;
-                StreamReader reader = new StreamReader(Program.credentialsPath);
-                while ((result = reader.ReadLine()) != null)
-                {
-                    counter++;
-                    if (result.Contains(Program.Admin))
-                    {
-                        break;
-                    }
-                }
-                reader.Close();
-
-                lineChanger(store, Program.credentialsPath, counter);
+                UpdateAdmin();
                 Program.Requester = 3;
                 Program.Authority = 2;
                 Close();
@@ -196,12 +166,22 @@ namespace PCUMS
         {
             if (File.Exists(Program.credentialsPath))
             {
+                if (Program.blackTheme)
+                {
+                    dark();
+                }
+                else if (!Program.blackTheme)
+                {
+                    light();
+                }
+
                 string admin = Program.Admin;
 
                 userName.Enabled = false;
                 passWord.Enabled = false;
                 button1.Enabled = true;
                 newAd.Enabled = true;
+                button2.Enabled = true;
 
 
                 label2.Text = "Hello " + admin + ", let us get started";
@@ -225,6 +205,110 @@ namespace PCUMS
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Requester = 4;
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.moon.Size.ToString())
+            {
+                button2.BackgroundImage = PCUMS.Properties.Resources.bulb;
+                Program.blackTheme = true;
+                UpdateAdmin();
+                dark();
+            }
+            else if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.bulb.Size.ToString())
+            {
+                button2.BackgroundImage = PCUMS.Properties.Resources.moon;
+                Program.blackTheme = false;
+                UpdateAdmin();
+                light();
+            }
+        }
+
+        void UpdateAdmin()
+        {
+            string store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.RAM + "," + Program.SessionT + "," + Program.SessionID + "," + Program.blackTheme.ToString();
+
+            string result = "";
+            int counter = 0;
+            StreamReader reader = new StreamReader(Program.credentialsPath);
+            while ((result = reader.ReadLine()) != null)
+            {
+                counter++;
+                if (result.Contains(Program.Admin))
+                {
+                    break;
+                }
+            }
+            reader.Close();
+
+            lineChanger(store, Program.credentialsPath, counter);
+        }
+
+        void dark()
+        {
+            button2.BackgroundImage = PCUMS.Properties.Resources.bulb;
+            this.BackColor = Color.Black;
+            label1.ForeColor = Color.White;
+            label2.ForeColor = Color.White;
+            label3.ForeColor = Color.White;
+            label4.ForeColor = Color.White;
+            label5.ForeColor = Color.White;
+            label6.ForeColor = Color.White;
+            label7.ForeColor = Color.White;
+            label8.ForeColor = Color.White;
+            label9.ForeColor = Color.White;
+            label10.ForeColor = Color.White;
+            label11.ForeColor = Color.White;
+            label12.ForeColor = Color.White;
+            label13.ForeColor = Color.White;
+            label14.ForeColor = Color.White;
+            button1.ForeColor = Color.White;
+            button1.BackColor = Color.Black;
+            newAd.ForeColor = Color.White;
+            newAd.BackColor = Color.Black;
+            button3.ForeColor = Color.White;
+            button3.BackColor = Color.Black;
+            save1.ForeColor = Color.White;
+            save1.BackColor = Color.Black;
+            Continue.ForeColor = Color.White;
+            Continue.BackColor = Color.Black;
+        }
+
+        void light()
+        {
+            button2.BackgroundImage = PCUMS.Properties.Resources.moon;
+            this.BackColor = Color.White;
+            label1.ForeColor = Color.Black;
+            label2.ForeColor = Color.Black;
+            label3.ForeColor = Color.Black;
+            label4.ForeColor = Color.Black;
+            label5.ForeColor = Color.Black;
+            label6.ForeColor = Color.Black;
+            label7.ForeColor = Color.Black;
+            label8.ForeColor = Color.Black;
+            label9.ForeColor = Color.Black;
+            label10.ForeColor = Color.Black;
+            label11.ForeColor = Color.Black;
+            label12.ForeColor = Color.Black;
+            label13.ForeColor = Color.Black;
+            label14.ForeColor = Color.Black;
+            button1.ForeColor = Color.Black;
+            button1.BackColor = Color.White;
+            newAd.ForeColor = Color.Black;
+            newAd.BackColor = Color.White;
+            button3.BackColor = Color.White;
+            button3.ForeColor = Color.Black;
+            save1.ForeColor = Color.Black;
+            save1.BackColor = Color.White;
+            Continue.ForeColor = Color.Black;
+            Continue.BackColor = Color.White;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.Requester = 2;
             this.Close();
         }
     }

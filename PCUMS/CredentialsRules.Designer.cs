@@ -53,6 +53,8 @@ namespace PCUMS
             this.label13 = new System.Windows.Forms.Label();
             this.numRAM = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSess)).BeginInit();
@@ -357,11 +359,37 @@ namespace PCUMS
             this.label14.TabIndex = 29;
             this.label14.Text = "% (higher than 50).";
             // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::PCUMS.Properties.Resources.moon;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(45, 123);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 61);
+            this.button2.TabIndex = 30;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(756, 725);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(156, 35);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "Go back to sign-in.";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // CredentialsRules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1226, 805);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.numRAM);
             this.Controls.Add(this.label13);
@@ -425,5 +453,7 @@ namespace PCUMS
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown numRAM;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
