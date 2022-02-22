@@ -65,6 +65,35 @@ namespace PCUMS
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Program.blackTheme)
+            {
+                this.Theme = MetroFramework.MetroThemeStyle.Dark;
+                this.BackColor = Color.Black;
+                this.button2.BackColor = Color.White;
+                this.metroLabel1.ForeColor = Color.White;
+                this.metroLabel2.ForeColor = Color.White;
+                this.lblCPU.ForeColor = Color.White;
+                this.lblRAM.ForeColor = Color.White;
+                this.button1.ForeColor = Color.White;
+                this.button1.BackColor = Color.Black;
+                this.Rules.BackColor = Color.Black;
+                this.Rules.ForeColor = Color.White;
+            }
+            else if (!Program.blackTheme)
+            {
+                this.Theme = MetroFramework.MetroThemeStyle.Light;
+                this.BackColor = Color.White;
+                this.button2.BackColor = Color.White;
+                this.metroLabel1.ForeColor = Color.Black;
+                this.metroLabel2.ForeColor = Color.Black;
+                this.lblCPU.ForeColor = Color.Black;
+                this.lblRAM.ForeColor = Color.Black;
+                this.button1.ForeColor = Color.Black;
+                this.button1.BackColor = Color.White;
+                this.Rules.BackColor = Color.White;
+                this.Rules.ForeColor = Color.Black;
+            }
+
             if (Program.Authority == 1)
             {
                 string result = "";
@@ -86,6 +115,7 @@ namespace PCUMS
                 Program.RAM = Int32.Parse(store.Split(',')[5]);
                 Program.SessionT = Int32.Parse(store.Split(',')[6]);
                 Program.SessionID = Int32.Parse(store.Split(',')[7]);
+                Program.blackTheme = bool.Parse(store.Split(',')[8]);
                 Rules.Enabled = false;
 
                 //Timer for Session Time
@@ -116,17 +146,6 @@ namespace PCUMS
             }
 
                 
-        }
-
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("Your session rules are:\n" 
-                                               + "----------------------------\n" 
-                                               + "Temperature: " + Program.Temp + " C" + "\n" 
-                                               + "CPU: " + Program.CPU + " %" + "\n"
-                                               + "RAM: " + Program.RAM + " GB" + "\n"
-                                               + "Session Time: " + Program.SessionT + " Minutes");
         }
 
         private void processKiller()
@@ -182,6 +201,21 @@ namespace PCUMS
 
         private void metroLabel4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Your session rules are:\n"
+                                               + "----------------------------\n"
+                                               + "Temperature: " + Program.Temp + " C" + "\n"
+                                               + "CPU: " + Program.CPU + " %" + "\n"
+                                               + "RAM: " + Program.RAM + " GB" + "\n"
+                                               + "Session Time: " + Program.SessionT + " Minutes");
         }
     }
 }

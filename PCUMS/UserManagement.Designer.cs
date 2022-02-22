@@ -40,6 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(404, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -50,20 +51,24 @@
             // 
             // goBack
             // 
+            this.goBack.BackColor = System.Drawing.Color.White;
             this.goBack.Enabled = false;
+            this.goBack.ForeColor = System.Drawing.SystemColors.ControlText;
             this.goBack.Location = new System.Drawing.Point(35, 32);
             this.goBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.goBack.Name = "goBack";
             this.goBack.Size = new System.Drawing.Size(138, 34);
             this.goBack.TabIndex = 5;
             this.goBack.Text = "Go Back";
-            this.goBack.UseVisualStyleBackColor = true;
+            this.goBack.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.goBack.UseVisualStyleBackColor = false;
             this.goBack.Click += new System.EventHandler(this.goBack_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(45, 165);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -76,6 +81,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(43, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -86,7 +92,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Location = new System.Drawing.Point(35, 211);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1036, 430);
@@ -95,19 +101,23 @@
             // 
             // delall
             // 
+            this.delall.BackColor = System.Drawing.Color.White;
+            this.delall.ForeColor = System.Drawing.Color.Black;
             this.delall.Location = new System.Drawing.Point(933, 32);
             this.delall.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.delall.Name = "delall";
             this.delall.Size = new System.Drawing.Size(138, 34);
             this.delall.TabIndex = 8;
             this.delall.Text = "Delete All";
-            this.delall.UseVisualStyleBackColor = true;
+            this.delall.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.delall.UseVisualStyleBackColor = false;
             this.delall.Click += new System.EventHandler(this.delall_Click);
             // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1121, 653);
             this.Controls.Add(this.delall);
             this.Controls.Add(this.label4);
@@ -115,6 +125,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.goBack);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Name = "UserManagement";
             this.Text = "User Management";
             this.Load += new System.EventHandler(this.Form2_Load);

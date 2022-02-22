@@ -25,6 +25,9 @@ namespace PCUMS
         public static string credentialsPath;
         public static string usercountPath;
         public static string csv;
+
+        //image locations
+        public static string images;
         
         //local varibales
         public static string AdminID = "";
@@ -40,6 +43,9 @@ namespace PCUMS
         public static int Requester = 0;
         public static int Authority = 0;
 
+        //style flags
+        public static bool blackTheme = false;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -49,6 +55,7 @@ namespace PCUMS
         {
             rootPath = Directory.GetCurrentDirectory();
             dataPath = Path.Combine(rootPath, "TextFile");
+            images = Path.Combine(rootPath, "images");
             credentialsPath = Path.Combine(dataPath, "credentials.txt");
             usercountPath = Path.Combine(dataPath, "userCount.txt");
 
