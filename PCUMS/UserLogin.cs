@@ -64,7 +64,7 @@ namespace PCUMS
                 Program.Temp = Int32.Parse(store.Split(',')[3]);
                 Program.CPU = Int32.Parse(store.Split(',')[4]);
                 Program.RAM= Int32.Parse(store.Split(',')[5]);
-                Program.SessionT = Int32.Parse(store.Split(',')[6]);
+                Program.SessionT = decimal.Parse(store.Split(',')[6]);
                 Program.SessionID = Int32.Parse(store.Split(',')[7]);
                 
 
@@ -94,7 +94,7 @@ namespace PCUMS
 
             foreach (string s in File.ReadAllLines(Program.credentialsPath))
             {
-                SessionIDlist[i] = s.Split(',')[6];
+                SessionIDlist[i] = s.Split(',')[7];
                 if (i < count)
                 {
                     i++;

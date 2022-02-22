@@ -36,6 +36,12 @@ namespace PCUMS
                 if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
                      && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
                 {
+                    //Checks if the directory exists
+                    if (!Directory.Exists(Program.dataPath))
+                    {
+                        Directory.CreateDirectory(Program.dataPath);
+                    }
+                    //Checks if the file exists
                     if (!File.Exists(Program.credentialsPath))
                     {
                         Program.AdminID = "1";
@@ -47,7 +53,7 @@ namespace PCUMS
                         Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
                         Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
                         Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
+                        Program.SessionT = decimal.Parse(Program.csv.Split(',')[6]);
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
                         userName.Enabled = false;
                         passWord.Enabled = false;
@@ -152,7 +158,7 @@ namespace PCUMS
         }
         private void Continue_Click(object sender, EventArgs e)
         {
-
+            //this is a test
             if (File.Exists(Program.credentialsPath))
             {
                 var rand = new Random();
