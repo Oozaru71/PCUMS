@@ -69,7 +69,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -79,6 +81,7 @@
     <Compile Include="CredentialsRules.Designer.cs">
       <DependentUpon>CredentialsRules.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateVisitor.cs" />
     <Compile Include="UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
