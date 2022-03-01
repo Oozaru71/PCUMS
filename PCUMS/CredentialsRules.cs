@@ -13,7 +13,8 @@ using System.Windows;
 using System.IO;
 using System.IO.Compression;
 using PCUMS.Properties;
-
+using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 
 namespace PCUMS
@@ -119,7 +120,7 @@ namespace PCUMS
                     }
 
 
-
+                    button2.Enabled = true;
                 }
                 else
                 {
@@ -181,16 +182,19 @@ namespace PCUMS
                 passWord.Enabled = false;
                 button1.Enabled = true;
                 newAd.Enabled = true;
-                button2.Enabled = true;
+              
 
 
                 label2.Text = "Hello " + admin + ", let us get started";
+                button2.Enabled = true;
                 makingNewUser = false;
             }
             else
             {
                 label2.Text = "Hello Administrator, let us get started.";
                 makingNewUser = true;
+                
+
             }
         }
 
@@ -210,19 +214,26 @@ namespace PCUMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.moon.Size.ToString())
+            if (File.Exists(Program.credentialsPath))
             {
-                button2.BackgroundImage = PCUMS.Properties.Resources.bulb;
-                Program.blackTheme = true;
-                UpdateAdmin();
-                dark();
+                if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.moon.Size.ToString())
+                {
+                    button2.BackgroundImage = PCUMS.Properties.Resources.bulb;
+                    Program.blackTheme = true;
+                    UpdateAdmin();
+                    dark();
+                }
+                else if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.bulb.Size.ToString())
+                {
+                    button2.BackgroundImage = PCUMS.Properties.Resources.moon;
+                    Program.blackTheme = false;
+                    UpdateAdmin();
+                    light();
+                }
             }
-            else if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.bulb.Size.ToString())
+            else
             {
-                button2.BackgroundImage = PCUMS.Properties.Resources.moon;
-                Program.blackTheme = false;
-                UpdateAdmin();
-                light();
+                Interaction.MsgBox("Please set your credentials and hit save before trying this feature! ");
             }
         }
 

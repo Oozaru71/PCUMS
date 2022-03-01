@@ -191,22 +191,16 @@ namespace PCUMS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //
             if (Program.Authority == 1)
             {
+
                 Interaction.MsgBox("Your session time has ended, exiting...");
                 System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                 Environment.Exit(0);
             }
         }
 
-        private void metroLabel4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
