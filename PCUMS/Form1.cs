@@ -10,9 +10,25 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using OpenHardwareMonitor.Hardware;
 
 namespace PCUMS
 {
+    public class UpdateVisitor : IVisitor
+    {
+        public void VisitComputer(IComputer computer)
+        {
+            computer.Traverse(this);
+        }
+        public void VisitHardware(IHardware hardware)
+        {
+            hardware.Update();
+            foreach (IHardware subHardware in hardware.SubHardware) subHardware.Accept(this);
+        }
+        public void VisitSensor(ISensor sensor) { }
+        public void VisitParameter(IParameter parameter) { }
+    }
+
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         bool AlerGiven=false;
@@ -62,6 +78,33 @@ namespace PCUMS
                 Environment.Exit(0);
             }
         }
+
+        private void limitTemp()
+        {
+            if (Program.Authority == 1)
+            {
+                {
+                    UpdateVisitor updateVisitor = new UpdateVisitor();
+                    Computer computer = new Computer();
+                    computer.Open();
+                    computer.CPUEnabled = true;
+                    computer.Accept(updateVisitor);
+                    for (int i = 0; i < computer.Hardware.Length; i++)
+                    {
+                        if (computer.Hardware[i].HardwareType == HardwareType.CPU)
+                        {
+                            for (int j = 0; j < computer.Hardware[i].Sensors.Length; j++)
+                            {
+                                if (computer.Hardware[i].Sensors[j].SensorType == SensorType.Temperature)
+                                    Console.WriteLine(computer.Hardware[i].Sensors[j].Name + ":" + computer.Hardware[i].Sensors[j].Value.ToString() + "\r");
+                            }
+                        }
+                    }
+                    computer.Close();
+                }
+            }
+        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -194,10 +237,9 @@ namespace PCUMS
             //
             if (Program.Authority == 1)
             {
-
                 Interaction.MsgBox("Your session time has ended, exiting...");
                 System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                Environment.Exit(0);
+               
             }
         }
 
