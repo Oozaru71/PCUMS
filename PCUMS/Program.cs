@@ -46,6 +46,9 @@ namespace PCUMS
         //style flags
         public static bool blackTheme = false;
 
+        //Security Flags
+        public static bool SystemAdminVerified = false;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -90,6 +93,10 @@ namespace PCUMS
                 else if (Requester == 4)
                 {
                     Application.Run(new UserManagement());
+                }
+                else if (Requester == 5)
+                {
+                    Application.Run(new SystemAdminCheck());
                 }
                 else
                     Environment.Exit(0);

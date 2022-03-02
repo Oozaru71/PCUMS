@@ -41,18 +41,26 @@
             this.metroProgressBarCPU = new MetroFramework.Controls.MetroProgressBar();
             this.metroProgressBarRAM = new MetroFramework.Controls.MetroProgressBar();
             this.button1 = new System.Windows.Forms.Button();
-            this.Rules = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.metroLabel1 = new System.Windows.Forms.Label();
             this.metroLabel2 = new System.Windows.Forms.Label();
             this.lblCPU = new System.Windows.Forms.Label();
             this.lblRAM = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.showTemp = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ShowTemperature = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Rules = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pRAM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pRAM
@@ -73,11 +81,13 @@
             // 
             // chart1
             // 
+            this.chart1.Anchor = System.Windows.Forms.AnchorStyles.None;
             chartArea2.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(35, 177);
+            this.chart1.Location = new System.Drawing.Point(219, 428);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chart1.Name = "chart1";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -89,143 +99,238 @@
             series4.Name = "RAM";
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(489, 238);
+            this.chart1.Size = new System.Drawing.Size(938, 430);
             this.chart1.TabIndex = 6;
             // 
             // metroProgressBarCPU
             // 
-            this.metroProgressBarCPU.Location = new System.Drawing.Point(69, 79);
+            this.metroProgressBarCPU.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroProgressBarCPU.Location = new System.Drawing.Point(319, 283);
+            this.metroProgressBarCPU.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroProgressBarCPU.Name = "metroProgressBarCPU";
-            this.metroProgressBarCPU.Size = new System.Drawing.Size(429, 23);
+            this.metroProgressBarCPU.Size = new System.Drawing.Size(746, 49);
             this.metroProgressBarCPU.TabIndex = 7;
             // 
             // metroProgressBarRAM
             // 
-            this.metroProgressBarRAM.Location = new System.Drawing.Point(69, 120);
+            this.metroProgressBarRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroProgressBarRAM.Location = new System.Drawing.Point(319, 369);
+            this.metroProgressBarRAM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroProgressBarRAM.Name = "metroProgressBarRAM";
-            this.metroProgressBarRAM.Size = new System.Drawing.Size(429, 23);
+            this.metroProgressBarRAM.Size = new System.Drawing.Size(746, 49);
             this.metroProgressBarRAM.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(456, 392);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = global::PCUMS.Properties.Resources.log_out;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(9, 600);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.Size = new System.Drawing.Size(58, 59);
             this.button1.TabIndex = 13;
-            this.button1.Text = "Go back to sign-in.";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Rules
-            // 
-            this.Rules.Location = new System.Drawing.Point(456, 427);
-            this.Rules.Name = "Rules";
-            this.Rules.Size = new System.Drawing.Size(104, 23);
-            this.Rules.TabIndex = 14;
-            this.Rules.Text = "Go to rules";
-            this.Rules.UseVisualStyleBackColor = true;
-            this.Rules.Click += new System.EventHandler(this.Rules_Click);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(459, 228);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 39);
-            this.button2.TabIndex = 15;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 83);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.metroLabel1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.metroLabel1.Location = new System.Drawing.Point(214, 283);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(32, 13);
+            this.metroLabel1.Size = new System.Drawing.Size(77, 29);
             this.metroLabel1.TabIndex = 16;
             this.metroLabel1.Text = "CPU:";
             // 
             // metroLabel2
             // 
+            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 124);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.metroLabel2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.metroLabel2.Location = new System.Drawing.Point(214, 369);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(34, 13);
+            this.metroLabel2.Size = new System.Drawing.Size(81, 29);
             this.metroLabel2.TabIndex = 17;
             this.metroLabel2.Text = "RAM:";
             // 
             // lblCPU
             // 
+            this.lblCPU.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCPU.AutoSize = true;
-            this.lblCPU.Location = new System.Drawing.Point(503, 83);
-            this.lblCPU.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCPU.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCPU.Location = new System.Drawing.Point(1101, 283);
             this.lblCPU.Name = "lblCPU";
-            this.lblCPU.Size = new System.Drawing.Size(21, 13);
+            this.lblCPU.Size = new System.Drawing.Size(56, 29);
             this.lblCPU.TabIndex = 18;
             this.lblCPU.Text = "0%";
             // 
             // lblRAM
             // 
+            this.lblRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRAM.AutoSize = true;
-            this.lblRAM.Location = new System.Drawing.Point(503, 130);
-            this.lblRAM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRAM.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblRAM.Location = new System.Drawing.Point(1101, 369);
             this.lblRAM.Name = "lblRAM";
-            this.lblRAM.Size = new System.Drawing.Size(21, 13);
+            this.lblRAM.Size = new System.Drawing.Size(56, 29);
             this.lblRAM.TabIndex = 19;
             this.lblRAM.Text = "0%";
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(442, 305);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(214, 882);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.Size = new System.Drawing.Size(250, 29);
             this.label1.TabIndex = 20;
             this.label1.Text = "CPU Temperature:";
             // 
             // showTemp
             // 
             this.showTemp.AutoSize = true;
-            this.showTemp.Location = new System.Drawing.Point(442, 339);
-            this.showTemp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.showTemp.Location = new System.Drawing.Point(904, 675);
             this.showTemp.Name = "showTemp";
-            this.showTemp.Size = new System.Drawing.Size(0, 13);
+            this.showTemp.Size = new System.Drawing.Size(0, 20);
             this.showTemp.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.lblCPU);
+            this.panel1.Controls.Add(this.lblRAM);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.ShowTemperature);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.metroLabel1);
+            this.panel1.Controls.Add(this.metroLabel2);
+            this.panel1.Controls.Add(this.Rules);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.chart1);
+            this.panel1.Controls.Add(this.metroProgressBarCPU);
+            this.panel1.Controls.Add(this.metroProgressBarRAM);
+            this.panel1.Location = new System.Drawing.Point(19, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1341, 1004);
+            this.panel1.TabIndex = 36;
+            // 
+            // ShowTemperature
+            // 
+            this.ShowTemperature.AutoSize = true;
+            this.ShowTemperature.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.ShowTemperature.Location = new System.Drawing.Point(214, 933);
+            this.ShowTemperature.Name = "ShowTemperature";
+            this.ShowTemperature.Size = new System.Drawing.Size(177, 29);
+            this.ShowTemperature.TabIndex = 0;
+            this.ShowTemperature.Text = "Temperature";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(2, 288);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 29);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Settings";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::PCUMS.Properties.Resources.PCUMS;
+            this.pictureBox1.Location = new System.Drawing.Point(303, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(500, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(7, 322);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(60, 60);
+            this.button2.TabIndex = 15;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Rules
+            // 
+            this.Rules.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Rules.BackColor = System.Drawing.Color.White;
+            this.Rules.BackgroundImage = global::PCUMS.Properties.Resources.rules;
+            this.Rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Rules.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.Rules.Location = new System.Drawing.Point(7, 457);
+            this.Rules.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Rules.Name = "Rules";
+            this.Rules.Size = new System.Drawing.Size(60, 63);
+            this.Rules.TabIndex = 14;
+            this.Rules.UseVisualStyleBackColor = false;
+            this.Rules.Click += new System.EventHandler(this.Rules_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(3, 414);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 29);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Rules";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(4, 550);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 29);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Log out";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 466);
+            this.ClientSize = new System.Drawing.Size(1378, 1073);
             this.Controls.Add(this.showTemp);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblRAM);
-            this.Controls.Add(this.lblCPU);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.Rules);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.metroProgressBarRAM);
-            this.Controls.Add(this.metroProgressBarCPU);
-            this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Padding = new System.Windows.Forms.Padding(13, 60, 13, 13);
+            this.Padding = new System.Windows.Forms.Padding(20, 92, 20, 20);
             this.Text = "RAM && CPU";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pRAM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +354,12 @@
         private System.Windows.Forms.Label lblRAM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label showTemp;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label ShowTemperature;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

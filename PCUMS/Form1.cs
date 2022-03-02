@@ -42,7 +42,8 @@ namespace PCUMS
 
             int currentTemp=getTemp()/5;
 
-            showTemp.Text =String.Format(currentTemp.ToString());
+            ShowTemperature.Text =String.Format(currentTemp.ToString());
+            ShowTemperature.Visible = true;
 
             float CPU = (float)Program.CPU;
             float Temp = (float)Program.Temp;
@@ -137,6 +138,16 @@ namespace PCUMS
                 this.button1.BackColor = Color.Black;
                 this.Rules.BackColor = Color.Black;
                 this.Rules.ForeColor = Color.White;
+                this.ShowTemperature.ForeColor = Color.Black;
+                this.ShowTemperature.BackColor = Color.White;
+                this.label1.ForeColor = Color.Black;
+                this.label1.BackColor = Color.White;
+                this.label2.ForeColor = Color.Black;
+                this.label2.BackColor = Color.White;
+                this.label3.ForeColor = Color.Black;
+                this.label3.BackColor = Color.White;
+                this.label4.ForeColor = Color.Black;
+                this.label4.BackColor = Color.White;
             }
             else if (!Program.blackTheme)
             {
@@ -151,6 +162,16 @@ namespace PCUMS
                 this.button1.BackColor = Color.White;
                 this.Rules.BackColor = Color.White;
                 this.Rules.ForeColor = Color.Black;
+                this.ShowTemperature.ForeColor = Color.Black;
+                this.ShowTemperature.BackColor = Color.White;
+                this.label1.ForeColor= Color.Black;
+                this.label1.BackColor= Color.White;
+                this.label2.ForeColor = Color.Black;
+                this.label2.BackColor = Color.White;
+                this.label3.ForeColor = Color.Black;
+                this.label3.BackColor = Color.White;
+                this.label4.ForeColor = Color.Black;
+                this.label4.BackColor = Color.White;
             }
 
             if (Program.Authority == 1)
