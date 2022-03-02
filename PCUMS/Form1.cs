@@ -24,6 +24,7 @@ namespace PCUMS
         bool finalGiven = false;
         bool finalGiven2 = false;
 
+        int cpuActors = 0;
         public Form1()
         {
             InitializeComponent();
@@ -40,13 +41,19 @@ namespace PCUMS
             chart1.Series["CPU"].Points.AddY(fcpu);
             chart1.Series["RAM"].Points.AddY(fram);
 
-            int currentTemp=getTemp()/5;
-
-            ShowTemperature.Text =String.Format(currentTemp.ToString());
+            int currentTemp=getTemp()/cpuActors;
+            cpuActors = 0;
+            
+            //Show temperature value
+            ShowTemperature.Text = String.Format(currentTemp.ToString()+" C");
             ShowTemperature.Visible = true;
+
 
             float CPU = (float)Program.CPU;
             float Temp = (float)Program.Temp;
+
+            //float Temp = 90;
+
             //int messageGiv = 0;
             if (Program.Authority==1) 
             {
@@ -99,7 +106,7 @@ namespace PCUMS
         private int getTemp()
         {
 
-                int cputemp = 0;
+                    int cputemp = 0;
                     UpdateVisitor updateVisitor = new UpdateVisitor();
                     Computer computer = new Computer();
                     computer.Open();
@@ -114,12 +121,13 @@ namespace PCUMS
                                 if (computer.Hardware[i].Sensors[j].SensorType == SensorType.Temperature)
                                 {
                                     cputemp += (int)computer.Hardware[i].Sensors[j].Value;
+                                    cpuActors++;
                                 }
                             }
                         }
                     }
                     computer.Close();
-            return cputemp;
+                    return cputemp;
         }
         
 
