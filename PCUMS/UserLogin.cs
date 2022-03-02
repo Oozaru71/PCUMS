@@ -203,7 +203,30 @@ namespace PCUMS
                 this.newadmin.ForeColor = Color.Black;
             }
 
-            if (Program.SystemAdminVerified)
+            if (File.Exists(Program.credentialsPath))
+            {
+                if (Program.SystemAdminVerified)
+                {
+                    //Welcome
+                    label2.Visible = false;
+
+                    enableRegister();
+                    adminDisable();
+                    guestDisable();
+
+                    //Go Back
+                    goback.Enabled = true;
+                    goback.Visible = true;
+                }
+                else
+                {
+                    //Welcome
+                    label2.Visible = true;
+                    adminDisable();
+                    guestDisable();
+                }
+            }
+            else
             {
                 //Welcome
                 label2.Visible = false;
@@ -214,15 +237,7 @@ namespace PCUMS
 
                 //Go Back
                 goback.Enabled = true;
-                goback.Visible = true;
-            }
-            else
-            {
-                //Welcome
-                label2.Visible = true;
-                adminDisable();
-                guestDisable();
-            }
+            }    
         }
 
 

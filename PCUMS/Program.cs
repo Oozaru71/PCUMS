@@ -73,7 +73,7 @@ namespace PCUMS
             }
             else
             {
-                Application.Run(new CredentialsRules());
+                Application.Run(new UserLogin());
             }
             
             while (true)
