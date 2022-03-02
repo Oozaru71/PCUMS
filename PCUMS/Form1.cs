@@ -10,12 +10,20 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using OpenHardwareMonitor.Hardware;
 
 namespace PCUMS
 {
+
+
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         bool AlerGiven=false;
+        bool AlerGiven2 = false;
+
+        bool finalGiven = false;
+        bool finalGiven2 = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,13 +40,20 @@ namespace PCUMS
             chart1.Series["CPU"].Points.AddY(fcpu);
             chart1.Series["RAM"].Points.AddY(fram);
 
+            int currentTemp=getTemp()/5;
+
+            showTemp.Text =String.Format(currentTemp.ToString());
 
             float CPU = (float)Program.CPU;
+            float Temp = (float)Program.Temp;
             //int messageGiv = 0;
             if (Program.Authority==1) 
             {
                 //CPU Rules
                 limitCPU(CPU, fcpu);
+                //Temp Rules
+                limitTemp(Temp,currentTemp);
+
             }
 
         }
@@ -48,20 +63,64 @@ namespace PCUMS
             //The cpu is higher than rule cpu- 20 and less than rule cpu -10 
             if (fcpu >= (CPU - 10) && !AlerGiven)
             {
-                //If this usage is mantained for more than 5 secs
-                Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
                 AlerGiven = true;
+                Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
+               
 
             }
             //The cpu is higher than the rule cpu
-            if ((fcpu >= CPU) && AlerGiven)
+            if ((fcpu >= CPU) && AlerGiven&&!finalGiven)
             {
-
+                finalGiven = true;
                 Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
                 System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                 Environment.Exit(0);
             }
         }
+        private void limitTemp(float Temp,float currentTemp)
+        {
+            if (currentTemp >= (Temp - 10) && !AlerGiven2)
+            {
+                AlerGiven2 = true;
+                Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
+                
+
+            }
+            //The temp is higher than the rule temp
+            if ((currentTemp >= Temp) && AlerGiven2&&!finalGiven2)
+            {
+                finalGiven2= true;
+                Interaction.MsgBox("Warning! You have reached the temperature cap. You will be logged out for having broken the rules! ");
+                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                Environment.Exit(0);
+            }
+        }
+        private int getTemp()
+        {
+
+                int cputemp = 0;
+                    UpdateVisitor updateVisitor = new UpdateVisitor();
+                    Computer computer = new Computer();
+                    computer.Open();
+                    computer.CPUEnabled = true;
+                    computer.Accept(updateVisitor);
+                    for (int i = 0; i < computer.Hardware.Length; i++)
+                    {
+                        if (computer.Hardware[i].HardwareType == HardwareType.CPU)
+                        {
+                            for (int j = 0; j < computer.Hardware[i].Sensors.Length; j++)
+                            {
+                                if (computer.Hardware[i].Sensors[j].SensorType == SensorType.Temperature)
+                                {
+                                    cputemp += (int)computer.Hardware[i].Sensors[j].Value;
+                                }
+                            }
+                        }
+                    }
+                    computer.Close();
+            return cputemp;
+        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -191,6 +250,7 @@ namespace PCUMS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //
             if (Program.Authority == 1)
             {
                 Interaction.MsgBox("Your session time has ended, exiting...");
@@ -199,14 +259,6 @@ namespace PCUMS
             }
         }
 
-        private void metroLabel4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
