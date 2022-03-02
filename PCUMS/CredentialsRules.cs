@@ -31,113 +31,6 @@ namespace PCUMS
 
         }
 
-        private void save1_Click(object sender, EventArgs e)
-        {
-            if (makingNewUser)
-            {
-                if (String.IsNullOrEmpty(userName.Text) == false && String.IsNullOrEmpty(passWord.Text) == false
-                     && passWord.Text.Contains(" ") == false && userName.Text.Contains(" ") == false)
-                {
-                    //Checks if the directory exists
-                    if (!Directory.Exists(Program.dataPath))
-                    {
-                        Directory.CreateDirectory(Program.dataPath);
-                    }
-                    //Checks if the file exists
-                    if (!File.Exists(Program.credentialsPath))
-                    {
-                        Program.AdminID = "1";
-                        Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," +numRAM.Value+","+ numSess.Value + "," + "0" + "," + Program.blackTheme.ToString();
-                        System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
-                        Program.AdminID = Program.csv.Split(',')[0];
-                        Program.Admin = Program.csv.Split(',')[1];
-                        Program.AdminPass = Program.csv.Split(',')[2];
-                        Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
-                        Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                        Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                        Program.SessionT = decimal.Parse(Program.csv.Split(',')[6]);
-                        Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
-                        Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
-                        userName.Enabled = false;
-                        passWord.Enabled = false;
-                        save1.Enabled = false;
-                        newAd.Enabled = false;
-                        numCPU.Enabled = false;
-                        numRAM.Enabled = false;
-                        numSess.Enabled = false;
-                        numTemp.Enabled = false;
-                        button1.Enabled = false;
-                    }
-                    else
-                    {
-                        string result = "";
-                        bool exists = false;
-                        StreamReader reader = new StreamReader(Program.credentialsPath);
-                        while ((result = reader.ReadLine()) != null)
-                        {
-                            if (result.Contains(userName.Text))
-                            {
-                                exists = true;
-                            }
-                        }
-
-                        reader.Close();
-
-                        if (exists)
-                        {
-                            System.Windows.Forms.MessageBox.Show("Admin already exists: " + userName.Text);
-                        }
-                        else
-                        {
-                            String temp = File.ReadLines(Program.credentialsPath).Last();
-                            int tempInt = 0;
-                            temp = temp.Split(',')[0];
-                            tempInt = Int32.Parse(temp);
-                            tempInt = tempInt + 1;
-                            temp = tempInt.ToString();
-                            Program.AdminID = temp;
-                            Program.csv = Program.AdminID + "," + userName.Text + "," + passWord.Text + "," + numTemp.Value + "," + numCPU.Value + "," + numRAM.Value + "," + numSess.Value + "," + "0" + "," + Program.blackTheme.ToString();
-                            File.AppendAllText(Program.credentialsPath, Program.csv);
-                            Program.AdminID = Program.csv.Split(',')[0];
-                            Program.Admin = Program.csv.Split(',')[1];
-                            Program.AdminPass = Program.csv.Split(',')[2];
-                            Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
-                            Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                            Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                            Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
-                            Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
-                            Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
-                            userName.Enabled = false;
-                            passWord.Enabled = false;
-                            save1.Enabled = false;
-                            newAd.Enabled = false;
-                            numCPU.Enabled = false;
-                            numSess.Enabled = false;
-                            numRAM.Enabled = false;
-                            numTemp.Enabled = false;
-                            button1.Enabled = false;
-                        }
-                    }
-
-
-                    button2.Enabled = true;
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Create admin credentials and make sure there are no whitespaces!");
-                }
-            }
-            else
-            {
-                Program.Temp = numTemp.Value;
-                Program.CPU = numCPU.Value;
-                Program.SessionT = numSess.Value;
-                Program.RAM = numRAM.Value;
-                UpdateAdmin();
-                save1.Enabled = false;
-            }
-        }
-
         static void lineChanger(string newText, string fileName, int line_to_edit)
         {
             string[] arrLine = File.ReadAllLines(fileName);
@@ -146,11 +39,14 @@ namespace PCUMS
         }
         private void Continue_Click(object sender, EventArgs e)
         {
-            //this is a test
             if (File.Exists(Program.credentialsPath))
             {
                 var rand = new Random();
                 var id = rand.Next(101);
+                Program.Temp = numTemp.Value;
+                Program.CPU = numCPU.Value;
+                Program.RAM = numRAM.Value;
+                Program.SessionT = numSess.Value;
                 Program.SessionID = id;
 
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n" + id + "");
@@ -160,7 +56,7 @@ namespace PCUMS
                 Close();
             }
             else
-                System.Windows.Forms.MessageBox.Show("Create admin credentials!");
+                System.Windows.Forms.MessageBox.Show("Cannot start a session with empty settings!");
         }
 
         private void Login1_Load(object sender, EventArgs e)
@@ -177,34 +73,33 @@ namespace PCUMS
                 }
 
                 string admin = Program.Admin;
-
-                userName.Enabled = false;
-                passWord.Enabled = false;
-                button1.Enabled = true;
-                newAd.Enabled = true;
               
 
 
-                label2.Text = "Hello " + admin + ", let us get started";
+                label2.Text = "🙂 Hello " + admin + ", let us get started.";
                 button2.Enabled = true;
                 makingNewUser = false;
             }
             else
             {
-                label2.Text = "Hello Administrator, let us get started.";
+                label2.Text = "🙂 Hello Administrator, let us get started.";
                 makingNewUser = true;
-                
+            }
 
+            if (Program.AdminID == "1")
+            {
+                button1.Enabled = true;
+                button1.Visible = true;
+                label3.Visible = true;
+            }
+            else
+            {
+                button1.Enabled = false;
+                button1.Visible = false;
+                label3.Visible = false;
             }
         }
 
-        private void newAd_Click(object sender, EventArgs e)
-        {
-            userName.Enabled = true;
-            passWord.Enabled = true;
-            save1.Enabled = true;
-            makingNewUser = true;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -237,7 +132,7 @@ namespace PCUMS
             }
         }
 
-        void UpdateAdmin()
+        public static void UpdateAdmin()
         {
             string store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.RAM + "," + Program.SessionT + "," + Program.SessionID + "," + Program.blackTheme.ToString();
 
@@ -265,7 +160,6 @@ namespace PCUMS
             label2.ForeColor = Color.White;
             label3.ForeColor = Color.White;
             label4.ForeColor = Color.White;
-            label5.ForeColor = Color.White;
             label6.ForeColor = Color.White;
             label7.ForeColor = Color.White;
             label8.ForeColor = Color.White;
@@ -275,14 +169,10 @@ namespace PCUMS
             label12.ForeColor = Color.White;
             label13.ForeColor = Color.White;
             label14.ForeColor = Color.White;
-            button1.ForeColor = Color.White;
-            button1.BackColor = Color.Black;
-            newAd.ForeColor = Color.White;
-            newAd.BackColor = Color.Black;
-            button3.ForeColor = Color.White;
-            button3.BackColor = Color.Black;
-            save1.ForeColor = Color.White;
-            save1.BackColor = Color.Black;
+            button1.ForeColor = Color.Black;
+            button1.BackColor = Color.White;
+            button3.ForeColor = Color.Black;
+            button3.BackColor = Color.White;
             Continue.ForeColor = Color.White;
             Continue.BackColor = Color.Black;
         }
@@ -295,7 +185,6 @@ namespace PCUMS
             label2.ForeColor = Color.Black;
             label3.ForeColor = Color.Black;
             label4.ForeColor = Color.Black;
-            label5.ForeColor = Color.Black;
             label6.ForeColor = Color.Black;
             label7.ForeColor = Color.Black;
             label8.ForeColor = Color.Black;
@@ -307,12 +196,8 @@ namespace PCUMS
             label14.ForeColor = Color.Black;
             button1.ForeColor = Color.Black;
             button1.BackColor = Color.White;
-            newAd.ForeColor = Color.Black;
-            newAd.BackColor = Color.White;
             button3.BackColor = Color.White;
             button3.ForeColor = Color.Black;
-            save1.ForeColor = Color.Black;
-            save1.BackColor = Color.White;
             Continue.ForeColor = Color.Black;
             Continue.BackColor = Color.White;
         }
@@ -321,6 +206,11 @@ namespace PCUMS
         {
             Program.Requester = 2;
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
