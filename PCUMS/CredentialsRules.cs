@@ -171,8 +171,8 @@ namespace PCUMS
             label14.ForeColor = Color.White;
             button1.ForeColor = Color.Black;
             button1.BackColor = Color.White;
-            button3.ForeColor = Color.White;
-            button3.BackColor = Color.Black;
+            button3.ForeColor = Color.Black;
+            button3.BackColor = Color.White;
             Continue.ForeColor = Color.White;
             Continue.BackColor = Color.Black;
         }

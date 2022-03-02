@@ -134,20 +134,20 @@ namespace PCUMS
                 this.metroLabel2.ForeColor = Color.White;
                 this.lblCPU.ForeColor = Color.White;
                 this.lblRAM.ForeColor = Color.White;
-                this.button1.ForeColor = Color.White;
-                this.button1.BackColor = Color.Black;
-                this.Rules.BackColor = Color.Black;
-                this.Rules.ForeColor = Color.White;
-                this.ShowTemperature.ForeColor = Color.Black;
-                this.ShowTemperature.BackColor = Color.White;
-                this.label1.ForeColor = Color.Black;
-                this.label1.BackColor = Color.White;
-                this.label2.ForeColor = Color.Black;
-                this.label2.BackColor = Color.White;
-                this.label3.ForeColor = Color.Black;
-                this.label3.BackColor = Color.White;
-                this.label4.ForeColor = Color.Black;
-                this.label4.BackColor = Color.White;
+                this.button1.ForeColor = Color.Black;
+                this.button1.BackColor = Color.White;
+                this.Rules.BackColor = Color.White;
+                this.Rules.ForeColor = Color.Black;
+                this.ShowTemperature.ForeColor = Color.White;
+                this.ShowTemperature.BackColor = Color.Black;
+                this.label1.ForeColor = Color.White;
+                this.label1.BackColor = Color.Black;
+                this.label2.ForeColor = Color.White;
+                this.label2.BackColor = Color.Black;
+                this.label3.ForeColor = Color.White;
+                this.label3.BackColor = Color.Black;
+                this.label4.ForeColor = Color.White;
+                this.label4.BackColor = Color.Black;
             }
             else if (!Program.blackTheme)
             {
