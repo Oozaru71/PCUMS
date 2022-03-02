@@ -42,11 +42,12 @@ namespace PCUMS
             chart1.Series["RAM"].Points.AddY(fram);
 
             int currentTemp=getTemp()/cpuActors;
-
-
             cpuActors = 0;
+            
+            //Show temperature value
+            ShowTemperature.Text = String.Format(currentTemp.ToString()+" C");
+            ShowTemperature.Visible = true;
 
-            showTemp.Text =String.Format(currentTemp.ToString()+" C");
 
             float CPU = (float)Program.CPU;
             float Temp = (float)Program.Temp;
@@ -141,10 +142,20 @@ namespace PCUMS
                 this.metroLabel2.ForeColor = Color.White;
                 this.lblCPU.ForeColor = Color.White;
                 this.lblRAM.ForeColor = Color.White;
-                this.button1.ForeColor = Color.White;
-                this.button1.BackColor = Color.Black;
-                this.Rules.BackColor = Color.Black;
-                this.Rules.ForeColor = Color.White;
+                this.button1.ForeColor = Color.Black;
+                this.button1.BackColor = Color.White;
+                this.Rules.BackColor = Color.White;
+                this.Rules.ForeColor = Color.Black;
+                this.ShowTemperature.ForeColor = Color.White;
+                this.ShowTemperature.BackColor = Color.Black;
+                this.label1.ForeColor = Color.White;
+                this.label1.BackColor = Color.Black;
+                this.label2.ForeColor = Color.White;
+                this.label2.BackColor = Color.Black;
+                this.label3.ForeColor = Color.White;
+                this.label3.BackColor = Color.Black;
+                this.label4.ForeColor = Color.White;
+                this.label4.BackColor = Color.Black;
             }
             else if (!Program.blackTheme)
             {
@@ -159,6 +170,16 @@ namespace PCUMS
                 this.button1.BackColor = Color.White;
                 this.Rules.BackColor = Color.White;
                 this.Rules.ForeColor = Color.Black;
+                this.ShowTemperature.ForeColor = Color.Black;
+                this.ShowTemperature.BackColor = Color.White;
+                this.label1.ForeColor= Color.Black;
+                this.label1.BackColor= Color.White;
+                this.label2.ForeColor = Color.Black;
+                this.label2.BackColor = Color.White;
+                this.label3.ForeColor = Color.Black;
+                this.label3.BackColor = Color.White;
+                this.label4.ForeColor = Color.Black;
+                this.label4.BackColor = Color.White;
             }
 
             if (Program.Authority == 1)
