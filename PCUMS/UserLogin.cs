@@ -384,6 +384,7 @@ namespace PCUMS
                         Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
                         Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
                         System.Windows.Forms.MessageBox.Show("Admin " + Program.Admin + " was created. Please login.");
+                        Program.SystemAdminVerified = false;
                         goBack();
                     }
                 }
