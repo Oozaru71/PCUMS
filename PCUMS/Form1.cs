@@ -25,6 +25,8 @@ namespace PCUMS
         bool finalGiven2 = false;
 
         int cpuActors = 0;
+
+        int counter;
         public Form1()
         {
             InitializeComponent();
@@ -79,10 +81,17 @@ namespace PCUMS
             //The cpu is higher than the rule cpu
             if ((fcpu >= CPU) && AlerGiven&&!finalGiven)
             {
-                finalGiven = true;
-                Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
-                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                Environment.Exit(0);
+                if (counter >= 3)
+                {
+                    finalGiven = true;
+                    Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
+                    System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    counter++;
+                }
             }
         }
         private void limitTemp(float Temp,float currentTemp)
