@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.Devices;
 using OpenHardwareMonitor.Hardware;
 
 namespace PCUMS
@@ -25,15 +26,21 @@ namespace PCUMS
         bool finalGiven2 = false;
 
         int cpuActors = 0;
+        int cpuActors2 = 0;
 
         int counter;
+     //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
+     //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            ComputerInfo c1= new ComputerInfo();
+            
             float fcpu = pCPU.NextValue();
             float fram = pRAM.NextValue();
             metroProgressBarCPU.Value = (int)fcpu;
@@ -117,7 +124,7 @@ namespace PCUMS
 
                     int cputemp = 0;
                     UpdateVisitor updateVisitor = new UpdateVisitor();
-                    Computer computer = new Computer();
+                    OpenHardwareMonitor.Hardware.Computer computer = new OpenHardwareMonitor.Hardware.Computer();
                     computer.Open();
                     computer.CPUEnabled = true;
                     computer.Accept(updateVisitor);
@@ -138,7 +145,7 @@ namespace PCUMS
                     computer.Close();
                     return cputemp;
         }
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {

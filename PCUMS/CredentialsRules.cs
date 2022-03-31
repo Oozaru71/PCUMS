@@ -13,8 +13,10 @@ using System.Windows;
 using System.IO;
 using System.IO.Compression;
 using PCUMS.Properties;
-using System.Diagnostics;
 using Microsoft.VisualBasic;
+using OpenHardwareMonitor.Hardware;
+using Microsoft.VisualBasic.Devices;
+
 
 
 namespace PCUMS
@@ -98,6 +100,14 @@ namespace PCUMS
                 button1.Visible = false;
                 label3.Visible = false;
             }
+           
+           
+            ComputerInfo c1 = new ComputerInfo();
+            float fram = (float)(c1.TotalPhysicalMemory)/((1024 * 1024 * 1024));
+            float Afram = (float)(c1.AvailablePhysicalMemory) / ((1024 * 1024 * 1024));
+            numRAM.Maximum = (decimal) Afram;
+            label14.Text = String.Format("GB  This system has a total of {0:0.0} GB \n with {1:0.0} GB available to use",fram,Afram);
+     
         }
 
 
