@@ -282,7 +282,6 @@ namespace PCUMS
             this.label3.TabIndex = 34;
             this.label3.Text = "Manage Users";
             this.label3.Visible = false;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
@@ -295,12 +294,12 @@ namespace PCUMS
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.Continue);
             this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(895, 654);
             this.panel1.TabIndex = 35;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -377,7 +376,7 @@ namespace PCUMS
             this.Continue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Continue.BackgroundImage")));
             this.Continue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Continue.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.Continue.Location = new System.Drawing.Point(372, 489);
+            this.Continue.Location = new System.Drawing.Point(373, 457);
             this.Continue.Name = "Continue";
             this.Continue.Size = new System.Drawing.Size(189, 67);
             this.Continue.TabIndex = 16;
@@ -407,7 +406,6 @@ namespace PCUMS
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.Continue);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);

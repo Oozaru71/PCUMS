@@ -23,12 +23,14 @@ namespace PCUMS
         bool AlerGiven2 = false;
 
         bool finalGiven = false;
-        bool finalGiven2 = false;
+     //   bool finalGiven2 = false;
 
         int cpuActors = 0;
-        int cpuActors2 = 0;
+      //  int cpuActors2 = 0;
+        private static readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
 
         int counter;
+        int counter2;
      //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
      //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
         public Form1()
@@ -39,6 +41,7 @@ namespace PCUMS
 
         private void timer_Tick(object sender, EventArgs e)
         {
+
             ComputerInfo c1= new ComputerInfo();
             
             float fcpu = pCPU.NextValue();
@@ -75,49 +78,68 @@ namespace PCUMS
 
         }
 
-        private void limitCPU(float CPU, float fcpu)
+        private  void limitCPU(float CPU, float fcpu)
         {
+
             //The cpu is higher than rule cpu- 20 and less than rule cpu -10 
-            if (fcpu >= (CPU - 10) && !AlerGiven)
-            {
-                AlerGiven = true;
-                Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
-               
+        
+                if (fcpu >= (CPU - 10))
+                {
+                  if (!AlerGiven)
+                  {
+                      AlerGiven = true;
+                      Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
+                   }
+                    if ((fcpu >= CPU) && AlerGiven && !finalGiven)
+                    {
+                        if (counter >= 4)
+                        {
+                            finalGiven = true;
+                            Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
+                            System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            counter++;
+                        }
+                     }
+
 
             }
-            //The cpu is higher than the rule cpu
-            if ((fcpu >= CPU) && AlerGiven&&!finalGiven)
-            {
-                if (counter >= 3)
-                {
-                    finalGiven = true;
-                    Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
-                    System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    counter++;
-                }
-            }
+                //The cpu is higher than the rule cpu
+               
+            
         }
         private void limitTemp(float Temp,float currentTemp)
         {
-            if (currentTemp >= (Temp - 10) && !AlerGiven2)
+            if (currentTemp >= (Temp - 10))
             {
-                AlerGiven2 = true;
-                Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
-                
+                if (!AlerGiven2) 
+                {
+                    AlerGiven2 = true;
+                    Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
+                }
+               
+                //The temp is higher than the rule temp
+                if ((currentTemp >= Temp) && AlerGiven2 && !finalGiven)
+                {
+                    if (counter2 >= 4)
+                    {
+                        finalGiven = true;
+                        Interaction.MsgBox("Warning! You have reached the temperature cap. You will be logged out for having broken the rules! ");
+                        System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        counter2++;
+                    }
+                 }
+
 
             }
-            //The temp is higher than the rule temp
-            if ((currentTemp >= Temp) && AlerGiven2&&!finalGiven2)
-            {
-                finalGiven2= true;
-                Interaction.MsgBox("Warning! You have reached the temperature cap. You will be logged out for having broken the rules! ");
-                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                Environment.Exit(0);
-            }
+            
         }
         private int getTemp()
         {
