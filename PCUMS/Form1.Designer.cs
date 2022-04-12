@@ -70,8 +70,8 @@
             // 
             // pCPU
             // 
-            this.pCPU.CategoryName = "Processor";
-            this.pCPU.CounterName = "% Idle Time";
+            this.pCPU.CategoryName = "Processor Information";
+            this.pCPU.CounterName = "% Processor Time";
             this.pCPU.InstanceName = "_Total";
             // 
             // timer
@@ -227,7 +227,7 @@
             this.panel1.Controls.Add(this.metroProgressBarCPU);
             this.panel1.Controls.Add(this.metroProgressBarRAM);
             this.panel1.Location = new System.Drawing.Point(13, 22);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(895, 654);
             this.panel1.TabIndex = 36;
@@ -273,7 +273,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PCUMS.Properties.Resources.PCUMS;
             this.pictureBox1.Location = new System.Drawing.Point(202, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(500, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -325,7 +325,7 @@
             this.ClientSize = new System.Drawing.Size(919, 697);
             this.Controls.Add(this.showTemp);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(13, 60, 13, 13);
             this.Text = "RAM && CPU";

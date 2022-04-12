@@ -50,9 +50,9 @@ namespace PCUMS
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Continue = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.Continue = new System.Windows.Forms.Button();
             this.pRAM = new System.Diagnostics.PerformanceCounter();
             ((System.ComponentModel.ISupportInitialize)(this.numTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCPU)).BeginInit();
@@ -237,13 +237,7 @@ namespace PCUMS
             // numRAM
             // 
             this.numRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numRAM.DecimalPlaces = 1;
             this.numRAM.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.numRAM.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
             this.numRAM.Location = new System.Drawing.Point(415, 417);
             this.numRAM.Name = "numRAM";
             this.numRAM.Size = new System.Drawing.Size(100, 27);
@@ -343,6 +337,20 @@ namespace PCUMS
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Continue
+            // 
+            this.Continue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Continue.BackColor = System.Drawing.Color.White;
+            this.Continue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Continue.BackgroundImage")));
+            this.Continue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Continue.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.Continue.Location = new System.Drawing.Point(373, 499);
+            this.Continue.Name = "Continue";
+            this.Continue.Size = new System.Drawing.Size(189, 67);
+            this.Continue.TabIndex = 16;
+            this.Continue.UseVisualStyleBackColor = false;
+            this.Continue.Click += new System.EventHandler(this.Continue_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -368,20 +376,6 @@ namespace PCUMS
             this.button2.TabIndex = 30;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Continue
-            // 
-            this.Continue.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Continue.BackColor = System.Drawing.Color.White;
-            this.Continue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Continue.BackgroundImage")));
-            this.Continue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Continue.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.Continue.Location = new System.Drawing.Point(373, 457);
-            this.Continue.Name = "Continue";
-            this.Continue.Size = new System.Drawing.Size(189, 67);
-            this.Continue.TabIndex = 16;
-            this.Continue.UseVisualStyleBackColor = false;
-            this.Continue.Click += new System.EventHandler(this.Continue_Click);
             // 
             // pRAM
             // 

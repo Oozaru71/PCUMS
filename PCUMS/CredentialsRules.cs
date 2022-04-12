@@ -25,6 +25,8 @@ namespace PCUMS
     {
 
         bool makingNewUser;
+
+        PerformanceCounter ramUsage;
         public CredentialsRules()
         {
             Program.Requester = 0;
@@ -100,13 +102,23 @@ namespace PCUMS
                 button1.Visible = false;
                 label3.Visible = false;
             }
-           
-           
-            ComputerInfo c1 = new ComputerInfo();
-            float fram = (float)(c1.TotalPhysicalMemory)/((1024 * 1024 * 1024));
-            float Afram = (float)(c1.AvailablePhysicalMemory) / ((1024 * 1024 * 1024));
-            numRAM.Maximum = (decimal) Afram;
-            label14.Text = String.Format("GB  This system has a total of {0:0.0} GB \n with {1:0.0} GB available to use",fram,Afram);
+
+
+            //    ComputerInfo c1 = new ComputerInfo();
+            //   float fram = (float)(c1.TotalPhysicalMemory)/((1024 * 1024 * 1024));
+            //  float Afram = (float)(c1.AvailablePhysicalMemory) / ((1024 * 1024 * 1024));
+            //    numRAM.Maximum = (decimal) Afram;
+
+            ramUsage = new PerformanceCounter();
+            ramUsage.CategoryName = "Memory";
+            ramUsage.CounterName = "% Committed Bytes in Use";
+            ramUsage.InstanceLifetime = PerformanceCounterInstanceLifetime.Global;
+
+            
+            float fram=ramUsage.NextValue();
+
+            numRAM.Minimum = (int)fram+1;
+            label14.Text = String.Format("%  This system is currently using {0:0.0} % \n of its RAM.",fram);
      
         }
 
