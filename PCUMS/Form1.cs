@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.Devices;
 using OpenHardwareMonitor.Hardware;
 
 namespace PCUMS
@@ -20,18 +21,36 @@ namespace PCUMS
     {
         bool AlerGiven=false;
         bool AlerGiven2 = false;
+        bool AlerGiven3 = false;    
 
         bool finalGiven = false;
-        bool finalGiven2 = false;
+     //   bool finalGiven2 = false;
 
         int cpuActors = 0;
+      //  int cpuActors2 = 0;
+        private static readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
+
+        int counter;
+        int counter2;
+        int counter3;
+
+        float CPU = (float)Program.CPU;
+        float Temp = (float)Program.Temp;
+        float RAM=(float)Program.RAM;   
+
+        //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
+        //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
+
+            ComputerInfo c1= new ComputerInfo();
+            
             float fcpu = pCPU.NextValue();
             float fram = pRAM.NextValue();
             metroProgressBarCPU.Value = (int)fcpu;
@@ -49,8 +68,7 @@ namespace PCUMS
             ShowTemperature.Visible = true;
 
 
-            float CPU = (float)Program.CPU;
-            float Temp = (float)Program.Temp;
+         
 
             //float Temp = 90;
 
@@ -61,54 +79,112 @@ namespace PCUMS
                 limitCPU(CPU, fcpu);
                 //Temp Rules
                 limitTemp(Temp,currentTemp);
+                //RAM Rules
+                limitRAM(RAM, fram);
 
             }
 
         }
 
-        private void limitCPU(float CPU, float fcpu)
+        private  void limitCPU(float CPU, float fcpu)
         {
+
             //The cpu is higher than rule cpu- 20 and less than rule cpu -10 
-            if (fcpu >= (CPU - 10) && !AlerGiven)
-            {
-                AlerGiven = true;
-                Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
-               
+        
+                if (fcpu >= (CPU - 10))
+                {
+                  if (!AlerGiven)
+                  {
+                      AlerGiven = true;
+                      Interaction.MsgBox("Warning! You are getting too close to the cpu limit");
+                   }
+                    if ((fcpu >= CPU) && AlerGiven && !finalGiven)
+                    {
+                        if (counter >= 4)
+                        {
+                            finalGiven = true;
+                            Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
+                            System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            counter++;
+                        }
+                     }
+
 
             }
-            //The cpu is higher than the rule cpu
-            if ((fcpu >= CPU) && AlerGiven&&!finalGiven)
-            {
-                finalGiven = true;
-                Interaction.MsgBox("Warning! You have reached the CPU cap. You will be logged out for having broken the rules! ");
-                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                Environment.Exit(0);
-            }
+                //The cpu is higher than the rule cpu
+               
+            
         }
         private void limitTemp(float Temp,float currentTemp)
         {
-            if (currentTemp >= (Temp - 10) && !AlerGiven2)
+            if (currentTemp >= (Temp - 10))
             {
-                AlerGiven2 = true;
-                Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
-                
+                if (!AlerGiven2) 
+                {
+                    AlerGiven2 = true;
+                    Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
+                }
+               
+                //The temp is higher than the rule temp
+                if ((currentTemp >= Temp) && AlerGiven2 && !finalGiven)
+                {
+                    if (counter2 >= 4)
+                    {
+                        finalGiven = true;
+                        Interaction.MsgBox("Warning! You have reached the temperature cap. You will be logged out for having broken the rules! ");
+                        System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        counter2++;
+                    }
+                 }
+
 
             }
-            //The temp is higher than the rule temp
-            if ((currentTemp >= Temp) && AlerGiven2&&!finalGiven2)
+            
+        }
+        private void limitRAM(float RAM,float fram)
+        {
+            if (fram >= (RAM - 5))
             {
-                finalGiven2= true;
-                Interaction.MsgBox("Warning! You have reached the temperature cap. You will be logged out for having broken the rules! ");
-                System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                Environment.Exit(0);
+                if (!AlerGiven3)
+                {
+                    AlerGiven3 = true;
+                    Interaction.MsgBox("Warning! You are getting too close to the RAM limit");
+                }
+
+                //The temp is higher than the rule temp
+                if ((fram >= Temp) && AlerGiven3 && !finalGiven)
+                {
+                    if (counter3 >= 4)
+                    {
+                        finalGiven = true;
+                        Interaction.MsgBox("Warning! You have reached the RAM cap. You will be logged out for having broken the rules! ");
+                        System.Diagnostics.Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        counter3++;
+                    }
+                }
+
+
             }
+
         }
         private int getTemp()
         {
 
                     int cputemp = 0;
                     UpdateVisitor updateVisitor = new UpdateVisitor();
-                    Computer computer = new Computer();
+                    OpenHardwareMonitor.Hardware.Computer computer = new OpenHardwareMonitor.Hardware.Computer();
                     computer.Open();
                     computer.CPUEnabled = true;
                     computer.Accept(updateVisitor);
@@ -129,7 +205,7 @@ namespace PCUMS
                     computer.Close();
                     return cputemp;
         }
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -184,35 +260,43 @@ namespace PCUMS
 
             if (Program.Authority == 1)
             {
-                string result = "";
-                string store = "";
-                StreamReader reader = new StreamReader(Program.credentialsPath);
-                while ((result = reader.ReadLine()) != null)
+                if (RAM == pRAM.NextValue())
                 {
-                    if (result.Contains(Program.SessionID.ToString()))
-                    {
-                        store = result;
-                    }
+                    Interaction.MsgBox("The system's conditions have drastically changed and this session cannot be used. \n Contact an admin to change the rules!");
+                    this.Close();
+                    Program.Requester = 2;
                 }
+                else {
+                            string result = "";
+                            string store = "";
+                            StreamReader reader = new StreamReader(Program.credentialsPath);
+                            while ((result = reader.ReadLine()) != null)
+                            {
+                                if (result.Contains(Program.SessionID.ToString()))
+                                {
+                                    store = result;
+                                }
+                            }
 
-                Program.AdminID = "";
-                Program.Admin = "";
-                Program.AdminPass = "";
-                Program.Temp = Int32.Parse(store.Split(',')[3]);
-                Program.CPU = Int32.Parse(store.Split(',')[4]);
-                Program.RAM = Int32.Parse(store.Split(',')[5]);
-                Program.SessionT = Int32.Parse(store.Split(',')[6]);
-                Program.SessionID = Int32.Parse(store.Split(',')[7]);
-                Program.blackTheme = bool.Parse(store.Split(',')[8]);
-                Rules.Enabled = false;
+                            Program.AdminID = "";
+                            Program.Admin = "";
+                            Program.AdminPass = "";
+                            Program.Temp = Int32.Parse(store.Split(',')[3]);
+                            Program.CPU = Int32.Parse(store.Split(',')[4]);
+                            Program.RAM = Int32.Parse(store.Split(',')[5]);
+                            Program.SessionT = Int32.Parse(store.Split(',')[6]);
+                            Program.SessionID = Int32.Parse(store.Split(',')[7]);
+                            Program.blackTheme = bool.Parse(store.Split(',')[8]);
+                            Rules.Enabled = false;
 
-                //Timer for Session Time
-                int SessionTime = (int)Program.SessionT;
+                            //Timer for Session Time
+                            int SessionTime = (int)Program.SessionT;
 
-                System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
-                MyTimer.Interval = (SessionTime * 60 * 1000); ; // Timer counts in miliseconds and the user input is given in minutes
-                MyTimer.Tick += new EventHandler(timer1_Tick);
-                MyTimer.Start();
+                            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+                            MyTimer.Interval = (SessionTime * 60 * 1000); ; // Timer counts in miliseconds and the user input is given in minutes
+                            MyTimer.Tick += new EventHandler(timer1_Tick);
+                            MyTimer.Start();
+                        }
             }
 
             Program.Requester = 0;

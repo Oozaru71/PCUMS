@@ -13,8 +13,10 @@ using System.Windows;
 using System.IO;
 using System.IO.Compression;
 using PCUMS.Properties;
-using System.Diagnostics;
 using Microsoft.VisualBasic;
+using OpenHardwareMonitor.Hardware;
+using Microsoft.VisualBasic.Devices;
+
 
 
 namespace PCUMS
@@ -23,6 +25,8 @@ namespace PCUMS
     {
 
         bool makingNewUser;
+
+        PerformanceCounter ramUsage;
         public CredentialsRules()
         {
             Program.Requester = 0;
@@ -98,6 +102,24 @@ namespace PCUMS
                 button1.Visible = false;
                 label3.Visible = false;
             }
+
+
+            //    ComputerInfo c1 = new ComputerInfo();
+            //   float fram = (float)(c1.TotalPhysicalMemory)/((1024 * 1024 * 1024));
+            //  float Afram = (float)(c1.AvailablePhysicalMemory) / ((1024 * 1024 * 1024));
+            //    numRAM.Maximum = (decimal) Afram;
+
+            ramUsage = new PerformanceCounter();
+            ramUsage.CategoryName = "Memory";
+            ramUsage.CounterName = "% Committed Bytes in Use";
+            ramUsage.InstanceLifetime = PerformanceCounterInstanceLifetime.Global;
+
+            
+            float fram=ramUsage.NextValue();
+
+            numRAM.Minimum = (int)fram+1;
+            label14.Text = String.Format("%  This system is currently using {0:0.0} % \n of its RAM.",fram);
+     
         }
 
 
@@ -208,14 +230,5 @@ namespace PCUMS
             this.Close();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-    }
+       }
 }
