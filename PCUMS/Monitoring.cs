@@ -17,7 +17,7 @@ namespace PCUMS
 {
 
 
-    public partial class Form1 : MetroFramework.Forms.MetroForm
+    public partial class Monitoring : MetroFramework.Forms.MetroForm
     {
         bool AlerGiven=false;
         bool AlerGiven2 = false;
@@ -40,7 +40,7 @@ namespace PCUMS
 
         //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
         //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
-        public Form1()
+        public Monitoring()
         {
             InitializeComponent();
 

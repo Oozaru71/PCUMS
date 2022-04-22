@@ -88,7 +88,7 @@ namespace PCUMS
                 }
                 else if (Requester == 3)
                 {
-                    Application.Run(new Form1());
+                    Application.Run(new Monitoring());
                 }
                 else if (Requester == 4)
                 {

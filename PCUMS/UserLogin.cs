@@ -187,6 +187,9 @@ namespace PCUMS
                 this.radioButton1.ForeColor = Color.White;
                 this.radioButton2.ForeColor = Color.White;
                 this.newadmin.ForeColor = Color.White;
+                this.label5.ForeColor = Color.White;
+                this.username.ForeColor = Color.White;
+                this.password.ForeColor = Color.White;
             }
             else if (!Program.blackTheme)
             {
@@ -201,6 +204,9 @@ namespace PCUMS
                 this.radioButton1.ForeColor = Color.Black;
                 this.radioButton2.ForeColor = Color.Black;
                 this.newadmin.ForeColor = Color.Black;
+                this.label5.ForeColor = Color.Black;
+                this.username.ForeColor = Color.Black;
+                this.password.ForeColor = Color.Black;
             }
 
             if (File.Exists(Program.credentialsPath))
