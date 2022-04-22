@@ -318,14 +318,6 @@ namespace PCUMS
             System.Windows.Forms.MessageBox.Show("User information updated");
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
-        {
-            if (((TextBox)sender).Name == "USERS") //you can set whatever you want here to show text has changed
-            {
-                //UserInfo.Users.Add(text);
-            }
-        }
-
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -380,44 +372,6 @@ namespace PCUMS
             {
                 // Do something  
             }
-        }
-
-        private void delall_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void goBack_Click(object sender, EventArgs e)
-        {
-        }
-        private void SaveChanges_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
