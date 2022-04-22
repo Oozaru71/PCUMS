@@ -69,11 +69,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Helpers\StringCleaner.cs" />
+    <Compile Include="Monitoring.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Monitoring.Designer.cs">
+      <DependentUpon>Monitoring.cs</DependentUpon>
     </Compile>
     <Compile Include="CredentialsRules.cs">
       <SubType>Form</SubType>
@@ -102,8 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Models\UserTableModel.cs" />
+    <EmbeddedResource Include="Monitoring.resx">
+      <DependentUpon>Monitoring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CredentialsRules.resx">
       <DependentUpon>CredentialsRules.cs</DependentUpon>
