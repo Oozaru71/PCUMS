@@ -192,7 +192,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d) || decimal.Parse(valueToChange) < 50)
                     {
                         RulesModel.Temp = decimal.Parse(Table.Temps[l]);
                     }
@@ -207,7 +207,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d) || decimal.Parse(valueToChange) < 60)
                     {
                         RulesModel.CPU = decimal.Parse(Table.CPUs[l]);
                     }
@@ -222,7 +222,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d) || decimal.Parse(valueToChange) < 0)
                     {
                         RulesModel.RAM = decimal.Parse(Table.RAMs[l]);
                     }
@@ -238,7 +238,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d) || decimal.Parse(valueToChange) < 1)
                     {
                         RulesModel.SessionT = decimal.Parse(Table.Times[l]);
                     }
@@ -251,7 +251,7 @@ namespace PCUMS
                 {
                     UserInfo.SIDs[l] = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange) || !int.TryParse(valueToChange, out n))
+                    if (string.IsNullOrEmpty(valueToChange) || !int.TryParse(valueToChange, out n) || Int32.Parse(valueToChange) < 0)
                     {
                         RulesModel.SessionID = Int32.Parse(Table.SIDs[l]);
                     }
@@ -420,6 +420,15 @@ namespace PCUMS
                     isNotValid = true;
                     break;
                 }
+                else if (decimal.Parse(UserInfo.Temps[i]) < 50
+                    || decimal.Parse(UserInfo.CPUs[i]) < 60
+                    || decimal.Parse(UserInfo.RAMs[i]) < 0
+                    || decimal.Parse(UserInfo.Times[i]) < 1
+                    || Int32.Parse(UserInfo.SIDs[i]) < 0)
+                {
+                    isNotValid = true;
+                    break;
+                }
 
                 string writeTo = (UserIDs[i].Text + "," + UserInfo.Users[i] + "," + UserInfo.Passwords[i] + "," + UserInfo.Temps[i] + "," + UserInfo.CPUs[i] + "," + UserInfo.RAMs[i] + "," + UserInfo.Times[i] + "," + UserInfo.SIDs[i] + "," + Table.BlackTheme[i]);
                 using (var writer = File.AppendText(PathsModel.credentialsPath))
@@ -444,7 +453,7 @@ namespace PCUMS
             }
             else if (isNotValid)
             {
-                System.Windows.Forms.MessageBox.Show("Cannot set a string for field that requires an integer value!");
+                System.Windows.Forms.MessageBox.Show("Invalid input!");
 
                 for (int j = 0; j < count; j++)
                 {
