@@ -420,8 +420,6 @@ namespace PCUMS
                     }
                 }
 
-                //Table.Users.Where(x => x.ID == RulesModel.AdminID);
-
             }
             else
             {
