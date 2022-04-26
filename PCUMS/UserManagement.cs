@@ -154,30 +154,37 @@ namespace PCUMS
                 if (((TextBox)(sender)).Name == "USERS" + l.ToString())
                 {
                     UserInfo.Users[l] = ((TextBox)(sender)).Text;
+                    RulesModel.Admin = ((TextBox)(sender)).Text;
                 }
                 else if (((TextBox)(sender)).Name == "PASSWORDS" + l.ToString())
                 {
                     UserInfo.Passwords[l] = ((TextBox)(sender)).Text;
+                    RulesModel.AdminPass = ((TextBox)(sender)).Text;
                 }
                 else if (((TextBox)(sender)).Name == "TEMPS" + l.ToString())
                 {
                     UserInfo.Temps[l] = ((TextBox)(sender)).Text;
+                    RulesModel.Temp = Int32.Parse(((TextBox)(sender)).Text);
                 }
                 else if (((TextBox)(sender)).Name == "CPUS" + l.ToString())
                 {
                     UserInfo.CPUs[l] = ((TextBox)(sender)).Text;
+                    RulesModel.CPU = Int32.Parse(((TextBox)(sender)).Text);
                 }
                 else if (((TextBox)(sender)).Name == "RAMS" + l.ToString())
                 {
                     UserInfo.RAMs[l] = ((TextBox)(sender)).Text;
+                    RulesModel.RAM = Int32.Parse(((TextBox)(sender)).Text);
                 }
                 else if (((TextBox)(sender)).Name == "TIMES" + l.ToString())
                 {
                     UserInfo.Times[l] = ((TextBox)(sender)).Text;
+                    RulesModel.SessionT = Int32.Parse(((TextBox)(sender)).Text);
                 }
                 else if (((TextBox)(sender)).Name == "SIDS" + l.ToString())
                 {
                     UserInfo.SIDs[l] = ((TextBox)(sender)).Text;
+                    RulesModel.SessionID = Int32.Parse(((TextBox)(sender)).Text);
                 }
             }
         }
@@ -306,16 +313,43 @@ namespace PCUMS
         private void SaveChanges_Click_1(object sender, EventArgs e)
         {
             File.WriteAllText(PathsModel.credentialsPath, String.Empty);
+            bool valueIsEmpty = false;
 
             for (int i = 0; i < count; i++)
             {
+                if (string.IsNullOrEmpty(UserIDs[i].Text)
+                    || string.IsNullOrEmpty(UserInfo.Users[i])
+                    || string.IsNullOrEmpty(UserInfo.Passwords[i])
+                    || string.IsNullOrEmpty(UserInfo.Temps[i])
+                    || string.IsNullOrEmpty(UserInfo.CPUs[i])
+                    || string.IsNullOrEmpty(UserInfo.RAMs[i])
+                    || string.IsNullOrEmpty(UserInfo.Times[i])
+                    || string.IsNullOrEmpty(UserInfo.SIDs[i])
+                    || string.IsNullOrEmpty(UserInfo.BlackTheme[i]))
+                {
+                    valueIsEmpty = true;
+                    break;
+                }
+                else
+                {
+                    
+                }
+
                 string writeTo = (UserIDs[i].Text + "," + UserInfo.Users[i] + "," + UserInfo.Passwords[i] + "," + UserInfo.Temps[i] + "," + UserInfo.CPUs[i] + "," + UserInfo.RAMs[i] + "," + UserInfo.Times[i] + "," + UserInfo.SIDs[i] + "," + Table.BlackTheme[i]);
                 using (var writer = File.AppendText(PathsModel.credentialsPath))
                 {
                     writer.WriteLine(writeTo);
                 }
             }
-            System.Windows.Forms.MessageBox.Show("User information updated");
+
+            if (valueIsEmpty)
+            {
+                System.Windows.Forms.MessageBox.Show("User information cannot empty!");
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("User information updated");
+            }
         }
 
 

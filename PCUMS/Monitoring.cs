@@ -311,13 +311,13 @@ namespace PCUMS
 
         private void Rules_Click(object sender, EventArgs e)
         {
-            if (Program.Authority == 2)
-            {
-                Program.Requester = 1;
-                this.Close();
-            }
+            System.Windows.Forms.MessageBox.Show("Your session rules are:\n"
+                                               + "----------------------------\n"
+                                               + "Temperature: " + RulesModel.Temp + " C" + "\n"
+                                               + "CPU: " + RulesModel.CPU + " %" + "\n"
+                                               + "RAM: " + RulesModel.RAM + " GB" + "\n"
+                                               + "Session Time: " + RulesModel.SessionT + " Minutes");
 
-                
         }
 
       
@@ -335,12 +335,11 @@ namespace PCUMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Your session rules are:\n"
-                                               + "----------------------------\n"
-                                               + "Temperature: " + RulesModel.Temp + " C" + "\n"
-                                               + "CPU: " + RulesModel.CPU + " %" + "\n"
-                                               + "RAM: " + RulesModel.RAM + " GB" + "\n"
-                                               + "Session Time: " + RulesModel.SessionT + " Minutes");
+            if (Program.Authority == 2)
+            {
+                Program.Requester = 1;
+                this.Close();
+            }
         }
     }
 }
