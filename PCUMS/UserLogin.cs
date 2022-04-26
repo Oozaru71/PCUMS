@@ -342,20 +342,27 @@ namespace PCUMS
                 //Checks if the file exists
                 if (!File.Exists(PathsModel.credentialsPath))
                 {
-                    RulesModel.AdminID = "1";
-                    PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
-                    System.IO.File.WriteAllText(PathsModel.credentialsPath, PathsModel.csv);
-                    RulesModel.AdminID = PathsModel.csv.Split(',')[0];
-                    RulesModel.Admin = PathsModel.csv.Split(',')[1];
-                    RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
-                    RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
-                    RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
-                    RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
-                    RulesModel.SessionT = decimal.Parse(PathsModel.csv.Split(',')[6]);
-                    RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
-                    RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
-                    System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
-                    goBack();
+                    if (usernametext.Text.ToCharArray().Count() > 8 || passwordtext.Text.ToCharArray().Count() > 8)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Username and password need to contain less than 8 characters");
+                    }
+                    else
+                    {
+                        RulesModel.AdminID = "1";
+                        PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
+                        System.IO.File.WriteAllText(PathsModel.credentialsPath, PathsModel.csv);
+                        RulesModel.AdminID = PathsModel.csv.Split(',')[0];
+                        RulesModel.Admin = PathsModel.csv.Split(',')[1];
+                        RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
+                        RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
+                        RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
+                        RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
+                        RulesModel.SessionT = decimal.Parse(PathsModel.csv.Split(',')[6]);
+                        RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
+                        RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
+                        System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
+                        goBack();
+                    }
                 }
                 else
                 {
@@ -364,7 +371,7 @@ namespace PCUMS
                     StreamReader reader = new StreamReader(PathsModel.credentialsPath);
                     while ((result = reader.ReadLine()) != null)
                     {
-                        if (result.Contains(usernametext.Text))
+                        if (result.Split(',')[1].Equals(usernametext.Text))
                         {
                             exists = true;
                         }
@@ -378,27 +385,34 @@ namespace PCUMS
                     }
                     else
                     {
-                        String temp = File.ReadLines(PathsModel.credentialsPath).Last();
-                        int tempInt = 0;
-                        temp = temp.Split(',')[0];
-                        tempInt = Int32.Parse(temp);
-                        tempInt = tempInt + 1;
-                        temp = tempInt.ToString();
-                        RulesModel.AdminID = temp;
-                        PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
-                        File.AppendAllText(PathsModel.credentialsPath, PathsModel.csv);
-                        RulesModel.AdminID = PathsModel.csv.Split(',')[0];
-                        RulesModel.Admin = PathsModel.csv.Split(',')[1];
-                        RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
-                        RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
-                        RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
-                        RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
-                        RulesModel.SessionT = Int32.Parse(PathsModel.csv.Split(',')[6]);
-                        RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
-                        RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
-                        System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
-                        RulesModel.SystemAdminVerified = false;
-                        goBack();
+                        if (usernametext.Text.ToCharArray().Count() > 8 || passwordtext.Text.ToCharArray().Count() > 8)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Username and password need to contain less than 8 characters");
+                        }
+                        else
+                        {
+                            String temp = File.ReadLines(PathsModel.credentialsPath).Last();
+                            int tempInt = 0;
+                            temp = temp.Split(',')[0];
+                            tempInt = Int32.Parse(temp);
+                            tempInt = tempInt + 1;
+                            temp = tempInt.ToString();
+                            RulesModel.AdminID = temp;
+                            PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
+                            File.AppendAllText(PathsModel.credentialsPath, PathsModel.csv);
+                            RulesModel.AdminID = PathsModel.csv.Split(',')[0];
+                            RulesModel.Admin = PathsModel.csv.Split(',')[1];
+                            RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
+                            RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
+                            RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
+                            RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
+                            RulesModel.SessionT = Int32.Parse(PathsModel.csv.Split(',')[6]);
+                            RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
+                            RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
+                            System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
+                            RulesModel.SystemAdminVerified = false;
+                            goBack();
+                        }
                     }
                 }
             }
