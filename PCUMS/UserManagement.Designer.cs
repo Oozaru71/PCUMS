@@ -52,9 +52,10 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.goBack);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Location = new System.Drawing.Point(8, 8);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1218, 861);
+            this.panel2.Size = new System.Drawing.Size(813, 561);
             this.panel2.TabIndex = 19;
             // 
             // SaveChanges
@@ -62,10 +63,9 @@
             this.SaveChanges.BackColor = System.Drawing.Color.White;
             this.SaveChanges.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.SaveChanges.ForeColor = System.Drawing.Color.Black;
-            this.SaveChanges.Location = new System.Drawing.Point(970, 805);
-            this.SaveChanges.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SaveChanges.Location = new System.Drawing.Point(647, 523);
             this.SaveChanges.Name = "SaveChanges";
-            this.SaveChanges.Size = new System.Drawing.Size(218, 47);
+            this.SaveChanges.Size = new System.Drawing.Size(145, 31);
             this.SaveChanges.TabIndex = 16;
             this.SaveChanges.Text = "Save Changes";
             this.SaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -77,10 +77,9 @@
             this.delall.BackColor = System.Drawing.Color.White;
             this.delall.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.delall.ForeColor = System.Drawing.Color.Black;
-            this.delall.Location = new System.Drawing.Point(1002, 134);
-            this.delall.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.delall.Location = new System.Drawing.Point(668, 87);
             this.delall.Name = "delall";
-            this.delall.Size = new System.Drawing.Size(186, 47);
+            this.delall.Size = new System.Drawing.Size(124, 31);
             this.delall.TabIndex = 15;
             this.delall.Text = "Delete All";
             this.delall.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -92,10 +91,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(37, 152);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(25, 99);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(321, 29);
+            this.label4.Size = new System.Drawing.Size(224, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Id,Username,Password,";
             // 
@@ -104,19 +102,19 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(35, 94);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(23, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 29);
+            this.label2.Size = new System.Drawing.Size(147, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "0 Users Found:";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(27, 198);
+            this.panel1.Location = new System.Drawing.Point(18, 129);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1161, 599);
+            this.panel1.Size = new System.Drawing.Size(774, 389);
             this.panel1.TabIndex = 14;
             // 
             // goBack
@@ -125,10 +123,9 @@
             this.goBack.Enabled = false;
             this.goBack.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.goBack.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.goBack.Location = new System.Drawing.Point(27, 19);
-            this.goBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.goBack.Location = new System.Drawing.Point(18, 12);
             this.goBack.Name = "goBack";
-            this.goBack.Size = new System.Drawing.Size(151, 46);
+            this.goBack.Size = new System.Drawing.Size(101, 30);
             this.goBack.TabIndex = 12;
             this.goBack.Text = "Go Back";
             this.goBack.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -140,21 +137,22 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(455, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(303, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 29);
+            this.label1.Size = new System.Drawing.Size(172, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "User Management";
             // 
             // UserManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1242, 879);
+            this.ClientSize = new System.Drawing.Size(828, 571);
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "UserManagement";
             this.Text = "User Management";

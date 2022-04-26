@@ -9,7 +9,7 @@ namespace PCUMS
     
     internal static class Program
     {   
-        //logic variables
+
         public static int Requester = 0;
         public static int Authority = 0;
 

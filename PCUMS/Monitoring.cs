@@ -22,10 +22,10 @@ namespace PCUMS
         bool AlerGiven3 = false;    
 
         bool finalGiven = false;
-     //   bool finalGiven2 = false;
+ 
 
         int cpuActors = 0;
-      //  int cpuActors2 = 0;
+
         private static readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
 
         int counter;
@@ -36,8 +36,6 @@ namespace PCUMS
         float Temp = (float)RulesModel.Temp;
         float RAM=(float)RulesModel.RAM;   
 
-        //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
-        //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
         public Monitoring()
         {
             InitializeComponent();
@@ -61,16 +59,15 @@ namespace PCUMS
             int currentTemp=getTemp()/cpuActors;
             cpuActors = 0;
             
-            //Show temperature value
+  
             ShowTemperature.Text = String.Format(currentTemp.ToString()+" C");
             ShowTemperature.Visible = true;
 
 
          
 
-            //float Temp = 90;
 
-            //int messageGiv = 0;
+
             if (Program.Authority==1) 
             {
                 //CPU Rules
@@ -87,7 +84,6 @@ namespace PCUMS
         private  void limitCPU(float CPU, float fcpu)
         {
 
-            //The cpu is higher than rule cpu- 20 and less than rule cpu -10 
         
                 if (fcpu >= (CPU - 10))
                 {
@@ -113,7 +109,7 @@ namespace PCUMS
 
 
             }
-                //The cpu is higher than the rule cpu
+
                
             
         }
@@ -127,7 +123,7 @@ namespace PCUMS
                     Interaction.MsgBox("Warning! You are getting too close to the temperature limit");
                 }
                
-                //The temp is higher than the rule temp
+               
                 if ((currentTemp >= Temp) && AlerGiven2 && !finalGiven)
                 {
                     if (counter2 >= 4)
@@ -157,7 +153,7 @@ namespace PCUMS
                     Interaction.MsgBox("Warning! You are getting too close to the RAM limit");
                 }
 
-                //The temp is higher than the rule temp
+               
                 if ((fram >= Temp) && AlerGiven3 && !finalGiven)
                 {
                     if (counter3 >= 4)
@@ -287,7 +283,7 @@ namespace PCUMS
                             RulesModel.blackTheme = bool.Parse(store.Split(',')[8]);
                             Rules.Enabled = false;
 
-                            //Timer for Session Time
+                 
                             int SessionTime = (int)RulesModel.SessionT;
 
                             System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
@@ -318,46 +314,10 @@ namespace PCUMS
                 
         }
 
-        private void processKiller()
-        {
-    
-                var counterList = new List<PerformanceCounter>();
-
-                while (true)
-                {
-                    var procDict = new Dictionary<string, float>();
-
-                    Process.GetProcesses().ToList().ForEach(p =>
-                    {
-                        using (p)
-                            if (counterList
-                                .FirstOrDefault(c => c.InstanceName == p.ProcessName) == null)
-                                counterList.Add(
-                                    new PerformanceCounter("Process", "% Processor Time",
-                                        p.ProcessName, true));
-                    });
-
-                    counterList.ForEach(c =>
-                    {
-                        try
-                        {
-                            var percent = c.NextValue() / Environment.ProcessorCount;
-                            if (percent < 50)
-                                return;
-                            //if (c.InstanceName.Trim().ToLower() == "idle")
-                            //    return;
-                            procDict[c.InstanceName] = percent;
-                        }
-                        catch (InvalidOperationException) { /* some will fail */ }
-                    });
-
-                    procDict.OrderByDescending(d => d.Value).ToList(); 
-                }
-         }
-
+      
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //
+            
             if (Program.Authority == 1)
             {
                 Interaction.MsgBox("Your session time has ended, exiting...");

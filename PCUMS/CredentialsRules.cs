@@ -93,10 +93,6 @@ namespace PCUMS
             }
 
 
-            //    ComputerInfo c1 = new ComputerInfo();
-            //   float fram = (float)(c1.TotalPhysicalMemory)/((1024 * 1024 * 1024));
-            //  float Afram = (float)(c1.AvailablePhysicalMemory) / ((1024 * 1024 * 1024));
-            //    numRAM.Maximum = (decimal) Afram;
 
             ramUsage = new PerformanceCounter();
             ramUsage.CategoryName = "Memory";
