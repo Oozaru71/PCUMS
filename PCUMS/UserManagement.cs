@@ -149,6 +149,9 @@ namespace PCUMS
 
         void TextBox_TextChange(object sender, EventArgs e)
         {
+            string valueToChange = string.Empty;
+
+
             for (int l = 0; l < count; l++)
             {
                 if (((TextBox)(sender)).Name == "USERS" + l.ToString())
@@ -164,27 +167,76 @@ namespace PCUMS
                 else if (((TextBox)(sender)).Name == "TEMPS" + l.ToString())
                 {
                     UserInfo.Temps[l] = ((TextBox)(sender)).Text;
-                    RulesModel.Temp = Int32.Parse(((TextBox)(sender)).Text);
+
+                    valueToChange = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.Temp = decimal.Parse(Table.Temps[l]);
+                    }
+                    else
+                    {
+                        RulesModel.Temp = decimal.Parse(valueToChange);
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "CPUS" + l.ToString())
                 {
                     UserInfo.CPUs[l] = ((TextBox)(sender)).Text;
-                    RulesModel.CPU = Int32.Parse(((TextBox)(sender)).Text);
+
+                    valueToChange = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.CPU = decimal.Parse(Table.CPUs[l]);
+                    }
+                    else
+                    {
+                        RulesModel.CPU = decimal.Parse(valueToChange);
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "RAMS" + l.ToString())
                 {
                     UserInfo.RAMs[l] = ((TextBox)(sender)).Text;
-                    RulesModel.RAM = Int32.Parse(((TextBox)(sender)).Text);
+
+                    valueToChange = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.RAM = decimal.Parse(Table.RAMs[l]);
+                    }
+                    else
+                    {
+                        RulesModel.RAM = decimal.Parse(valueToChange);
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "TIMES" + l.ToString())
                 {
                     UserInfo.Times[l] = ((TextBox)(sender)).Text;
-                    RulesModel.SessionT = Int32.Parse(((TextBox)(sender)).Text);
+
+
+                    valueToChange = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.SessionT = decimal.Parse(Table.Times[l]);
+                    }
+                    else
+                    {
+                        RulesModel.SessionT = decimal.Parse(valueToChange);
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "SIDS" + l.ToString())
                 {
                     UserInfo.SIDs[l] = ((TextBox)(sender)).Text;
-                    RulesModel.SessionID = Int32.Parse(((TextBox)(sender)).Text);
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.SessionID = Int32.Parse(Table.SIDs[l]);
+                    }
+                    else
+                    {
+                        RulesModel.SessionT = Int32.Parse(valueToChange);
+                    }
                 }
             }
         }
@@ -317,22 +369,17 @@ namespace PCUMS
 
             for (int i = 0; i < count; i++)
             {
-                if (string.IsNullOrEmpty(UserIDs[i].Text)
+                if ((string.IsNullOrEmpty(UserIDs[i].Text)
                     || string.IsNullOrEmpty(UserInfo.Users[i])
                     || string.IsNullOrEmpty(UserInfo.Passwords[i])
                     || string.IsNullOrEmpty(UserInfo.Temps[i])
                     || string.IsNullOrEmpty(UserInfo.CPUs[i])
                     || string.IsNullOrEmpty(UserInfo.RAMs[i])
                     || string.IsNullOrEmpty(UserInfo.Times[i])
-                    || string.IsNullOrEmpty(UserInfo.SIDs[i])
-                    || string.IsNullOrEmpty(UserInfo.BlackTheme[i]))
+                    || string.IsNullOrEmpty(UserInfo.SIDs[i])) && i <= count)
                 {
                     valueIsEmpty = true;
                     break;
-                }
-                else
-                {
-                    
                 }
 
                 string writeTo = (UserIDs[i].Text + "," + UserInfo.Users[i] + "," + UserInfo.Passwords[i] + "," + UserInfo.Temps[i] + "," + UserInfo.CPUs[i] + "," + UserInfo.RAMs[i] + "," + UserInfo.Times[i] + "," + UserInfo.SIDs[i] + "," + Table.BlackTheme[i]);
@@ -345,6 +392,18 @@ namespace PCUMS
             if (valueIsEmpty)
             {
                 System.Windows.Forms.MessageBox.Show("User information cannot empty!");
+
+                for (int j = 0; j < count; j++)
+                {
+                    string writeTo = (Table.IDs[j] + "," + Table.Users[j] + "," + Table.Passwords[j] + "," + Table.Temps[j] + "," + Table.CPUs[j] + "," + Table.RAMs[j] + "," + Table.Times[j] + "," + Table.SIDs[j] + "," + Table.BlackTheme[j]);
+                    using (var writer = File.AppendText(PathsModel.credentialsPath))
+                    {
+                        writer.WriteLine(writeTo);
+                    }
+                }
+
+                //Table.Users.Where(x => x.ID == RulesModel.AdminID);
+
             }
             else
             {
