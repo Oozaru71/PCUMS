@@ -77,7 +77,7 @@ namespace PCUMS
                 }
 
                 string admin = Program.Admin;
-              
+                
 
 
                 label2.Text = "🙂 Hello " + admin + ", let us get started.";
@@ -118,7 +118,7 @@ namespace PCUMS
             float fram=ramUsage.NextValue();
 
             numRAM.Minimum = (int)fram+1;
-            label14.Text = String.Format("%  This system is currently using {0:0.0} % \n of its RAM.",fram);
+            label14.Text = String.Format("%  This system is currently using \n {0:0.0} %  of its RAM.", fram);
      
         }
 
@@ -230,5 +230,5 @@ namespace PCUMS
             this.Close();
         }
 
-       }
+    }
 }

@@ -320,46 +320,7 @@ namespace PCUMS
                 
         }
 
-        private void processKiller()
-        {
-    
-                var counterList = new List<PerformanceCounter>();
-
-                while (true)
-                {
-                    var procDict = new Dictionary<string, float>();
-
-                    Process.GetProcesses().ToList().ForEach(p =>
-                    {
-                        using (p)
-                            if (counterList
-                                .FirstOrDefault(c => c.InstanceName == p.ProcessName) == null)
-                                counterList.Add(
-                                    new PerformanceCounter("Process", "% Processor Time",
-                                        p.ProcessName, true));
-                    });
-
-                    counterList.ForEach(c =>
-                    {
-                        try
-                        {
-                            var percent = c.NextValue() / Environment.ProcessorCount;
-                            if (percent < 50)
-                                return;
-                            //if (c.InstanceName.Trim().ToLower() == "idle")
-                            //    return;
-                            procDict[c.InstanceName] = percent;
-                        }
-                        catch (InvalidOperationException) { /* some will fail */ }
-                    });
-
-
-                procDict.OrderByDescending(d => d.Value).ToList();
-                        
-
-                    
-                }
-         }
+  
 
         private void timer1_Tick(object sender, EventArgs e)
         {

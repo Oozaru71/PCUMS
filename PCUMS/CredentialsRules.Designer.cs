@@ -29,6 +29,7 @@ namespace PCUMS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CredentialsRules));
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@ namespace PCUMS
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pRAM = new System.Diagnostics.PerformanceCounter();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSess)).BeginInit();
@@ -95,6 +97,7 @@ namespace PCUMS
             this.label7.Size = new System.Drawing.Size(173, 20);
             this.label7.TabIndex = 9;
             this.label7.Text = "Temperature Cap:";
+            this.toolTip1.SetToolTip(this.label7, "Average of all CPU cores temperatures.");
             // 
             // label8
             // 
@@ -106,6 +109,7 @@ namespace PCUMS
             this.label8.Size = new System.Drawing.Size(94, 20);
             this.label8.TabIndex = 10;
             this.label8.Text = "CPU Cap:";
+            this.toolTip1.SetToolTip(this.label8, "How much of the processor is used over a 1 second interval");
             // 
             // label9
             // 
@@ -117,6 +121,7 @@ namespace PCUMS
             this.label9.Size = new System.Drawing.Size(138, 20);
             this.label9.TabIndex = 11;
             this.label9.Text = "Session Time:";
+            this.toolTip1.SetToolTip(this.label9, "It is recommended to give Guests a reasonable time frame. ");
             // 
             // label10
             // 
@@ -233,6 +238,8 @@ namespace PCUMS
             this.label13.Size = new System.Drawing.Size(159, 20);
             this.label13.TabIndex = 27;
             this.label13.Text = "RAM Usage Cap:";
+            this.toolTip1.SetToolTip(this.label13, "The RAM cap is determined by obtaining the current percentage RAM usage of the co" +
+        "mputer and then setting a limit using the current usage as the minimum. ");
             // 
             // numRAM
             // 
@@ -446,5 +453,6 @@ namespace PCUMS
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Diagnostics.PerformanceCounter pRAM;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
