@@ -150,6 +150,8 @@ namespace PCUMS
         void TextBox_TextChange(object sender, EventArgs e)
         {
             string valueToChange = string.Empty;
+            int n;
+            decimal d;
 
 
             for (int l = 0; l < count; l++)
@@ -190,7 +192,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
                     {
                         RulesModel.Temp = decimal.Parse(Table.Temps[l]);
                     }
@@ -205,7 +207,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
                     {
                         RulesModel.CPU = decimal.Parse(Table.CPUs[l]);
                     }
@@ -220,7 +222,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
                     {
                         RulesModel.RAM = decimal.Parse(Table.RAMs[l]);
                     }
@@ -236,7 +238,7 @@ namespace PCUMS
 
                     valueToChange = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange))
+                    if (string.IsNullOrEmpty(valueToChange) || !decimal.TryParse(valueToChange, out d))
                     {
                         RulesModel.SessionT = decimal.Parse(Table.Times[l]);
                     }
@@ -249,7 +251,7 @@ namespace PCUMS
                 {
                     UserInfo.SIDs[l] = ((TextBox)(sender)).Text;
 
-                    if (string.IsNullOrEmpty(valueToChange))
+                    if (string.IsNullOrEmpty(valueToChange) || !int.TryParse(valueToChange, out n))
                     {
                         RulesModel.SessionID = Int32.Parse(Table.SIDs[l]);
                     }
@@ -386,6 +388,9 @@ namespace PCUMS
         {
             File.WriteAllText(PathsModel.credentialsPath, String.Empty);
             bool valueIsEmpty = false;
+            bool isNotValid = false;
+            decimal d;
+            int n;
 
             for (int i = 0; i < count; i++)
             {
@@ -399,6 +404,20 @@ namespace PCUMS
                     || string.IsNullOrEmpty(UserInfo.SIDs[i])) && i <= count)
                 {
                     valueIsEmpty = true;
+                    break;
+                }
+
+                if (!decimal.TryParse(UserInfo.Temps[i], out d)
+                    || !decimal.TryParse(UserInfo.CPUs[i], out d)
+                    || !decimal.TryParse(UserInfo.RAMs[i], out d)
+                    || !decimal.TryParse(UserInfo.Times[i], out d))
+                {
+                    isNotValid = true;
+                    break;
+                }
+                else if (!int.TryParse(UserInfo.SIDs[i], out n))
+                {
+                    isNotValid = true;
                     break;
                 }
 
@@ -422,6 +441,19 @@ namespace PCUMS
                     }
                 }
 
+            }
+            else if (isNotValid)
+            {
+                System.Windows.Forms.MessageBox.Show("Cannot set a string for field that requires an integer value!");
+
+                for (int j = 0; j < count; j++)
+                {
+                    string writeTo = (Table.IDs[j] + "," + Table.Users[j] + "," + Table.Passwords[j] + "," + Table.Temps[j] + "," + Table.CPUs[j] + "," + Table.RAMs[j] + "," + Table.Times[j] + "," + Table.SIDs[j] + "," + Table.BlackTheme[j]);
+                    using (var writer = File.AppendText(PathsModel.credentialsPath))
+                    {
+                        writer.WriteLine(writeTo);
+                    }
+                }
             }
             else
             {
