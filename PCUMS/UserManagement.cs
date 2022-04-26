@@ -158,6 +158,8 @@ namespace PCUMS
                 {
                     UserInfo.Users[l] = ((TextBox)(sender)).Text;
 
+                    valueToChange = ((TextBox)(sender)).Text;
+
                     if (string.IsNullOrEmpty(valueToChange))
                     {
                         RulesModel.Admin = Table.Users[l];
