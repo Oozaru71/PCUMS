@@ -187,6 +187,7 @@ namespace PCUMS
                 this.label2.ForeColor = Color.White;
                 this.label3.ForeColor = Color.White;
                 this.label4.ForeColor = Color.White;
+                this.label4.BackColor = Color.Black;
                 this.radioButton1.ForeColor = Color.White;
                 this.radioButton2.ForeColor = Color.White;
                 this.newadmin.ForeColor = Color.White;
@@ -205,13 +206,14 @@ namespace PCUMS
                 this.label2.ForeColor = Color.Black;
                 this.label3.ForeColor = Color.Black;
                 this.label4.ForeColor = Color.Black;
+                this.label4.BackColor = Color.White;
                 this.radioButton1.ForeColor = Color.Black;
                 this.radioButton2.ForeColor = Color.Black;
                 this.newadmin.ForeColor = Color.Black;
                 this.label5.ForeColor = Color.Black;
                 this.username.ForeColor = Color.Black;
                 this.password.ForeColor = Color.Black;
-                this.forgotpass.ForeColor= Color.Black;
+                this.forgotpass.ForeColor = Color.Black;
             }
 
             if (File.Exists(PathsModel.credentialsPath))

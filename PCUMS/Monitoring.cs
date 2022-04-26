@@ -66,19 +66,23 @@ namespace PCUMS
             ShowTemperature.Visible = true;
 
 
-         
-
-
-
-            if (Program.Authority==1) 
+            if (Program.Authority == 1)
             {
                 //CPU Rules
                 limitCPU(CPU, fcpu);
                 //Temp Rules
-                limitTemp(Temp,currentTemp);
+                limitTemp(Temp, currentTemp);
                 //RAM Rules
                 limitRAM(RAM, fram);
 
+                button1.Visible = false;
+                label4.Visible = false;
+
+            }
+            else
+            {
+                button1.Visible = true;
+                label4.Visible = true;
             }
 
         }
