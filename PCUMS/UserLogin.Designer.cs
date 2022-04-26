@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.forgotpass = new System.Windows.Forms.Label();
+            this.forgotpassclick = new System.Windows.Forms.Label();
             this.usernametext = new System.Windows.Forms.TextBox();
             this.register = new System.Windows.Forms.Button();
             this.password = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.forgotpass = new System.Windows.Forms.Label();
-            this.forgotpassclick = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +76,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1264, 935);
             this.panel1.TabIndex = 18;
+            // 
+            // forgotpass
+            // 
+            this.forgotpass.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.forgotpass.AutoSize = true;
+            this.forgotpass.BackColor = System.Drawing.Color.Transparent;
+            this.forgotpass.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotpass.ForeColor = System.Drawing.Color.Black;
+            this.forgotpass.Location = new System.Drawing.Point(470, 849);
+            this.forgotpass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.forgotpass.Name = "forgotpass";
+            this.forgotpass.Size = new System.Drawing.Size(242, 29);
+            this.forgotpass.TabIndex = 39;
+            this.forgotpass.Text = "Forgot Password?";
+            this.forgotpass.Visible = false;
+            // 
+            // forgotpassclick
+            // 
+            this.forgotpassclick.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.forgotpassclick.AutoSize = true;
+            this.forgotpassclick.BackColor = System.Drawing.Color.Transparent;
+            this.forgotpassclick.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotpassclick.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.forgotpassclick.Location = new System.Drawing.Point(720, 849);
+            this.forgotpassclick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.forgotpassclick.Name = "forgotpassclick";
+            this.forgotpassclick.Size = new System.Drawing.Size(136, 29);
+            this.forgotpassclick.TabIndex = 38;
+            this.forgotpassclick.Text = "click here";
+            this.forgotpassclick.Visible = false;
+            this.forgotpassclick.Click += new System.EventHandler(this.forgotpassclick_Click);
             // 
             // usernametext
             // 
@@ -371,37 +402,6 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
-            // forgotpass
-            // 
-            this.forgotpass.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.forgotpass.AutoSize = true;
-            this.forgotpass.BackColor = System.Drawing.Color.Transparent;
-            this.forgotpass.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forgotpass.ForeColor = System.Drawing.Color.Black;
-            this.forgotpass.Location = new System.Drawing.Point(470, 849);
-            this.forgotpass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.forgotpass.Name = "forgotpass";
-            this.forgotpass.Size = new System.Drawing.Size(242, 29);
-            this.forgotpass.TabIndex = 39;
-            this.forgotpass.Text = "Forgot Password?";
-            this.forgotpass.Visible = false;
-            // 
-            // forgotpassclick
-            // 
-            this.forgotpassclick.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.forgotpassclick.AutoSize = true;
-            this.forgotpassclick.BackColor = System.Drawing.Color.Transparent;
-            this.forgotpassclick.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forgotpassclick.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.forgotpassclick.Location = new System.Drawing.Point(720, 849);
-            this.forgotpassclick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.forgotpassclick.Name = "forgotpassclick";
-            this.forgotpassclick.Size = new System.Drawing.Size(136, 29);
-            this.forgotpassclick.TabIndex = 38;
-            this.forgotpassclick.Text = "click here";
-            this.forgotpassclick.Visible = false;
-            this.forgotpassclick.Click += new System.EventHandler(this.forgotpassclick_Click);
-            // 
             // UserLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -420,6 +420,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "UserLogin";
             this.Text = "Login";
