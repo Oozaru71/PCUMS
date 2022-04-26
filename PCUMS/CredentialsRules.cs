@@ -77,7 +77,7 @@ namespace PCUMS
                 }
 
                 string admin = Program.Admin;
-              
+                
 
 
                 label2.Text = "🙂 Hello " + admin + ", let us get started.";
@@ -230,5 +230,5 @@ namespace PCUMS
             this.Close();
         }
 
-       }
+    }
 }

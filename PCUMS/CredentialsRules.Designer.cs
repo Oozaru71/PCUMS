@@ -238,7 +238,8 @@ namespace PCUMS
             this.label13.Size = new System.Drawing.Size(159, 20);
             this.label13.TabIndex = 27;
             this.label13.Text = "RAM Usage Cap:";
-            this.toolTip1.SetToolTip(this.label13, "Limits how much of the physical RAM available can be used in a session. ");
+            this.toolTip1.SetToolTip(this.label13, "The RAM cap is determined by obtaining the current percentage RAM usage of the co" +
+        "mputer and then setting a limit using the current usage as the minimum. ");
             // 
             // numRAM
             // 
