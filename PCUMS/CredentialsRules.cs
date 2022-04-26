@@ -73,10 +73,10 @@ namespace PCUMS
                 button2.Enabled = true;
                 makingNewUser = false;
 
-                numTemp.Value=RulesModel.Temp;
-                numSess.Value=RulesModel.SessionT;
-                numRAM.Value=RulesModel.RAM;
-                numCPU.Value=RulesModel.CPU;
+                numTemp.Value= RulesModel.Temp;
+                numSess.Value = RulesModel.SessionT;
+                numRAM.Value = RulesModel.RAM;
+                numCPU.Value = RulesModel.CPU;
 
             }
             else

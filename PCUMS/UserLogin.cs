@@ -343,7 +343,7 @@ namespace PCUMS
                 if (!File.Exists(PathsModel.credentialsPath))
                 {
                     RulesModel.AdminID = "1";
-                    PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + RulesModel.blackTheme.ToString();
+                    PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
                     System.IO.File.WriteAllText(PathsModel.credentialsPath, PathsModel.csv);
                     RulesModel.AdminID = PathsModel.csv.Split(',')[0];
                     RulesModel.Admin = PathsModel.csv.Split(',')[1];
@@ -385,7 +385,7 @@ namespace PCUMS
                         tempInt = tempInt + 1;
                         temp = tempInt.ToString();
                         RulesModel.AdminID = temp;
-                        PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + RulesModel.blackTheme.ToString();
+                        PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
                         File.AppendAllText(PathsModel.credentialsPath, PathsModel.csv);
                         RulesModel.AdminID = PathsModel.csv.Split(',')[0];
                         RulesModel.Admin = PathsModel.csv.Split(',')[1];
