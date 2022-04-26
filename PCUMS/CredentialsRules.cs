@@ -72,6 +72,12 @@ namespace PCUMS
                 label2.Text = "🙂 Hello " + admin + ", let us get started.";
                 button2.Enabled = true;
                 makingNewUser = false;
+
+                numTemp.Value=RulesModel.Temp;
+                numSess.Value=RulesModel.SessionT;
+                numRAM.Value=RulesModel.RAM;
+                numCPU.Value=RulesModel.CPU;
+
             }
             else
             {
