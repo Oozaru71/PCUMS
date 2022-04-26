@@ -157,12 +157,30 @@ namespace PCUMS
                 if (((TextBox)(sender)).Name == "USERS" + l.ToString())
                 {
                     UserInfo.Users[l] = ((TextBox)(sender)).Text;
-                    RulesModel.Admin = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.Admin = Table.Users[l];
+                    }
+                    else
+                    {
+                        RulesModel.Admin = valueToChange;
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "PASSWORDS" + l.ToString())
                 {
                     UserInfo.Passwords[l] = ((TextBox)(sender)).Text;
-                    RulesModel.AdminPass = ((TextBox)(sender)).Text;
+
+                    valueToChange = ((TextBox)(sender)).Text;
+
+                    if (string.IsNullOrEmpty(valueToChange))
+                    {
+                        RulesModel.AdminPass = Table.Passwords[l];
+                    }
+                    else
+                    {
+                        RulesModel.AdminPass = valueToChange;
+                    }
                 }
                 else if (((TextBox)(sender)).Name == "TEMPS" + l.ToString())
                 {
