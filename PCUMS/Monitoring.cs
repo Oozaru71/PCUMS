@@ -17,21 +17,23 @@ namespace PCUMS
 
     public partial class Monitoring : MetroFramework.Forms.MetroForm
     {
+        //Booleans to show alerts
         bool AlerGiven=false;
         bool AlerGiven2 = false;
         bool AlerGiven3 = false;    
-
+        
+        //Boolean to show the final alert
         bool finalGiven = false;
- 
 
+        //The number of cores
         int cpuActors = 0;
 
-        private static readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
-
+        //To check how long a rule has been broken for
         int counter;
         int counter2;
         int counter3;
 
+        //Get the rules set by the user
         float CPU = (float)RulesModel.CPU;
         float Temp = (float)RulesModel.Temp;
         float RAM=(float)RulesModel.RAM;   
