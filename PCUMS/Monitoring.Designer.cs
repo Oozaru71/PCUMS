@@ -86,7 +86,8 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(146, 278);
+            this.chart1.Location = new System.Drawing.Point(219, 428);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -98,23 +99,25 @@
             series2.Name = "RAM";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(625, 280);
+            this.chart1.Size = new System.Drawing.Size(938, 431);
             this.chart1.TabIndex = 6;
             // 
             // metroProgressBarCPU
             // 
             this.metroProgressBarCPU.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroProgressBarCPU.Location = new System.Drawing.Point(213, 184);
+            this.metroProgressBarCPU.Location = new System.Drawing.Point(320, 283);
+            this.metroProgressBarCPU.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroProgressBarCPU.Name = "metroProgressBarCPU";
-            this.metroProgressBarCPU.Size = new System.Drawing.Size(497, 32);
+            this.metroProgressBarCPU.Size = new System.Drawing.Size(746, 49);
             this.metroProgressBarCPU.TabIndex = 7;
             // 
             // metroProgressBarRAM
             // 
             this.metroProgressBarRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroProgressBarRAM.Location = new System.Drawing.Point(213, 240);
+            this.metroProgressBarRAM.Location = new System.Drawing.Point(320, 369);
+            this.metroProgressBarRAM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.metroProgressBarRAM.Name = "metroProgressBarRAM";
-            this.metroProgressBarRAM.Size = new System.Drawing.Size(497, 32);
+            this.metroProgressBarRAM.Size = new System.Drawing.Size(746, 49);
             this.metroProgressBarRAM.TabIndex = 8;
             // 
             // button1
@@ -124,9 +127,10 @@
             this.button1.BackgroundImage = global::PCUMS.Properties.Resources.log_out;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(6, 390);
+            this.button1.Location = new System.Drawing.Point(9, 600);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 38);
+            this.button1.Size = new System.Drawing.Size(58, 58);
             this.button1.TabIndex = 13;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -140,10 +144,9 @@
             this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.metroLabel1.Location = new System.Drawing.Point(143, 184);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(214, 283);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(53, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(77, 29);
             this.metroLabel1.TabIndex = 16;
             this.metroLabel1.Text = "CPU:";
             // 
@@ -152,10 +155,9 @@
             this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.metroLabel2.Location = new System.Drawing.Point(143, 240);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(214, 369);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(55, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(81, 29);
             this.metroLabel2.TabIndex = 17;
             this.metroLabel2.Text = "RAM:";
             // 
@@ -164,10 +166,9 @@
             this.lblCPU.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCPU.AutoSize = true;
             this.lblCPU.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblCPU.Location = new System.Drawing.Point(734, 184);
-            this.lblCPU.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCPU.Location = new System.Drawing.Point(1101, 283);
             this.lblCPU.Name = "lblCPU";
-            this.lblCPU.Size = new System.Drawing.Size(38, 20);
+            this.lblCPU.Size = new System.Drawing.Size(56, 29);
             this.lblCPU.TabIndex = 18;
             this.lblCPU.Text = "0%";
             // 
@@ -176,10 +177,9 @@
             this.lblRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRAM.AutoSize = true;
             this.lblRAM.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblRAM.Location = new System.Drawing.Point(734, 240);
-            this.lblRAM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRAM.Location = new System.Drawing.Point(1101, 369);
             this.lblRAM.Name = "lblRAM";
-            this.lblRAM.Size = new System.Drawing.Size(38, 20);
+            this.lblRAM.Size = new System.Drawing.Size(56, 29);
             this.lblRAM.TabIndex = 19;
             this.lblRAM.Text = "0%";
             // 
@@ -188,20 +188,18 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(143, 573);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(214, 882);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 20);
+            this.label1.Size = new System.Drawing.Size(250, 29);
             this.label1.TabIndex = 20;
             this.label1.Text = "CPU Temperature:";
             // 
             // showTemp
             // 
             this.showTemp.AutoSize = true;
-            this.showTemp.Location = new System.Drawing.Point(603, 439);
-            this.showTemp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.showTemp.Location = new System.Drawing.Point(904, 675);
             this.showTemp.Name = "showTemp";
-            this.showTemp.Size = new System.Drawing.Size(0, 13);
+            this.showTemp.Size = new System.Drawing.Size(0, 20);
             this.showTemp.TabIndex = 21;
             // 
             // panel1
@@ -226,10 +224,9 @@
             this.panel1.Controls.Add(this.chart1);
             this.panel1.Controls.Add(this.metroProgressBarCPU);
             this.panel1.Controls.Add(this.metroProgressBarRAM);
-            this.panel1.Location = new System.Drawing.Point(13, 22);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(20, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 654);
+            this.panel1.Size = new System.Drawing.Size(1340, 1004);
             this.panel1.TabIndex = 36;
             // 
             // label4
@@ -237,9 +234,10 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(3, 358);
+            this.label4.Location = new System.Drawing.Point(4, 551);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 20);
+            this.label4.Size = new System.Drawing.Size(110, 29);
             this.label4.TabIndex = 40;
             this.label4.Text = "Log out";
             // 
@@ -248,10 +246,9 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(2, 269);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(3, 414);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.Size = new System.Drawing.Size(83, 29);
             this.label3.TabIndex = 39;
             this.label3.Text = "Rules";
             // 
@@ -260,10 +257,9 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(1, 187);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(2, 288);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 20);
+            this.label2.Size = new System.Drawing.Size(118, 29);
             this.label2.TabIndex = 38;
             this.label2.Text = "Settings";
             // 
@@ -272,8 +268,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PCUMS.Properties.Resources.PCUMS;
-            this.pictureBox1.Location = new System.Drawing.Point(202, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(303, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(500, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -284,10 +279,9 @@
             // 
             this.ShowTemperature.AutoSize = true;
             this.ShowTemperature.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.ShowTemperature.Location = new System.Drawing.Point(143, 606);
-            this.ShowTemperature.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ShowTemperature.Location = new System.Drawing.Point(214, 932);
             this.ShowTemperature.Name = "ShowTemperature";
-            this.ShowTemperature.Size = new System.Drawing.Size(124, 20);
+            this.ShowTemperature.Size = new System.Drawing.Size(177, 29);
             this.ShowTemperature.TabIndex = 0;
             this.ShowTemperature.Text = "Temperature";
             // 
@@ -297,9 +291,10 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(5, 209);
+            this.button2.Location = new System.Drawing.Point(8, 322);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 39);
+            this.button2.Size = new System.Drawing.Size(60, 60);
             this.button2.TabIndex = 15;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -311,23 +306,24 @@
             this.Rules.BackgroundImage = global::PCUMS.Properties.Resources.rules;
             this.Rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Rules.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.Rules.Location = new System.Drawing.Point(5, 297);
+            this.Rules.Location = new System.Drawing.Point(8, 457);
+            this.Rules.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Rules.Name = "Rules";
-            this.Rules.Size = new System.Drawing.Size(40, 41);
+            this.Rules.Size = new System.Drawing.Size(60, 63);
             this.Rules.TabIndex = 14;
             this.Rules.UseVisualStyleBackColor = false;
             this.Rules.Click += new System.EventHandler(this.Rules_Click);
             // 
-            // Form1
+            // Monitoring
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 697);
+            this.ClientSize = new System.Drawing.Size(1378, 1072);
             this.Controls.Add(this.showTemp);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
-            this.Padding = new System.Windows.Forms.Padding(13, 60, 13, 13);
+            this.MinimizeBox = false;
+            this.Name = "Monitoring";
+            this.Padding = new System.Windows.Forms.Padding(20, 92, 20, 20);
             this.Text = "RAM && CPU";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pRAM)).EndInit();

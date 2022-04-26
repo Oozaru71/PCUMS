@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
 using OpenHardwareMonitor.Hardware;
+using PCUMS.Models;
 
 namespace PCUMS
 {
@@ -34,9 +32,9 @@ namespace PCUMS
         int counter2;
         int counter3;
 
-        float CPU = (float)Program.CPU;
-        float Temp = (float)Program.Temp;
-        float RAM=(float)Program.RAM;   
+        float CPU = (float)RulesModel.CPU;
+        float Temp = (float)RulesModel.Temp;
+        float RAM=(float)RulesModel.RAM;   
 
         //   PerformanceCounter c = new PerformanceCounter("Processor Information", "% Idle Time", "_Total",true);
         //   PerformanceCounter k = new PerformanceCounter("Memory", "Available MBytes");
@@ -209,7 +207,7 @@ namespace PCUMS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (Program.blackTheme)
+            if (RulesModel.blackTheme)
             {
                 this.Theme = MetroFramework.MetroThemeStyle.Dark;
                 this.BackColor = Color.Black;
@@ -233,7 +231,7 @@ namespace PCUMS
                 this.label4.ForeColor = Color.White;
                 this.label4.BackColor = Color.Black;
             }
-            else if (!Program.blackTheme)
+            else if (!RulesModel.blackTheme)
             {
                 this.Theme = MetroFramework.MetroThemeStyle.Light;
                 this.BackColor = Color.White;
@@ -269,28 +267,28 @@ namespace PCUMS
                 else {
                             string result = "";
                             string store = "";
-                            StreamReader reader = new StreamReader(Program.credentialsPath);
+                            StreamReader reader = new StreamReader(PathsModel.credentialsPath);
                             while ((result = reader.ReadLine()) != null)
                             {
-                                if (result.Contains(Program.SessionID.ToString()))
+                                if (result.Contains(RulesModel.SessionID.ToString()))
                                 {
                                     store = result;
                                 }
                             }
 
-                            Program.AdminID = "";
-                            Program.Admin = "";
-                            Program.AdminPass = "";
-                            Program.Temp = Int32.Parse(store.Split(',')[3]);
-                            Program.CPU = Int32.Parse(store.Split(',')[4]);
-                            Program.RAM = Int32.Parse(store.Split(',')[5]);
-                            Program.SessionT = Int32.Parse(store.Split(',')[6]);
-                            Program.SessionID = Int32.Parse(store.Split(',')[7]);
-                            Program.blackTheme = bool.Parse(store.Split(',')[8]);
+                            RulesModel.AdminID = "";
+                            RulesModel.Admin = "";
+                            RulesModel.AdminPass = "";
+                            RulesModel.Temp = Int32.Parse(store.Split(',')[3]);
+                            RulesModel.CPU = Int32.Parse(store.Split(',')[4]);
+                            RulesModel.RAM = Int32.Parse(store.Split(',')[5]);
+                            RulesModel.SessionT = Int32.Parse(store.Split(',')[6]);
+                            RulesModel.SessionID = Int32.Parse(store.Split(',')[7]);
+                            RulesModel.blackTheme = bool.Parse(store.Split(',')[8]);
                             Rules.Enabled = false;
 
                             //Timer for Session Time
-                            int SessionTime = (int)Program.SessionT;
+                            int SessionTime = (int)RulesModel.SessionT;
 
                             System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
                             MyTimer.Interval = (SessionTime * 60 * 1000); ; // Timer counts in miliseconds and the user input is given in minutes
@@ -320,7 +318,42 @@ namespace PCUMS
                 
         }
 
-  
+        private void processKiller()
+        {
+    
+                var counterList = new List<PerformanceCounter>();
+
+                while (true)
+                {
+                    var procDict = new Dictionary<string, float>();
+
+                    Process.GetProcesses().ToList().ForEach(p =>
+                    {
+                        using (p)
+                            if (counterList
+                                .FirstOrDefault(c => c.InstanceName == p.ProcessName) == null)
+                                counterList.Add(
+                                    new PerformanceCounter("Process", "% Processor Time",
+                                        p.ProcessName, true));
+                    });
+
+                    counterList.ForEach(c =>
+                    {
+                        try
+                        {
+                            var percent = c.NextValue() / Environment.ProcessorCount;
+                            if (percent < 50)
+                                return;
+                            //if (c.InstanceName.Trim().ToLower() == "idle")
+                            //    return;
+                            procDict[c.InstanceName] = percent;
+                        }
+                        catch (InvalidOperationException) { /* some will fail */ }
+                    });
+
+                    procDict.OrderByDescending(d => d.Value).ToList(); 
+                }
+         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -338,10 +371,10 @@ namespace PCUMS
         {
             System.Windows.Forms.MessageBox.Show("Your session rules are:\n"
                                                + "----------------------------\n"
-                                               + "Temperature: " + Program.Temp + " C" + "\n"
-                                               + "CPU: " + Program.CPU + " %" + "\n"
-                                               + "RAM: " + Program.RAM + " GB" + "\n"
-                                               + "Session Time: " + Program.SessionT + " Minutes");
+                                               + "Temperature: " + RulesModel.Temp + " C" + "\n"
+                                               + "CPU: " + RulesModel.CPU + " %" + "\n"
+                                               + "RAM: " + RulesModel.RAM + " GB" + "\n"
+                                               + "Session Time: " + RulesModel.SessionT + " Minutes");
         }
     }
 }

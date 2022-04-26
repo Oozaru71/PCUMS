@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using PCUMS.Models;
 using System.Drawing;
-using System.Linq;
 using System.IO;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PCUMS
@@ -21,7 +15,7 @@ namespace PCUMS
 
         private void SystemAdminCheck_Load(object sender, EventArgs e)
         {
-            if (Program.blackTheme)
+            if (RulesModel.blackTheme)
             {
                 this.BackColor = Color.Black;
                 this.button1.BackColor = Color.Black;
@@ -32,7 +26,7 @@ namespace PCUMS
                 this.label3.ForeColor = Color.White;
                 this.label5.ForeColor = Color.White;
             }
-            else if (!Program.blackTheme)
+            else if (!RulesModel.blackTheme)
             {
                 this.BackColor = Color.White;
                 this.button1.BackColor = Color.White;
@@ -55,7 +49,7 @@ namespace PCUMS
         {
             string result = "";
             string store = "";
-            StreamReader reader = new StreamReader(Program.credentialsPath);
+            StreamReader reader = new StreamReader(PathsModel.credentialsPath);
             while ((result = reader.ReadLine()) != null)
             {
                 if (result.Contains(textBox1.Text))
@@ -64,25 +58,25 @@ namespace PCUMS
                 }
             }
 
-            //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
+            //string line = File.ReadLines(RulesModel.credentialsPath).Skip(14).Take(1).First();
             if (store != "")
             {
-                Program.AdminID = store.Split(',')[0];
-                Program.Admin = store.Split(',')[1];
-                Program.AdminPass = store.Split(',')[2];
+                RulesModel.AdminID = store.Split(',')[0];
+                RulesModel.Admin = store.Split(',')[1];
+                RulesModel.AdminPass = store.Split(',')[2];
 
             }
             reader.Close();
-            if (Program.Admin.Equals(textBox1.Text) && Program.AdminPass.Equals(textBox3.Text) && Program.AdminID == "1")
+            if (RulesModel.Admin.Equals(textBox1.Text) && RulesModel.AdminPass.Equals(textBox3.Text) && RulesModel.AdminID == "1")
             {
                 Program.Requester = 2;
-                Program.SystemAdminVerified = true;
+                RulesModel.SystemAdminVerified = true;
                 System.Windows.Forms.MessageBox.Show("System Admin Verified. Can now make a new user!");
                 this.Close();
             }
-            else if (Program.Admin.Equals(textBox1.Text) && Program.AdminPass.Equals(textBox3.Text) && Program.AdminID != "1")
+            else if (RulesModel.Admin.Equals(textBox1.Text) && RulesModel.AdminPass.Equals(textBox3.Text) && RulesModel.AdminID != "1")
             {
-                System.Windows.Forms.MessageBox.Show("Must login as System admin with ID 1, Entered ID: " + Program.AdminID);
+                System.Windows.Forms.MessageBox.Show("Must login as System admin with ID 1, Entered ID: " + RulesModel.AdminID);
             }
             else
             {

@@ -70,9 +70,10 @@ namespace PCUMS
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(222, 203);
+            this.label2.Location = new System.Drawing.Point(333, 312);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(549, 29);
+            this.label2.Size = new System.Drawing.Size(813, 45);
             this.label2.TabIndex = 2;
             this.label2.Text = "🙂 Hello Administrator, let us get started.";
             // 
@@ -81,9 +82,10 @@ namespace PCUMS
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(391, 260);
+            this.label6.Location = new System.Drawing.Point(586, 400);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(136, 20);
+            this.label6.Size = new System.Drawing.Size(191, 29);
             this.label6.TabIndex = 8;
             this.label6.Text = "Session Rules";
             // 
@@ -92,9 +94,10 @@ namespace PCUMS
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(230, 304);
+            this.label7.Location = new System.Drawing.Point(345, 468);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 20);
+            this.label7.Size = new System.Drawing.Size(247, 29);
             this.label7.TabIndex = 9;
             this.label7.Text = "Temperature Cap:";
             this.toolTip1.SetToolTip(this.label7, "Average of all CPU cores temperatures.");
@@ -104,9 +107,10 @@ namespace PCUMS
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(230, 340);
+            this.label8.Location = new System.Drawing.Point(345, 523);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 20);
+            this.label8.Size = new System.Drawing.Size(135, 29);
             this.label8.TabIndex = 10;
             this.label8.Text = "CPU Cap:";
             this.toolTip1.SetToolTip(this.label8, "How much of the processor is used over a 1 second interval");
@@ -116,9 +120,10 @@ namespace PCUMS
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(230, 384);
+            this.label9.Location = new System.Drawing.Point(345, 591);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(138, 20);
+            this.label9.Size = new System.Drawing.Size(195, 29);
             this.label9.TabIndex = 11;
             this.label9.Text = "Session Time:";
             this.toolTip1.SetToolTip(this.label9, "It is recommended to give Guests a reasonable time frame. ");
@@ -128,9 +133,10 @@ namespace PCUMS
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(521, 306);
+            this.label10.Location = new System.Drawing.Point(782, 471);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(262, 20);
+            this.label10.Size = new System.Drawing.Size(370, 29);
             this.label10.TabIndex = 18;
             this.label10.Text = "degrees F (higher than 50).";
             // 
@@ -139,9 +145,10 @@ namespace PCUMS
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(521, 345);
+            this.label11.Location = new System.Drawing.Point(782, 531);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(191, 20);
+            this.label11.Size = new System.Drawing.Size(271, 29);
             this.label11.TabIndex = 19;
             this.label11.Text = "% (higher than 60).";
             // 
@@ -150,9 +157,10 @@ namespace PCUMS
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(521, 386);
+            this.label12.Location = new System.Drawing.Point(782, 594);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 20);
+            this.label12.Size = new System.Drawing.Size(115, 29);
             this.label12.TabIndex = 20;
             this.label12.Text = "minutes";
             // 
@@ -165,14 +173,15 @@ namespace PCUMS
             0,
             0,
             0});
-            this.numTemp.Location = new System.Drawing.Point(415, 304);
+            this.numTemp.Location = new System.Drawing.Point(622, 468);
+            this.numTemp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numTemp.Minimum = new decimal(new int[] {
             50,
             0,
             0,
             0});
             this.numTemp.Name = "numTemp";
-            this.numTemp.Size = new System.Drawing.Size(100, 27);
+            this.numTemp.Size = new System.Drawing.Size(150, 37);
             this.numTemp.TabIndex = 22;
             this.numTemp.Value = new decimal(new int[] {
             50,
@@ -189,7 +198,8 @@ namespace PCUMS
             0,
             0,
             0});
-            this.numCPU.Location = new System.Drawing.Point(415, 340);
+            this.numCPU.Location = new System.Drawing.Point(622, 523);
+            this.numCPU.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numCPU.Maximum = new decimal(new int[] {
             99,
             0,
@@ -201,7 +211,7 @@ namespace PCUMS
             0,
             0});
             this.numCPU.Name = "numCPU";
-            this.numCPU.Size = new System.Drawing.Size(100, 27);
+            this.numCPU.Size = new System.Drawing.Size(150, 37);
             this.numCPU.TabIndex = 23;
             this.numCPU.Value = new decimal(new int[] {
             60,
@@ -213,14 +223,15 @@ namespace PCUMS
             // 
             this.numSess.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numSess.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.numSess.Location = new System.Drawing.Point(415, 379);
+            this.numSess.Location = new System.Drawing.Point(622, 583);
+            this.numSess.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numSess.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numSess.Name = "numSess";
-            this.numSess.Size = new System.Drawing.Size(100, 27);
+            this.numSess.Size = new System.Drawing.Size(150, 37);
             this.numSess.TabIndex = 24;
             this.numSess.Value = new decimal(new int[] {
             1,
@@ -233,9 +244,10 @@ namespace PCUMS
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(230, 419);
+            this.label13.Location = new System.Drawing.Point(345, 645);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(159, 20);
+            this.label13.Size = new System.Drawing.Size(227, 29);
             this.label13.TabIndex = 27;
             this.label13.Text = "RAM Usage Cap:";
             this.toolTip1.SetToolTip(this.label13, "The RAM cap is determined by obtaining the current percentage RAM usage of the co" +
@@ -245,9 +257,10 @@ namespace PCUMS
             // 
             this.numRAM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numRAM.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.numRAM.Location = new System.Drawing.Point(415, 417);
+            this.numRAM.Location = new System.Drawing.Point(622, 642);
+            this.numRAM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numRAM.Name = "numRAM";
-            this.numRAM.Size = new System.Drawing.Size(100, 27);
+            this.numRAM.Size = new System.Drawing.Size(150, 37);
             this.numRAM.TabIndex = 28;
             // 
             // label14
@@ -255,9 +268,10 @@ namespace PCUMS
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(521, 423);
+            this.label14.Location = new System.Drawing.Point(782, 651);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(191, 20);
+            this.label14.Size = new System.Drawing.Size(271, 29);
             this.label14.TabIndex = 29;
             this.label14.Text = "% (higher than 50).";
             // 
@@ -266,9 +280,10 @@ namespace PCUMS
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(5, 296);
+            this.label1.Location = new System.Drawing.Point(8, 455);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 20);
+            this.label1.Size = new System.Drawing.Size(204, 29);
             this.label1.TabIndex = 33;
             this.label1.Text = "Change Theme";
             // 
@@ -277,9 +292,10 @@ namespace PCUMS
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(3, 445);
+            this.label3.Location = new System.Drawing.Point(4, 685);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 20);
+            this.label3.Size = new System.Drawing.Size(193, 29);
             this.label3.TabIndex = 34;
             this.label3.Text = "Manage Users";
             this.label3.Visible = false;
@@ -296,10 +312,9 @@ namespace PCUMS
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Continue);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 654);
+            this.panel1.Size = new System.Drawing.Size(1340, 1004);
             this.panel1.TabIndex = 35;
             // 
             // label4
@@ -307,9 +322,10 @@ namespace PCUMS
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(3, 366);
+            this.label4.Location = new System.Drawing.Point(4, 563);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 20);
+            this.label4.Size = new System.Drawing.Size(110, 29);
             this.label4.TabIndex = 35;
             this.label4.Text = "Log out";
             // 
@@ -320,9 +336,10 @@ namespace PCUMS
             this.button3.BackgroundImage = global::PCUMS.Properties.Resources.log_out;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(7, 388);
+            this.button3.Location = new System.Drawing.Point(10, 597);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(52, 46);
+            this.button3.Size = new System.Drawing.Size(78, 71);
             this.button3.TabIndex = 31;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -335,9 +352,10 @@ namespace PCUMS
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(7, 467);
+            this.button1.Location = new System.Drawing.Point(10, 718);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 46);
+            this.button1.Size = new System.Drawing.Size(78, 71);
             this.button1.TabIndex = 26;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
@@ -351,9 +369,10 @@ namespace PCUMS
             this.Continue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Continue.BackgroundImage")));
             this.Continue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Continue.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.Continue.Location = new System.Drawing.Point(373, 499);
+            this.Continue.Location = new System.Drawing.Point(560, 768);
+            this.Continue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Continue.Name = "Continue";
-            this.Continue.Size = new System.Drawing.Size(189, 67);
+            this.Continue.Size = new System.Drawing.Size(284, 103);
             this.Continue.TabIndex = 16;
             this.Continue.UseVisualStyleBackColor = false;
             this.Continue.Click += new System.EventHandler(this.Continue_Click);
@@ -363,8 +382,7 @@ namespace PCUMS
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PCUMS.Properties.Resources.PCUMS;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(500, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -377,9 +395,10 @@ namespace PCUMS
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.BackgroundImage = global::PCUMS.Properties.Resources.moon;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(9, 318);
+            this.button2.Location = new System.Drawing.Point(14, 489);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(52, 40);
+            this.button2.Size = new System.Drawing.Size(78, 62);
             this.button2.TabIndex = 30;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -391,10 +410,10 @@ namespace PCUMS
             // 
             // CredentialsRules
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(904, 661);
+            this.ClientSize = new System.Drawing.Size(1356, 1017);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -412,6 +431,8 @@ namespace PCUMS
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "CredentialsRules";
             this.Text = "Login1";
             this.Load += new System.EventHandler(this.Login1_Load);
