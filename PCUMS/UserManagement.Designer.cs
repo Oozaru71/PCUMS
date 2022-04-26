@@ -155,6 +155,7 @@
             this.ClientSize = new System.Drawing.Size(1242, 879);
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MaximizeBox = false;
             this.Name = "UserManagement";
             this.Text = "User Management";
             this.Load += new System.EventHandler(this.Form2_Load);

@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using PCUMS.Models;
 using System.Diagnostics;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
-using System.Windows;
 using System.IO;
-using System.IO.Compression;
-using PCUMS.Properties;
 using Microsoft.VisualBasic;
-using OpenHardwareMonitor.Hardware;
-using Microsoft.VisualBasic.Devices;
 
 
 
@@ -43,15 +32,15 @@ namespace PCUMS
         }
         private void Continue_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Program.credentialsPath))
+            if (File.Exists(PathsModel.credentialsPath))
             {
                 var rand = new Random();
                 var id = rand.Next(101);
-                Program.Temp = numTemp.Value;
-                Program.CPU = numCPU.Value;
-                Program.RAM = numRAM.Value;
-                Program.SessionT = numSess.Value;
-                Program.SessionID = id;
+                RulesModel.Temp = numTemp.Value;
+                RulesModel.CPU = numCPU.Value;
+                RulesModel.RAM = numRAM.Value;
+                RulesModel.SessionT = numSess.Value;
+                RulesModel.SessionID = id;
 
                 System.Windows.Forms.MessageBox.Show("The Session ID created is:\n" + id + "");
                 UpdateAdmin();
@@ -65,18 +54,18 @@ namespace PCUMS
 
         private void Login1_Load(object sender, EventArgs e)
         {
-            if (File.Exists(Program.credentialsPath))
+            if (File.Exists(PathsModel.credentialsPath))
             {
-                if (Program.blackTheme)
+                if (RulesModel.blackTheme)
                 {
                     dark();
                 }
-                else if (!Program.blackTheme)
+                else if (!RulesModel.blackTheme)
                 {
                     light();
                 }
 
-                string admin = Program.Admin;
+                string admin = RulesModel.Admin;
               
 
 
@@ -90,7 +79,7 @@ namespace PCUMS
                 makingNewUser = true;
             }
 
-            if (Program.AdminID == "1")
+            if (RulesModel.AdminID == "1")
             {
                 button1.Enabled = true;
                 button1.Visible = true;
@@ -131,19 +120,19 @@ namespace PCUMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Program.credentialsPath))
+            if (File.Exists(PathsModel.credentialsPath))
             {
                 if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.moon.Size.ToString())
                 {
                     button2.BackgroundImage = PCUMS.Properties.Resources.bulb;
-                    Program.blackTheme = true;
+                    RulesModel.blackTheme = true;
                     UpdateAdmin();
                     dark();
                 }
                 else if (button2.BackgroundImage.Size.ToString() == PCUMS.Properties.Resources.bulb.Size.ToString())
                 {
                     button2.BackgroundImage = PCUMS.Properties.Resources.moon;
-                    Program.blackTheme = false;
+                    RulesModel.blackTheme = false;
                     UpdateAdmin();
                     light();
                 }
@@ -156,22 +145,22 @@ namespace PCUMS
 
         public static void UpdateAdmin()
         {
-            string store = Program.AdminID + "," + Program.Admin + "," + Program.AdminPass + "," + Program.Temp + "," + Program.CPU + "," + Program.RAM + "," + Program.SessionT + "," + Program.SessionID + "," + Program.blackTheme.ToString();
+            string store = RulesModel.AdminID + "," + RulesModel.Admin + "," + RulesModel.AdminPass + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
 
             string result = "";
             int counter = 0;
-            StreamReader reader = new StreamReader(Program.credentialsPath);
+            StreamReader reader = new StreamReader(PathsModel.credentialsPath);
             while ((result = reader.ReadLine()) != null)
             {
                 counter++;
-                if (result.Contains(Program.Admin))
+                if (result.Contains(RulesModel.Admin))
                 {
                     break;
                 }
             }
             reader.Close();
 
-            lineChanger(store, Program.credentialsPath, counter);
+            lineChanger(store, PathsModel.credentialsPath, counter);
         }
 
         void dark()

@@ -11,7 +11,7 @@ namespace PCUMS
 {
     public partial class UserManagement : Form
     {
-        int count = File.ReadAllLines(Program.credentialsPath).Length;
+        int count = File.ReadAllLines(PathsModel.credentialsPath).Length;
         StringCleaner cleanMyString = new StringCleaner();
         UserTableModel Table = new UserTableModel(); //Contains all the settings for the rules
         UserTableModel UserInfo = new UserTableModel();
@@ -41,7 +41,7 @@ namespace PCUMS
             {
                 label2.Text = count.ToString() + " Users Found:";
             }
-            foreach (string s in File.ReadAllLines(Program.credentialsPath))
+            foreach (string s in File.ReadAllLines(PathsModel.credentialsPath))
             {
                 Table.IDs.Add(s.Split(',')[0]);
                 Table.Users.Add(s.Split(',')[1]);
@@ -189,7 +189,7 @@ namespace PCUMS
             int del = 0;
             bool currentID = false;
 
-            foreach (string s in File.ReadAllLines(Program.credentialsPath))
+            foreach (string s in File.ReadAllLines(PathsModel.credentialsPath))
             {
                 Users[i] = s;
                 if (i < count)
@@ -204,7 +204,7 @@ namespace PCUMS
                 {
 
 
-                    using (var sw = new StreamWriter(Program.credentialsPath))
+                    using (var sw = new StreamWriter(PathsModel.credentialsPath))
                     {
                         for (int j = 0; i < (count); j++)
                         {
@@ -214,7 +214,7 @@ namespace PCUMS
                             }
                             if (i == j)
                             {
-                                if (Users[i].Split(',')[0] == Program.AdminID)
+                                if (Users[i].Split(',')[0] == RulesModel.AdminID)
                                 {
                                     currentID = true;
                                 }
@@ -230,7 +230,7 @@ namespace PCUMS
 
                 }
             }
-            count = File.ReadAllLines(Program.credentialsPath).Length;
+            count = File.ReadAllLines(PathsModel.credentialsPath).Length;
 
 
             if (currentID && (count != 0))
@@ -241,7 +241,7 @@ namespace PCUMS
             }
             else if (count == 0)
             {
-                System.IO.File.Delete(Program.credentialsPath);
+                System.IO.File.Delete(PathsModel.credentialsPath);
                 System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
                 Program.Requester = 1;
                 this.Close();
@@ -305,12 +305,12 @@ namespace PCUMS
         }
         private void SaveChanges_Click_1(object sender, EventArgs e)
         {
-            File.WriteAllText(Program.credentialsPath, String.Empty);
+            File.WriteAllText(PathsModel.credentialsPath, String.Empty);
 
             for (int i = 0; i < count; i++)
             {
                 string writeTo = (UserIDs[i].Text + "," + UserInfo.Users[i] + "," + UserInfo.Passwords[i] + "," + UserInfo.Temps[i] + "," + UserInfo.CPUs[i] + "," + UserInfo.RAMs[i] + "," + UserInfo.Times[i] + "," + UserInfo.SIDs[i] + "," + Table.BlackTheme[i]);
-                using (var writer = File.AppendText(Program.credentialsPath))
+                using (var writer = File.AppendText(PathsModel.credentialsPath))
                 {
                     writer.WriteLine(writeTo);
                 }
@@ -322,7 +322,7 @@ namespace PCUMS
         private void Form2_Load(object sender, EventArgs e)
         {
             panel1.AutoScroll = true;
-            if (Program.blackTheme == true)
+            if (RulesModel.blackTheme == true)
             {
                 this.BackColor = Color.Black;
                 this.label1.ForeColor = Color.White;
@@ -335,7 +335,7 @@ namespace PCUMS
                 this.SaveChanges.ForeColor = Color.White;
                 this.SaveChanges.BackColor = Color.Black;
             }
-            else if (Program.blackTheme == false)
+            else if (RulesModel.blackTheme == false)
             {
                 this.BackColor = Color.White;
                 this.label1.ForeColor = Color.Black;
@@ -363,7 +363,7 @@ namespace PCUMS
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
             {
-                System.IO.File.Delete(Program.credentialsPath);
+                System.IO.File.Delete(PathsModel.credentialsPath);
                 System.Windows.Forms.MessageBox.Show("No users in file: Exiting...");
                 Program.Requester = 1;
                 this.Close();

@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\StringCleaner.cs" />
+    <Compile Include="Models\PathsModel.cs" />
+    <Compile Include="Models\RulesModel.cs" />
     <Compile Include="Monitoring.cs">
       <SubType>Form</SubType>
     </Compile>

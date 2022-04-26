@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.IO;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PCUMS.Models;
 
 namespace PCUMS
 {
@@ -53,6 +48,10 @@ namespace PCUMS
             newadmin.Visible = true;
             clickhere.Enabled = true;
             clickhere.Visible = true;
+            forgotpass.Enabled = true;
+            forgotpass.Visible = true;
+            forgotpassclick.Enabled = true;
+            forgotpassclick.Visible = true;
         }
 
         private void adminDisable()
@@ -71,6 +70,10 @@ namespace PCUMS
             newadmin.Visible = false;
             clickhere.Enabled = false;
             clickhere.Visible = false;
+            forgotpass.Enabled = false;
+            forgotpass.Visible = false;
+            forgotpassclick.Enabled = false;
+            forgotpassclick.Visible = false;
         }
 
         private void guestEnable()
@@ -96,12 +99,12 @@ namespace PCUMS
         private void sessionStart_Click_1(object sender, EventArgs e)
         {
             int i = 0;
-            int count = File.ReadAllLines(Program.credentialsPath).Length;
+            int count = File.ReadAllLines(PathsModel.credentialsPath).Length;
             bool exists = false;
 
             String[] SessionIDlist = new String[count];
 
-            foreach (string s in File.ReadAllLines(Program.credentialsPath))
+            foreach (string s in File.ReadAllLines(PathsModel.credentialsPath))
             {
                 SessionIDlist[i] = s.Split(',')[7];
                 if (i < count)
@@ -119,7 +122,7 @@ namespace PCUMS
                     sessionStart.Enabled = false;
                     System.Windows.Forms.MessageBox.Show("SessionID: " + textBox1.Text + " initiated");
                     Program.Requester = 3;
-                    Program.SessionID = Int32.Parse(textBox1.Text);
+                    RulesModel.SessionID = Int32.Parse(textBox1.Text);
                     this.Close();
                 }
             }
@@ -134,7 +137,7 @@ namespace PCUMS
         {
             string result = "";
             string store = "";
-            StreamReader reader = new StreamReader(Program.credentialsPath);
+            StreamReader reader = new StreamReader(PathsModel.credentialsPath);
             while ((result = reader.ReadLine()) != null)
             {
                 if (result.Contains(textBox2.Text))
@@ -143,22 +146,22 @@ namespace PCUMS
                 }
             }
 
-            //string line = File.ReadLines(Program.credentialsPath).Skip(14).Take(1).First();
+            //string line = File.ReadLines(RulesModel.credentialsPath).Skip(14).Take(1).First();
             if (store != "")
             {
-                Program.AdminID = store.Split(',')[0];
-                Program.Admin = store.Split(',')[1];
-                Program.AdminPass = store.Split(',')[2];
-                Program.Temp = Int32.Parse(store.Split(',')[3]);
-                Program.CPU = Int32.Parse(store.Split(',')[4]);
-                Program.RAM = Int32.Parse(store.Split(',')[5]);
-                Program.SessionT = decimal.Parse(store.Split(',')[6]);
-                Program.SessionID = Int32.Parse(store.Split(',')[7]);
-                Program.blackTheme = bool.Parse(store.Split(',')[8]);
+                RulesModel.AdminID = store.Split(',')[0];
+                RulesModel.Admin = store.Split(',')[1];
+                RulesModel.AdminPass = store.Split(',')[2];
+                RulesModel.Temp = Int32.Parse(store.Split(',')[3]);
+                RulesModel.CPU = Int32.Parse(store.Split(',')[4]);
+                RulesModel.RAM = Int32.Parse(store.Split(',')[5]);
+                RulesModel.SessionT = decimal.Parse(store.Split(',')[6]);
+                RulesModel.SessionID = Int32.Parse(store.Split(',')[7]);
+                RulesModel.blackTheme = bool.Parse(store.Split(',')[8]);
 
             }
             reader.Close();
-            if (Program.Admin.Equals(textBox2.Text) && Program.AdminPass.Equals(textBox3.Text))
+            if (RulesModel.Admin.Equals(textBox2.Text) && RulesModel.AdminPass.Equals(textBox3.Text))
             {
                 Program.Requester = 1;
                 Program.Authority = 2;
@@ -174,7 +177,7 @@ namespace PCUMS
 
         private void UserLogin_Load(object sender, EventArgs e)
         {
-            if (Program.blackTheme)
+            if (RulesModel.blackTheme)
             {
                 this.BackColor = Color.Black;
                 this.button1.BackColor = Color.Black;
@@ -190,8 +193,9 @@ namespace PCUMS
                 this.label5.ForeColor = Color.White;
                 this.username.ForeColor = Color.White;
                 this.password.ForeColor = Color.White;
+                this.forgotpass.ForeColor = Color.White;
             }
-            else if (!Program.blackTheme)
+            else if (!RulesModel.blackTheme)
             {
                 this.BackColor = Color.White;
                 this.button1.BackColor = Color.White;
@@ -207,11 +211,12 @@ namespace PCUMS
                 this.label5.ForeColor = Color.Black;
                 this.username.ForeColor = Color.Black;
                 this.password.ForeColor = Color.Black;
+                this.forgotpass.ForeColor= Color.Black;
             }
 
-            if (File.Exists(Program.credentialsPath))
+            if (File.Exists(PathsModel.credentialsPath))
             {
-                if (Program.SystemAdminVerified)
+                if (RulesModel.SystemAdminVerified)
                 {
                     //Welcome
                     label2.Visible = false;
@@ -249,7 +254,7 @@ namespace PCUMS
 
         private void label1_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(Program.credentialsPath))
+            if (!File.Exists(PathsModel.credentialsPath))
             {
                 //Welcome
                 label2.Visible = false;
@@ -328,33 +333,33 @@ namespace PCUMS
                  && passwordtext.Text.Contains(" ") == false && usernametext.Text.Contains(" ") == false)
             {
                 //Checks if the directory exists
-                if (!Directory.Exists(Program.dataPath))
+                if (!Directory.Exists(PathsModel.dataPath))
                 {
-                    Directory.CreateDirectory(Program.dataPath);
+                    Directory.CreateDirectory(PathsModel.dataPath);
                 }
                 //Checks if the file exists
-                if (!File.Exists(Program.credentialsPath))
+                if (!File.Exists(PathsModel.credentialsPath))
                 {
-                    Program.AdminID = "1";
-                    Program.csv = Program.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + Program.blackTheme.ToString();
-                    System.IO.File.WriteAllText(Program.credentialsPath, Program.csv);
-                    Program.AdminID = Program.csv.Split(',')[0];
-                    Program.Admin = Program.csv.Split(',')[1];
-                    Program.AdminPass = Program.csv.Split(',')[2];
-                    Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
-                    Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                    Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                    Program.SessionT = decimal.Parse(Program.csv.Split(',')[6]);
-                    Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
-                    Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
-                    System.Windows.Forms.MessageBox.Show("Admin " + Program.Admin + " was created. Please login.");
+                    RulesModel.AdminID = "1";
+                    PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + RulesModel.blackTheme.ToString();
+                    System.IO.File.WriteAllText(PathsModel.credentialsPath, PathsModel.csv);
+                    RulesModel.AdminID = PathsModel.csv.Split(',')[0];
+                    RulesModel.Admin = PathsModel.csv.Split(',')[1];
+                    RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
+                    RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
+                    RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
+                    RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
+                    RulesModel.SessionT = decimal.Parse(PathsModel.csv.Split(',')[6]);
+                    RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
+                    RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
+                    System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
                     goBack();
                 }
                 else
                 {
                     string result = "";
                     bool exists = false;
-                    StreamReader reader = new StreamReader(Program.credentialsPath);
+                    StreamReader reader = new StreamReader(PathsModel.credentialsPath);
                     while ((result = reader.ReadLine()) != null)
                     {
                         if (result.Contains(usernametext.Text))
@@ -371,26 +376,26 @@ namespace PCUMS
                     }
                     else
                     {
-                        String temp = File.ReadLines(Program.credentialsPath).Last();
+                        String temp = File.ReadLines(PathsModel.credentialsPath).Last();
                         int tempInt = 0;
                         temp = temp.Split(',')[0];
                         tempInt = Int32.Parse(temp);
                         tempInt = tempInt + 1;
                         temp = tempInt.ToString();
-                        Program.AdminID = temp;
-                        Program.csv = Program.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + Program.blackTheme.ToString();
-                        File.AppendAllText(Program.credentialsPath, Program.csv);
-                        Program.AdminID = Program.csv.Split(',')[0];
-                        Program.Admin = Program.csv.Split(',')[1];
-                        Program.AdminPass = Program.csv.Split(',')[2];
-                        Program.Temp = Int32.Parse(Program.csv.Split(',')[3]);
-                        Program.CPU = Int32.Parse(Program.csv.Split(',')[4]);
-                        Program.RAM = Int32.Parse(Program.csv.Split(',')[5]);
-                        Program.SessionT = Int32.Parse(Program.csv.Split(',')[6]);
-                        Program.SessionID = Int32.Parse(Program.csv.Split(',')[7]);
-                        Program.blackTheme = bool.Parse(Program.csv.Split(',')[8]);
-                        System.Windows.Forms.MessageBox.Show("Admin " + Program.Admin + " was created. Please login.");
-                        Program.SystemAdminVerified = false;
+                        RulesModel.AdminID = temp;
+                        PathsModel.csv = RulesModel.AdminID + "," + usernametext.Text + "," + passwordtext.Text + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + "," + RulesModel.blackTheme.ToString();
+                        File.AppendAllText(PathsModel.credentialsPath, PathsModel.csv);
+                        RulesModel.AdminID = PathsModel.csv.Split(',')[0];
+                        RulesModel.Admin = PathsModel.csv.Split(',')[1];
+                        RulesModel.AdminPass = PathsModel.csv.Split(',')[2];
+                        RulesModel.Temp = Int32.Parse(PathsModel.csv.Split(',')[3]);
+                        RulesModel.CPU = Int32.Parse(PathsModel.csv.Split(',')[4]);
+                        RulesModel.RAM = Int32.Parse(PathsModel.csv.Split(',')[5]);
+                        RulesModel.SessionT = Int32.Parse(PathsModel.csv.Split(',')[6]);
+                        RulesModel.SessionID = Int32.Parse(PathsModel.csv.Split(',')[7]);
+                        RulesModel.blackTheme = bool.Parse(PathsModel.csv.Split(',')[8]);
+                        System.Windows.Forms.MessageBox.Show("Admin " + RulesModel.Admin + " was created. Please login.");
+                        RulesModel.SystemAdminVerified = false;
                         goBack();
                     }
                 }
@@ -401,37 +406,9 @@ namespace PCUMS
             }
         }
 
-    private void button1_Click_1(object sender, EventArgs e)
-    {
-
+        private void forgotpassclick_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Contact the system administrator to reset your password.");
+        }
     }
-
-    private void pictureBox1_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label2_Click(object sender, EventArgs e)
-    {
-
-    }
-    private void button1_Click(object sender, EventArgs e)
-    {
-
-    }
-    private void radioButton1_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-    private void radioButton2_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void sessionStart_Click(object sender, EventArgs e)
-    {
-
-    }
-
-}
 }
