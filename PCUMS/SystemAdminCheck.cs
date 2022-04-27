@@ -13,6 +13,7 @@ namespace PCUMS
             InitializeComponent();
         }
 
+        //Checking for the current theme and apply to the form
         private void SystemAdminCheck_Load(object sender, EventArgs e)
         {
             if (RulesModel.blackTheme)
@@ -39,16 +40,20 @@ namespace PCUMS
             }
         }
 
+        //Go back button -> navigate to login form
         private void button2_Click(object sender, EventArgs e)
         {
             Program.Requester = 2;
             this.Close();
         }
 
+        //Login button which checks if the entered information matches that of the system's administrator
         private void button1_Click(object sender, EventArgs e)
         {
             string result = "";
             string store = "";
+
+            //Raead from the text file to obtain the system administrator
             StreamReader reader = new StreamReader(PathsModel.credentialsPath);
             while ((result = reader.ReadLine()) != null)
             {
@@ -58,7 +63,7 @@ namespace PCUMS
                 }
             }
 
-            //string line = File.ReadLines(RulesModel.credentialsPath).Skip(14).Take(1).First();
+            //If we obtained data from the text file, set the values for the admin
             if (store != "")
             {
                 RulesModel.AdminID = store.Split(',')[0];
@@ -67,6 +72,8 @@ namespace PCUMS
 
             }
             reader.Close();
+
+            //Check if the entered admin is the system admin
             if (RulesModel.Admin.Equals(textBox1.Text) && RulesModel.AdminPass.Equals(textBox3.Text) && RulesModel.AdminID == "1")
             {
                 Program.Requester = 2;
@@ -74,6 +81,7 @@ namespace PCUMS
                 System.Windows.Forms.MessageBox.Show("System Admin Verified. Can now make a new user!");
                 this.Close();
             }
+            //If user exists but is not system admin, do not allow new admin creation
             else if (RulesModel.Admin.Equals(textBox1.Text) && RulesModel.AdminPass.Equals(textBox3.Text) && RulesModel.AdminID != "1")
             {
                 System.Windows.Forms.MessageBox.Show("Must login as System admin with ID 1, Entered ID: " + RulesModel.AdminID);

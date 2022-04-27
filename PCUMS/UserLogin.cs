@@ -45,6 +45,7 @@ namespace PCUMS
             button1.Enabled = true;
             button1.Visible = true;
             newadmin.Enabled = true;
+            newadmin.Enabled = true;
             newadmin.Visible = true;
             clickhere.Enabled = true;
             clickhere.Visible = true;
@@ -337,7 +338,8 @@ namespace PCUMS
                 //Checks if the directory exists
                 if (!Directory.Exists(PathsModel.dataPath))
                 {
-                    Directory.CreateDirectory(PathsModel.dataPath);
+                    DirectoryInfo di = Directory.CreateDirectory(PathsModel.dataPath);
+                    di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 }
                 //Checks if the file exists
                 if (!File.Exists(PathsModel.credentialsPath))
