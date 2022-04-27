@@ -338,6 +338,7 @@ namespace PCUMS
         {
             //handles form switching
             Program.Requester = 2;
+            RulesModel.SystemAdminVerified = false;
             this.Close();
         }
 

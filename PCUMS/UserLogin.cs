@@ -16,6 +16,7 @@ namespace PCUMS
             InitializeComponent();
         }
 
+        //Choose admin user type
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
         {
             //Welcome
@@ -24,6 +25,7 @@ namespace PCUMS
             adminEnable();
         }
 
+        //Choose guest user type
         private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
         {
             //Welcome
@@ -44,6 +46,7 @@ namespace PCUMS
             textBox3.Visible = true;
             button1.Enabled = true;
             button1.Visible = true;
+            newadmin.Enabled = true;
             newadmin.Enabled = true;
             newadmin.Visible = true;
             clickhere.Enabled = true;
@@ -96,6 +99,7 @@ namespace PCUMS
             textBox1.Visible = false;
         }
 
+        
         private void sessionStart_Click_1(object sender, EventArgs e)
         {
             int i = 0;
@@ -133,6 +137,7 @@ namespace PCUMS
             }
         }
 
+        //Login button
         private void button1_Click_2(object sender, EventArgs e)
         {
             string result = "";
@@ -146,7 +151,6 @@ namespace PCUMS
                 }
             }
 
-            //string line = File.ReadLines(RulesModel.credentialsPath).Skip(14).Take(1).First();
             if (store != "")
             {
                 RulesModel.AdminID = store.Split(',')[0];
@@ -337,7 +341,8 @@ namespace PCUMS
                 //Checks if the directory exists
                 if (!Directory.Exists(PathsModel.dataPath))
                 {
-                    Directory.CreateDirectory(PathsModel.dataPath);
+                    DirectoryInfo di = Directory.CreateDirectory(PathsModel.dataPath);
+                    di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 }
                 //Checks if the file exists
                 if (!File.Exists(PathsModel.credentialsPath))

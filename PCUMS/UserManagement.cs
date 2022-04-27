@@ -11,7 +11,8 @@ namespace PCUMS
 {
     public partial class UserManagement : Form
     {
-        int count = File.ReadAllLines(PathsModel.credentialsPath).Length;
+        //Variables to create the table
+        int count = File.ReadAllLines(PathsModel.credentialsPath).Length; //Counts all the lines in the file, which is equivalent to the number of users in our program
         StringCleaner cleanMyString = new StringCleaner();
         UserTableModel Table = new UserTableModel(); //Contains all the settings for the rules
         UserTableModel UserInfo = new UserTableModel();
@@ -29,10 +30,13 @@ namespace PCUMS
         {
             int i = 0;
             
+            //Set the table headers
             label4.Text = "ID" + "      " + "User" + "       " + "Password" + "       " + "Temp" + "       " + "CPU" + "       " + "RAM" + "       " + "S.Time" + "       " + "S.ID";
             label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 2.5f, label1.Font.Style);
             label4.Width = 400;
             label4.Height = 20;
+
+            //Show how many users are found
             if (count == 1)
             {
                 label2.Text = count.ToString() + " User Found:";
@@ -41,6 +45,8 @@ namespace PCUMS
             {
                 label2.Text = count.ToString() + " Users Found:";
             }
+
+            //Read all the info from the text file and store it in the table model
             foreach (string s in File.ReadAllLines(PathsModel.credentialsPath))
             {
                 Table.IDs.Add(s.Split(',')[0]);
@@ -54,6 +60,7 @@ namespace PCUMS
                 Table.BlackTheme.Add(s.Split(',')[8]);
             }
 
+            //List of labels and text boxes that will show the user's information
             Label[] labelID = new Label[count];
             TextBox[] textboxUsers = new TextBox[count];
             TextBox[] textboxPasswords = new TextBox[count];
@@ -147,6 +154,7 @@ namespace PCUMS
             }
         }
 
+        //Checks when the text inside one of the text boxes changes and updates the variables accordingly
         void TextBox_TextChange(object sender, EventArgs e)
         {
             string valueToChange = string.Empty;
@@ -263,6 +271,7 @@ namespace PCUMS
             }
         }
 
+            //Event handler which identifies when each of the delete buttons are clicked
             void btn_Click(object sender, EventArgs e)
         {
             String[] Users = new String[count];
@@ -335,6 +344,7 @@ namespace PCUMS
             }
         }
 
+        //This method sets the properties for the textboxes
         public TextBox setupTextBoxes(TextBox setup, string text, Point location, int index, string Name)
         {
             //Setup textbox for Users
@@ -384,6 +394,8 @@ namespace PCUMS
 
             return setup;
         }
+
+        //Update the values inside the text file if the new written values are valid
         private void SaveChanges_Click_1(object sender, EventArgs e)
         {
             File.WriteAllText(PathsModel.credentialsPath, String.Empty);
@@ -470,7 +482,7 @@ namespace PCUMS
             }
         }
 
-
+        //On load check if we are using the black theme
         private void Form2_Load(object sender, EventArgs e)
         {
             panel1.AutoScroll = true;
@@ -506,7 +518,7 @@ namespace PCUMS
             Program.Requester = 1;
             this.Close();
         }
-
+        
         private void delall_Click_1(object sender, EventArgs e)
         {
             string message = "Do you want to delete all users?";

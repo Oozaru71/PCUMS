@@ -24,12 +24,15 @@ namespace PCUMS
 
         }
 
+        //Changes a line at a specific location in our text file
         static void lineChanger(string newText, string fileName, int line_to_edit)
         {
             string[] arrLine = File.ReadAllLines(fileName);
             arrLine[line_to_edit - 1] = newText;
             File.WriteAllLines(fileName, arrLine);
         }
+
+        //Initiates a user's session and only applies the rules if the current user is a guest
         private void Continue_Click(object sender, EventArgs e)
         {
             if (File.Exists(PathsModel.credentialsPath))
@@ -52,6 +55,7 @@ namespace PCUMS
                 System.Windows.Forms.MessageBox.Show("Cannot start a session with empty settings!");
         }
 
+        //This method checks if the black theme is being used and updates the rule values with those of the current session
         private void Login1_Load(object sender, EventArgs e)
         {
             if (File.Exists(PathsModel.credentialsPath))
@@ -68,11 +72,12 @@ namespace PCUMS
                 string admin = RulesModel.Admin;
               
 
-
+                //Friendly user message to welcome the admins
                 label2.Text = "🙂 Hello " + admin + ", let us get started.";
                 button2.Enabled = true;
                 makingNewUser = false;
 
+                //Set the rule values for this current user
                 numTemp.Value= RulesModel.Temp;
                 numSess.Value = RulesModel.SessionT;
                 numRAM.Value = RulesModel.RAM;
@@ -99,7 +104,7 @@ namespace PCUMS
             }
 
 
-
+            //Setting the ram usage that the administrator chose
             ramUsage = new PerformanceCounter();
             ramUsage.CategoryName = "Memory";
             ramUsage.CounterName = "% Committed Bytes in Use";
@@ -114,12 +119,15 @@ namespace PCUMS
         }
 
 
+        //Logout button
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Requester = 4;
+            RulesModel.SystemAdminVerified = false;
             this.Close();
         }
 
+        //Change theme light/dark
         private void button2_Click(object sender, EventArgs e)
         {
             if (File.Exists(PathsModel.credentialsPath))
@@ -145,6 +153,7 @@ namespace PCUMS
             }
         }
 
+        //This method updates the text file with the new values that the administrator set for a session
         public static void UpdateAdmin()
         {
             string store = RulesModel.AdminID + "," + RulesModel.Admin + "," + RulesModel.AdminPass + "," + RulesModel.Temp + "," + RulesModel.CPU + "," + RulesModel.RAM + "," + RulesModel.SessionT + "," + RulesModel.SessionID + "," + RulesModel.blackTheme.ToString();
