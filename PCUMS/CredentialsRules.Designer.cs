@@ -130,9 +130,9 @@ namespace PCUMS
             this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label10.Location = new System.Drawing.Point(521, 306);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(262, 20);
+            this.label10.Size = new System.Drawing.Size(264, 20);
             this.label10.TabIndex = 18;
-            this.label10.Text = "degrees F (higher than 50).";
+            this.label10.Text = "degrees C (higher than 50).";
             this.toolTip1.SetToolTip(this.label10, "Average of all CPU cores temperatures.");
             // 
             // label11
@@ -302,7 +302,7 @@ namespace PCUMS
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Continue);
             this.panel1.Location = new System.Drawing.Point(2, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(895, 654);
             this.panel1.TabIndex = 35;
@@ -369,7 +369,7 @@ namespace PCUMS
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PCUMS.Properties.Resources.PCUMS;
             this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(500, 175);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
