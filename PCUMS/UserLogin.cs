@@ -16,6 +16,7 @@ namespace PCUMS
             InitializeComponent();
         }
 
+        //Choose admin user type
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
         {
             //Welcome
@@ -24,6 +25,7 @@ namespace PCUMS
             adminEnable();
         }
 
+        //Choose guest user type
         private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
         {
             //Welcome
@@ -97,6 +99,7 @@ namespace PCUMS
             textBox1.Visible = false;
         }
 
+        
         private void sessionStart_Click_1(object sender, EventArgs e)
         {
             int i = 0;
@@ -134,6 +137,7 @@ namespace PCUMS
             }
         }
 
+        //Login button
         private void button1_Click_2(object sender, EventArgs e)
         {
             string result = "";
@@ -147,7 +151,6 @@ namespace PCUMS
                 }
             }
 
-            //string line = File.ReadLines(RulesModel.credentialsPath).Skip(14).Take(1).First();
             if (store != "")
             {
                 RulesModel.AdminID = store.Split(',')[0];

@@ -123,6 +123,7 @@ namespace PCUMS
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Requester = 4;
+            RulesModel.SystemAdminVerified = false;
             this.Close();
         }
 
